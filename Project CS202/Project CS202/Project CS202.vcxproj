@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{31ceb6da-1648-45b4-9c2d-f9efe4d3765a}</ProjectGuid>
     <RootNamespace>ProjectCS202</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -42,8 +42,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -139,9 +139,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CAnimal.h" />
+    <ClInclude Include="CBird.h" />
+    <ClInclude Include="CCar.h" />
+    <ClInclude Include="CDinausor.h" />
+    <ClInclude Include="CGame.h" />
+    <ClInclude Include="CPeople.h" />
+    <ClInclude Include="CTruck.h" />
+    <ClInclude Include="CVehical.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CAnimal.cpp" />
+    <ClCompile Include="CBird.cpp" />
+    <ClCompile Include="CCar.cpp" />
+    <ClCompile Include="CDinausor.cpp" />
+    <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CPeople.cpp" />
+    <ClCompile Include="CTruck.cpp" />
+    <ClCompile Include="CVehical.cpp" />
     <ClCompile Include="Function.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
