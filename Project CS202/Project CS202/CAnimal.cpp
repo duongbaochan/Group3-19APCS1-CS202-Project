@@ -14,3 +14,9 @@ CAnimal::CAnimal(int x, int y)
 	mX = x;
 	mY = y;
 }
+void CAnimal::updatePosVehicle(int width)
+{
+	mX = mX + 1;
+	if (mX >= 0)
+		mX %= width;
+}

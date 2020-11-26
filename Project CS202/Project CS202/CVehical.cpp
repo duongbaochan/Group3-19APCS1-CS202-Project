@@ -13,3 +13,9 @@ CVehicle::CVehicle(int x, int y)
 	mX = x;
 	mY = y;
 }
+void CVehicle::updatePosVehicle(int width)
+{
+	mX = mX + 1;
+	if (mX >= 0)
+		mX %= width;
+}

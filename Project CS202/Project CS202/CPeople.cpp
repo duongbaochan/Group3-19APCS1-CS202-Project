@@ -6,7 +6,7 @@ CPeople::CPeople()
 }
 CPeople::CPeople(int w)
 {
-	mX = w/2;
+	mX = 50;
 	mY = 0;
 }
 
@@ -47,4 +47,8 @@ bool CPeople::isImpact(CAnimal* x)
 	if (mX == x->getX() && mY == x->getY())
 		return 1;
 	return 0;
+}
+void CPeople::draw()
+{
+
 }

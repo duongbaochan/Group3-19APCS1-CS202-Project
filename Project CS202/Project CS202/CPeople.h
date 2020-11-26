@@ -4,8 +4,9 @@
 #include "CAnimal.h"
 
 class CPeople {
+protected:
 	int mX, mY;
-	bool mState; //Tr?ng thái s?ng ch?t
+	bool mState = 1; //Tr?ng thái s?ng ch?t
 	int step;
 public:
 	CPeople();
@@ -19,5 +20,6 @@ public:
 	bool isImpact(CAnimal*);
 	bool isFinish();
 	bool isDead();
-}
+	void draw();
+};
 

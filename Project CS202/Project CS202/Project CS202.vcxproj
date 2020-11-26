@@ -160,6 +160,7 @@
     <ClCompile Include="CTruck.cpp" />
     <ClCompile Include="CVehical.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
