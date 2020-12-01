@@ -38,14 +38,20 @@ bool CPeople::isDead()
 }
 bool CPeople::isImpact(CVehicle* x)
 {
-	if (mX == x->getX() && mY == x->getY())
-		return 1;
+	for (int i = 0; i < 4; ++i)
+	{
+		if (mX == x->getX() && mY == x->getY() + i)
+			return 1;
+	}
 	return 0;
 }
 bool CPeople::isImpact(CAnimal* x)
 {
-	if (mX == x->getX() && mY == x->getY())
-		return 1;
+	for (int i = 0; i < 4; ++i)
+	{
+		if (mX == x->getX() && mY == x->getY() + i)
+			return 1;
+	}
 	return 0;
 }
 void CPeople::draw()

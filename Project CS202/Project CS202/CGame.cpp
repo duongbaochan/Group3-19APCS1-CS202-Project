@@ -103,7 +103,7 @@ void CGame::runningGame(int level)
 			return;
 		}
 	}
-	if (mY == level + 16)
+	if (mY == level + 18)
 	{
 		score++;
 		updatePosPeople(1);
