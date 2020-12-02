@@ -39,7 +39,7 @@ bool CPeople::isDead()
 }
 bool CPeople::isImpact(CVehicle* x)
 {
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < 4; i++)
 	{
 		if (mX == x->getX() && mY == x->getY() + i)
 			return 1;
@@ -48,7 +48,7 @@ bool CPeople::isImpact(CVehicle* x)
 }
 bool CPeople::isImpact(CAnimal* x)
 {
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < 4; i++)
 	{
 		if (mX == x->getX() && mY == x->getY() + i)
 			return 1;

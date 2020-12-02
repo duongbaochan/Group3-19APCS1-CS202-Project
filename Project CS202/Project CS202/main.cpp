@@ -2,9 +2,7 @@
 
 int main()
 {
-	GotoXY(-4, 2);
-	cout << "hi";
-	CGame x(1,2,200);
+	CGame x(1,2,100);
 	x.startGame(5);
 	system("pause");
 	return 0;
