@@ -133,7 +133,37 @@ void CGame::exitGame(HANDLE)
 }
 void CGame::loadGame(ostream)
 {
+	cout << "Enter your path: ";
+	string s;
+	getline(cin, s);
+	ifstream f;
+	f.open(s);
+	if (!f.is_open())
+		cout << "Can not open file." << endl;
+	else
+	{
+		f >> size;
+		for (int i = 0; i <= size; ++i)
+		{
+			int m, n;
+			f >> m >> n;
+			CTruck* objT = new CTruck(m, n);
+			f >> m >> n;
+			CCar* objC = new CCar(m, n);
+			f >> m >> n;
+			CBird* objB = new CBird(m, n);
+			f >> m >> n;
+			CDinausor* objD = new CDinausor(m, n);
 
+			arrTr.push_back(objT);
+			arrC.push_back(objC);
+			arrB.push_back(objB);
+			arrD.push_back(objD);
+		}
+		f >> mX >> mY >> score;
+	}
+	f.close();
+	startGame(mY);
 }
 void CGame::saveGame(istream)
 {

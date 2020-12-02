@@ -6,6 +6,8 @@
 #include <conio.h>
 #include <time.h>
 #include <windows.h>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
