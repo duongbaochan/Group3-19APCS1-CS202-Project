@@ -14,7 +14,7 @@ void CCar::draw()
 		GotoXY(mX, mY + 2);
 		cout << "|__________|";
 		GotoXY(mX, mY + 3);
-		cout << "  ()----()" << endl;
+		cout << "  ()----()";
 		//cout << "C" << endl;
 	}
 }

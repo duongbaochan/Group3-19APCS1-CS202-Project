@@ -10,10 +10,10 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 	unsigned short k = rand() % 4;
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck *objT = new CTruck(0 - i * w / 5,k + 2);
-		CCar *objC = new CCar(0 - i * w / 5 + 40, (k+1)%4 + 2 + 4);
-		CBird *objB = new CBird(0 - i * w / 5 + 25, (k + 2) % 4 + 2 + 8);
-		CDinausor *objD = new CDinausor(0 - i * w / 5 + 15, (k + 3) % 4 + 2 + 16);
+		CTruck *objT = new CTruck(0 - i * w / 5,k * 8 + 2);
+		CCar *objC = new CCar(0 - i * w / 5 + 40, (k+1)%4 * 8 + 2);
+		CBird *objB = new CBird(0 - i * w / 5 + 25, (k + 2) % 4 * 8 + 2);
+		CDinausor *objD = new CDinausor(0 - i * w / 5 + 15, (k + 3) % 4 * 8 + 2);
 
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
@@ -32,7 +32,7 @@ void CGame::drawGame()
 		arrB[i]->draw();
 		arrD[i]->draw();
 	}
-	draw();
+//	draw();
 	GotoXY(0, 0);
 	cout << "Score: " << score << endl;
 
@@ -73,8 +73,8 @@ void CGame::updatePosAnimal()
 {
 	for (int i = 0; i < size; i++)
 	{
-		arrB[i]->updatePosVehicle(width);
-		arrD[i]->updatePosVehicle(width);
+		arrB[i]->updatePosAnimal(width);
+		arrD[i]->updatePosAnimal(width);
 	}
 }
 void CGame::startGame(int level)

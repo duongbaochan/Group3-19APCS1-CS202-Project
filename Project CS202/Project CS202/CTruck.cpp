@@ -8,12 +8,12 @@ void CTruck::draw()
 {
 	GotoXY(mX, mY);
 	if (mX > 0) {
-		cout << "___________" << endl;
+		cout << "___________";
 		GotoXY(mX, mY + 1);
-		cout << "|         \\\\_" << endl;
+		cout << "|         \\\\_";
 		GotoXY(mX, mY + 2);
-		cout << "|____________|" << endl;
+		cout << "|____________|";
 		GotoXY(mX, mY + 3);
-		cout << "  ()-----()" << endl;
+		cout << "  ()-----()";
 	}
 }
