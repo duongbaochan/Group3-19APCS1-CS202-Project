@@ -167,7 +167,21 @@ void CGame::loadGame(ostream)
 }
 void CGame::saveGame(istream)
 {
-
+	cout << "Enter your location: ";
+	string s;
+	getline(cin, s);
+	ofstream f;
+	f.open(s + "\\a.txt");
+	if (!f.is_open())
+		cout << "Can not open file." << endl;
+	else
+	{
+		f << size << endl;
+		for (int i = 0; i <= size; ++i)
+			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
+		f << mX << " " << mY << " " << score;
+	}
+	f.close();
 }
 void CGame::pauseGame(HANDLE)
 {
