@@ -4,7 +4,7 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 {
 	stop = 0;
 	//srand(time(NULL));
-	size = x + 4;
+	size = x +4;
 	width = w;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
@@ -149,11 +149,55 @@ void CGame::exitGame(HANDLE)
 }
 void CGame::loadGame(ostream)
 {
+	cout << "Enter your path: ";
+	string s;
+	getline(cin, s);
+	ifstream f;
+	f.open(s);
+	if (!f.is_open())
+		cout << "Can not open file." << endl;
+	else
+	{
+		f >> size;
+		for (int i = 0; i <= size; ++i)
+		{
+			int m, n;
+			f >> m >> n;
+			CTruck* objT = new CTruck(m, n);
+			f >> m >> n;
+			CCar* objC = new CCar(m, n);
+			f >> m >> n;
+			CBird* objB = new CBird(m, n);
+			f >> m >> n;
+			CDinausor* objD = new CDinausor(m, n);
 
+			arrTr.push_back(objT);
+			arrC.push_back(objC);
+			arrB.push_back(objB);
+			arrD.push_back(objD);
+		}
+		f >> mX >> mY >> score;
+	}
+	f.close();
+	startGame(mY);
 }
 void CGame::saveGame(istream)
 {
-
+	cout << "Enter your location: ";
+	string s;
+	getline(cin, s);
+	ofstream f;
+	f.open(s + "\\a.txt");
+	if (!f.is_open())
+		cout << "Can not open file." << endl;
+	else
+	{
+		f << size << endl;
+		for (int i = 0; i <= size; ++i)
+			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
+		f << mX << " " << mY << " " << score;
+	}
+	f.close();
 }
 void CGame::pauseGame(HANDLE)
 {
