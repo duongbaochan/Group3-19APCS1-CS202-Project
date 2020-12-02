@@ -6,8 +6,8 @@ CBird::CBird(int x, int y) : CAnimal(x, y)
 }
 void CBird::draw()
 {
-	GotoXY(mX, mY);
-	if (mX > 0) {
+	if (mX > 0 && mX < 85) {
+		GotoXY(mX, mY);
 		TextColor(6);
 		cout << "  _/\\__";
 		GotoXY(mX, mY + 1);

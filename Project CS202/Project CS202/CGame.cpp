@@ -10,10 +10,10 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 	unsigned short k = rand() % 4;
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck *objT = new CTruck(0 - i * w / 5,k * 8 + 2);
-		CCar *objC = new CCar(0 - i * w / 5 + 40, (k + 1) % 4 * 8 + 2);
-		CBird *objB = new CBird(0 - i * w / 5 + 25, (k + 2) % 4 * 8 + 2);
-		CDinausor *objD = new CDinausor(0 - i * w / 5 + 15, (k + 3) % 4 * 8 + 2);
+		CTruck *objT = new CTruck(0 - i * w / size,k * 8 + 2);
+		CCar *objC = new CCar(0 - i * w / size + 40, (k + 1) % 4 * 8 + 2);
+		CBird *objB = new CBird(0 - i * w / size + 25, (k + 2) % 4 * 8 + 2);
+		CDinausor *objD = new CDinausor(0 - i * w / size + 15, (k + 3) % 4 * 8 + 2);
 
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
@@ -25,19 +25,10 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 void CGame::drawGame()
 {
 	system("cls");
-	for (int i = 0; i < size; i++)
-	{
-		arrTr[i]->draw();
-		arrC[i]->draw();
-		arrB[i]->draw();
-		arrD[i]->draw();
-	}
-//	draw();
-	//draw line
-	string line = "";
-	for (int i = 0; i < width; i++) {
+	string line = "*****************************************************************";
+	/*for (int i = 0; i < width; i++) {
 		line += "*";
-	}
+	}*/
 	GotoXY(0, 1);
 	TextColor(12);
 	cout << line;
@@ -48,9 +39,15 @@ void CGame::drawGame()
 	GotoXY(0, 24);
 	cout << line;
 	TextColor(15);
-
-	GotoXY(0, 0);
-	cout << "Score: " << score << endl;
+	for (int i = 0; i < size; i++)
+	{
+		arrTr[i]->draw();
+		arrC[i]->draw();
+		arrB[i]->draw();
+		arrD[i]->draw();
+	}
+//	draw();
+	//draw line
 
 }
 void CGame::updatePosPeople(bool flag=0)
@@ -95,6 +92,23 @@ void CGame::updatePosAnimal()
 }
 void CGame::startGame(int level)
 {
+	system("cls");
+	string line = "";
+	for (int i = 0; i < width; i++) {
+		line += "*";
+	}
+	GotoXY(0, 1);
+	TextColor(12);
+	cout << line;
+	GotoXY(0, 9);
+	cout << line;
+	GotoXY(0, 16);
+	cout << line;
+	GotoXY(0, 24);
+	cout << line;
+	TextColor(15);
+
+	
 	while (!stop)
 	{
 		if (mState == 0)
@@ -122,6 +136,8 @@ void CGame::runningGame(int level)
 	if (mY == level + 18)
 	{
 		score++;
+		GotoXY(0, 0);
+		cout << "Score: " << score;
 		updatePosPeople(1);
 	}
 }

@@ -7,13 +7,13 @@ CCar::CCar(int x, int y) : CVehicle(x, y)
 void CCar::draw()
 {
 	GotoXY(mX, mY);
-	if (mX > 0) {
+	if (mX > 0 && mX < 85) {
 		TextColor(5);
 		cout << "   _____";
 		GotoXY(mX, mY + 1);
 		cout << " _/     \\__";
-		GotoXY(mX, mY + 2);
-		cout << "|__________|";
+		GotoXY(mX-1, mY + 2);
+		cout << " |__________|";
 		GotoXY(mX, mY + 3);
 		cout << "  ()----()";
 		TextColor(15);

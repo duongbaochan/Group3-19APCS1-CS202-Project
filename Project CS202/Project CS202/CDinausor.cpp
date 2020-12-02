@@ -6,8 +6,8 @@ CDinausor::CDinausor(int x, int y) : CAnimal(x, y)
 }
 void CDinausor::draw()
 {
-	GotoXY(mX, mY);
-	if (mX > 0) {
+	if (mX > 0 && mX<100) {
+		GotoXY(mX, mY);
 		/* DUNG XOA NHA, MOT CO DU`NG THI DU`NG CHU LO VE NAY CUC LAM :(
 		cout << "      ******* ";
 		GotoXY(mX, mY + 1);
