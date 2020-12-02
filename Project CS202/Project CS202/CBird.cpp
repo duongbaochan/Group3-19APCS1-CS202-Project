@@ -8,13 +8,15 @@ void CBird::draw()
 {
 	GotoXY(mX, mY);
 	if (mX > 0) {
+		TextColor(6);
 		cout << "  _/\\__";
 		GotoXY(mX, mY + 1);
 		cout << " /     \\__";
 		GotoXY(mX, mY + 2);
 		cout << " \\_____(__)";
 		GotoXY(mX, mY + 3);
-		cout << "   \\/      " << endl;
+		cout << "   \\/      ";
+		TextColor(15);
 	}
 }
 

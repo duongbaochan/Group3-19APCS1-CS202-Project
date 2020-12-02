@@ -15,4 +15,7 @@ namespace {
 		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
+	void TextColor(int color) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	}
 }

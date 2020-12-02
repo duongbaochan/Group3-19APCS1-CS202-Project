@@ -8,6 +8,7 @@ int CVehicle::getY()
 {
 	return mY;
 }
+
 CVehicle::CVehicle(int x, int y)
 {
 	mX = x;
