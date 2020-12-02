@@ -4,7 +4,7 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 {
 	stop = 0;
 	//srand(time(NULL));
-	size = x + 4;
+	size = x +4;
 	width = w;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
@@ -73,8 +73,8 @@ void CGame::updatePosAnimal()
 {
 	for (int i = 0; i < size; i++)
 	{
-		arrB[i]->updatePosVehicle(width);
-		arrD[i]->updatePosVehicle(width);
+		arrB[i]->updatePosAnimal(width);
+		arrD[i]->updatePosAnimal(width);
 	}
 }
 void CGame::startGame(int level)

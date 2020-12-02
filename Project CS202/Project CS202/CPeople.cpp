@@ -32,6 +32,7 @@ bool CPeople::isFinish()
 {
 	return mState;
 }
+
 bool CPeople::isDead()
 {
 	return mState;
