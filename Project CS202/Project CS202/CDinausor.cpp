@@ -31,7 +31,7 @@ void CDinausor::draw()
 		GotoXY(mX, mY+10);
 		cout << "    ***  ***  " << endl;
 		*/
-
+		TextColor(3);
 		cout << "   _____ ";
 		GotoXY(mX, mY + 1);
 		cout << "  ( *  _)";
@@ -41,5 +41,6 @@ void CDinausor::draw()
 		cout << " \\|____|";
 		GotoXY(mX, mY + 4);
 		cout << "   |_ |_";
+		TextColor(15);
 	}
 }

@@ -8,6 +8,7 @@ void CTruck::draw()
 {
 	GotoXY(mX, mY);
 	if (mX > 0) {
+		TextColor(8);
 		cout << "___________";
 		GotoXY(mX, mY + 1);
 		cout << "|         \\\\_";
@@ -15,5 +16,6 @@ void CTruck::draw()
 		cout << "|____________|";
 		GotoXY(mX, mY + 3);
 		cout << "  ()-----()";
+		TextColor(15);
 	}
 }

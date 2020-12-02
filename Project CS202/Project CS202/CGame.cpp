@@ -11,7 +11,7 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 	for (int i = 1; i <= size; i++)
 	{
 		CTruck *objT = new CTruck(0 - i * w / 5,k * 8 + 2);
-		CCar *objC = new CCar(0 - i * w / 5 + 40, (k+1)%4 * 8 + 2);
+		CCar *objC = new CCar(0 - i * w / 5 + 40, (k + 1) % 4 * 8 + 2);
 		CBird *objB = new CBird(0 - i * w / 5 + 25, (k + 2) % 4 * 8 + 2);
 		CDinausor *objD = new CDinausor(0 - i * w / 5 + 15, (k + 3) % 4 * 8 + 2);
 
@@ -33,6 +33,22 @@ void CGame::drawGame()
 		arrD[i]->draw();
 	}
 //	draw();
+	//draw line
+	string line = "";
+	for (int i = 0; i < width; i++) {
+		line += "*";
+	}
+	GotoXY(0, 1);
+	TextColor(12);
+	cout << line;
+	GotoXY(0, 9);
+	cout << line;
+	GotoXY(0, 16);
+	cout << line;
+	GotoXY(0, 24);
+	cout << line;
+	TextColor(15);
+
 	GotoXY(0, 0);
 	cout << "Score: " << score << endl;
 
