@@ -42,7 +42,7 @@ bool CPeople::isDead()
 {
 	return mState;
 }
-bool CPeople::isImpact(CVehicle* x) 
+bool CPeople::isImpact(CVehicle* x)
 {
 	int tmp_x = 0;
 	for (int i = 0; i < 4; i++)
@@ -55,7 +55,7 @@ bool CPeople::isImpact(CVehicle* x)
 }
 bool CPeople::isImpact(CAnimal* x)
 {
-	int tmp_x = 0; 
+	int tmp_x = 0;
 	for (int i = 0; i < 4; i++)
 	{
 		tmp_x = abs(mX - x->getX());
