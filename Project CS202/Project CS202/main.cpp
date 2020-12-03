@@ -2,8 +2,7 @@
 
 int main()
 {
-	CGame x(1,2,100);
-	x.startGame(5);
+	Menu();
 	system("pause");
 	return 0;
 }

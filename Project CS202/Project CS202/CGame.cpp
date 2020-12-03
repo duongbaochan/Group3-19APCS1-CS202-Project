@@ -1,10 +1,49 @@
 #include "CGame.h"
 
-CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 1 2 3 4 
+void Menu()
+{
+	cout << "----------------MENU--------------" << endl;
+	cout << "        WELCOME TO THE GAME       " << endl;
+	cout << "1. New Game." << endl;
+	cout << "2. Load Game." << endl;
+	cout << "3. Settings." << endl;
+	cout << "0. Exit." << endl;
+	cout << "Enter our option: ";
+	int n; cin >> n;
+	while (n)
+	{
+		if (n == 1)
+		{
+			CGame x(1, 2, 100, 50, 0);
+			x.startGame(5);
+			break;
+		}
+		else if (n == 2)
+		{
+			CGame x;
+			x.loadGame();
+			break;
+		}
+		else if (n == 0) return;
+		else
+		{
+			cout << "Please choose again...";
+			cin >> n;
+		}
+	}
+}
+CGame::CGame(){
+	int size = 0;
+	int score = 0;
+	bool stop = 0;
+	int width = 0;
+}
+
+CGame::CGame(int x, int speed, int w, int xPeople, int yPeople): CPeople(xPeople, yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	stop = 0;
 	//srand(time(NULL));
-	size = x +4;
+	size = x + 4;
 	width = w;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
@@ -163,7 +202,7 @@ void CGame::exitGame(HANDLE)
 	system("cls");
 	cout << "Your score: " << score << endl;
 }
-void CGame::loadGame(ostream)
+void CGame::loadGame()
 {
 	cout << "Enter your path: ";
 	string s;
@@ -174,7 +213,6 @@ void CGame::loadGame(ostream)
 		cout << "Can not open file." << endl;
 	else
 	{
-		f >> size;
 		for (int i = 0; i <= size; ++i)
 		{
 			int m, n;
@@ -192,12 +230,12 @@ void CGame::loadGame(ostream)
 			arrB.push_back(objB);
 			arrD.push_back(objD);
 		}
-		f >> mX >> mY >> score;
+		f >> size >> score >> stop >> width >> mX >> mY >> mState;
 	}
 	f.close();
-	startGame(mY);
+	this->startGame(5);
 }
-void CGame::saveGame(istream)
+void CGame::saveGame()
 {
 	cout << "Enter your location: ";
 	string s;
@@ -208,10 +246,9 @@ void CGame::saveGame(istream)
 		cout << "Can not open file." << endl;
 	else
 	{
-		f << size << endl;
 		for (int i = 0; i <= size; ++i)
 			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
-		f << mX << " " << mY << " " << score;
+		f << size << " " << score << " " << stop << " " << width << " " << mX << " " << mY << " " << mState;
 	}
 	f.close();
 }
@@ -223,3 +260,4 @@ void CGame::resumeGame(HANDLE)
 {
 
 }
+

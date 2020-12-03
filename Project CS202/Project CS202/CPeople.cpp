@@ -10,6 +10,11 @@ CPeople::CPeople(int w)
 	mY = 0;
 }
 
+CPeople::CPeople(int mX, int mY)
+{
+	this->mX = mX;
+	this->mY = mY;
+}
 
 void CPeople::Up()
 {

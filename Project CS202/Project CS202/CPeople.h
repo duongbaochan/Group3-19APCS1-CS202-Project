@@ -11,6 +11,7 @@ protected:
 public:
 	CPeople();
 	CPeople(int w);
+	CPeople(int, int);
 
 	void Up();
 	void Left();
