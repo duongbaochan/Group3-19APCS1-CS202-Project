@@ -18,7 +18,7 @@ class CGame:public CPeople
 //	CPeople cn;
 public:
 	CGame();
-	CGame(int, int, int, int, int); //Chu?n b? d? li?u cho t?t c? các ??i t??ng
+	CGame(int, int, int); //Chu?n b? d? li?u cho t?t c? các ??i t??ng
 	void drawGame(); //Th?c hi?n v? trò ch?i ra màn hình sau khi có d? li?u
 	~CGame(); // H?y tài nguyên ?ã c?p phát
 	//CPeople getPeople();//L?y thông tin ng??i

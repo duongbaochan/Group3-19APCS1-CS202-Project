@@ -14,7 +14,7 @@ void Menu()
 	{
 		if (n == 1)
 		{
-			CGame x(1, 2, 100, 50, 0);
+			CGame x(1, 2, 100);
 			x.startGame(5);
 			break;
 		}
@@ -33,13 +33,13 @@ void Menu()
 	}
 }
 CGame::CGame(){
-	int size = 0;
-	int score = 0;
-	bool stop = 0;
-	int width = 0;
+	size = 0;
+	score = 0;
+	stop = 0;
+	width = 0;
 }
 
-CGame::CGame(int x, int speed, int w, int xPeople, int yPeople): CPeople(xPeople, yPeople) // x: level (higher - harder) 1 2 3 4 
+CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 1 2 3 4 
 {
 	stop = 0;
 	//srand(time(NULL));
