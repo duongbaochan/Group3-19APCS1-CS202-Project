@@ -20,3 +20,9 @@ void CVehicle::updatePosVehicle(int width)
 	if (mX >= 0)
 		mX %= width;
 }
+
+// For Impact function
+bool CVehicle::isDxAndDyInRange(int Dx, int Dy)
+{
+	return 0;
+}

@@ -13,4 +13,6 @@ public:
 
 	CAnimal(int, int);
 
+	//For Impact function
+	virtual bool isDxAndDyInRange(int, int);
 };

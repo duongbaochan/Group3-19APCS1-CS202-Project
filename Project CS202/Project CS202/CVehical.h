@@ -10,4 +10,7 @@ public:
 	int getY();
 	void updatePosVehicle(int);
 	CVehicle(int, int);
+
+	// For Impact function
+	virtual bool isDxAndDyInRange(int, int);
 };

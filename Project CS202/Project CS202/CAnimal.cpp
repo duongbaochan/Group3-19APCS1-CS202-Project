@@ -20,3 +20,8 @@ void CAnimal::updatePosAnimal(int width)
 	if (mX >= 0)
 		mX %= width;
 }
+
+bool CAnimal::isDxAndDyInRange(int, int)
+{
+	return 0;
+}

@@ -20,3 +20,17 @@ void CCar::draw()
 		//cout << "C" << endl;
 	}
 }
+
+// For Impact function
+bool CCar::isDxAndDyInRange(int Dx, int Dy)
+{
+	if (Dy == 0)
+		return (Dx >= 5 && Dx <= 9);
+	if (Dy == 1)
+		return (Dx >= 2 && Dx <= 12);
+	if (Dy == 2)
+		return (Dx >= 2 && Dx <= 13);
+	if (Dy == 3)
+		return (Dx >= 5 && Dx <= 11);
+	return 0;
+}

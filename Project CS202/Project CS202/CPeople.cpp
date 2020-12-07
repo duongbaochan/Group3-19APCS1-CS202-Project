@@ -44,24 +44,24 @@ bool CPeople::isDead()
 }
 bool CPeople::isImpact(CVehicle* x)
 {
-	int tmp_x = 0;
-	for (int i = 0; i < 4; i++)
-	{
-		tmp_x = abs(mX - x->getX());
-		if (tmp_x <= 11 && mY == x->getY() + i)
-			return 1;
-	}
+	int Dx = -1, Dy = -1;
+	Dx = mX - x->getX();
+	Dy = mY - x->getY();
+
+	if (x->isDxAndDyInRange(Dx, Dy))
+		return 1;
+
 	return 0;
 }
 bool CPeople::isImpact(CAnimal* x)
 {
-	int tmp_x = 0;
-	for (int i = 0; i < 4; i++)
-	{
-		tmp_x = abs(mX - x->getX());
-		if (tmp_x <= 10 && mY == x->getY() + i)
-			return 1;
-	}
+	int Dx = -1, Dy = -1;
+	Dx = mX - x->getX();
+	Dy = mY - x->getY();
+
+	if (x->isDxAndDyInRange(Dx, Dy))
+		return 1;
+
 	return 0;
 }
 void CPeople::draw()

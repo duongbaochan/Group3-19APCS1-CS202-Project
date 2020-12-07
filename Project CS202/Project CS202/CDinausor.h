@@ -7,4 +7,6 @@ public:
 	CDinausor(int, int);
 	void draw();
 
+	// For Impact function
+	bool isDxAndDyInRange(int, int);
 };
