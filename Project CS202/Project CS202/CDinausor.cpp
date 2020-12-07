@@ -48,8 +48,6 @@ void CDinausor::draw()
 // For Impact function
 bool CDinausor::isDxAndDyInRange(int Dx, int Dy)
 {
-	if (Dy == 0)
-		return (Dx >= 4 && Dx <= 8);
 	if (Dy == 1)
 		return (Dx >= 3 && Dx <= 9);
 	if (Dy == 2)

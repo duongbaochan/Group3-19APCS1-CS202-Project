@@ -24,14 +24,12 @@ void CBird::draw()
 bool CBird::isDxAndDyInRange(int Dx, int Dy)
 {
 	if (Dy == 0)
-		return (Dx >= 4 && Dx <= 5);
+		return (Dx >= 3 && Dx <= 4);
 	if (Dy == 1)
-		return (Dx >= 3 && Dx <= 7);
+		return (Dx >= 2 && Dx <= 7);
 	if (Dy == 2)
 		return (Dx >= 2 && Dx <= 10);
 	if (Dy == 3)
-		return (Dx >= 2 && Dx <= 11);
-	if (Dy == 4)
-		return (Dx >= 4 && Dx <= 5);
+		return (Dx >= 3 && Dx <= 4);
 	return 0;
 }
