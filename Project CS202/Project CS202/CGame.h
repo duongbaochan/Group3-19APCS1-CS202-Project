@@ -4,6 +4,7 @@
 #include "CDinausor.h"
 #include "CBird.h"
 #include "CPeople.h"
+#include "CTrafficLight.h"
 
 class CGame:public CPeople 
 {
@@ -11,6 +12,7 @@ class CGame:public CPeople
 	vector <CCar*> arrC;
 	vector <CDinausor*> arrD;
 	vector <CBird*> arrB;
+	vector <CTrafficLight*> arrL;
 	int size;
 	int score = 0;
 	bool stop;
