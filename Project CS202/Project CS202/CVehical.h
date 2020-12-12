@@ -11,7 +11,7 @@ public:
 	int getY();
 	int getSpeed();
 	void setSpeed(int);
-	void updatePosVehicle(int);
+	void updatePosVehicle(int, int);
 	CVehicle(int, int);
 
 	// For Impact function

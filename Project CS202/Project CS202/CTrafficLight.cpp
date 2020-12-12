@@ -30,16 +30,19 @@ void CTrafficLight::draw() {
 		TextColor(15);
 	}
 }
-void CTrafficLight::changeColor(int tmp_color, int k) {
+void CTrafficLight::changeColor(int tmp_color, int &k) {
 	switch (tmp_color) {
 	case 10: //green -> red
 		color = 12;
+		k = 0;
 		break;
 	case 12: //red -> yellow
 		color = 6;
+		k = 1;
 		break;
 	case 6: //yellow -> green
 		color = 10;
+		k = 2;
 		break;
 	}
 }
