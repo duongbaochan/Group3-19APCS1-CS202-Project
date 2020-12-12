@@ -1,4 +1,5 @@
 #include "CGame.h"
+#include <Windows.h>
 
 int main()
 {

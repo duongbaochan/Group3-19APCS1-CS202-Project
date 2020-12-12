@@ -53,12 +53,16 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 		CCar *objC = new CCar(0 - i * w / size + 40, (k + 1) % 4 * 8 + 2);
 		CBird *objB = new CBird(0 - i * w / size + 25, (k + 2) % 4 * 8 + 2);
 		CDinausor *objD = new CDinausor(0 - i * w / size + 15, (k + 3) % 4 * 8 + 2);
-
+		
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
 		arrB.push_back(objB);
 		arrD.push_back(objD);
 	}
+	CTrafficLight* objL = new CTrafficLight(width, k * 8 + 2);
+	arrL.push_back(objL);
+	objL = new CTrafficLight(width, (k + 1) % 4 * 8 + 2);
+	arrL.push_back(objL);
 }
 
 void CGame::drawGame()
@@ -85,6 +89,10 @@ void CGame::drawGame()
 		arrB[i]->draw();
 		arrD[i]->draw();
 	}
+	for (int i = 0; i < 2; ++i) {
+		arrL[i]->draw();
+	}
+
 //	draw();
 	//draw line
 
@@ -146,8 +154,13 @@ void CGame::startGame(int level)
 	GotoXY(0, 24);
 	cout << line;
 	TextColor(15);
-
 	
+	int color = 12; //red
+	unsigned short k = rand() % 5 + 5;
+	k = 2000;
+	clock_t t = clock();
+	cout << t << endl;
+	system("pause");
 	while (!stop)
 	{
 		if (mState == 0)
@@ -158,8 +171,17 @@ void CGame::startGame(int level)
 		drawGame();
 		updatePosPeople();
 		runningGame(level);
+
+		if ((clock() - t) == k) {
+			for (int i = 0; i < 2; ++i) {
+				arrL[i]->changeColor(color, 2000);
+			}
+			t = clock();
+		}
+
 		updatePosVehicle();
 		updatePosAnimal();
+		//Sleep(1000 * k);
 	}
 }
 void CGame::runningGame(int level)

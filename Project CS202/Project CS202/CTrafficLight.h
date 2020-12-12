@@ -1,4 +1,6 @@
 #pragma once
+#include "Header.h"
+
 class CTrafficLight
 {
 private:
@@ -6,6 +8,8 @@ private:
 	int mY;
 public:
 	CTrafficLight(int, int);
-	void changeColor(int second);
+	void draw();
+	void changeColor(int&, int);
+	void wait(int);
 };
 
