@@ -13,6 +13,7 @@ class CGame:public CPeople
 	vector <CDinausor*> arrD;
 	vector <CBird*> arrB;
 	vector <CTrafficLight> arrL;
+	vector <int> speed;
 	int size;
 	int score = 0;
 	bool stop;
@@ -35,7 +36,7 @@ public:
 	void resumeGame(HANDLE); //Quay lai Thread
 	void runningGame(int);
 	void updatePosPeople(bool); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
-	void updatePosVehicle(int); //Th?c hi?n cho CTRUCK & CCAR di chuy?n
+	void updatePosVehicle(); //Th?c hi?n cho CTRUCK & CCAR di chuy?n
 	void updatePosAnimal();//Th?c hi?n cho CDINAUSOR & CBIRD di chuy?n
 };
 

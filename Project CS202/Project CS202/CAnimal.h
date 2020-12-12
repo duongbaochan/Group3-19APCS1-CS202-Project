@@ -9,7 +9,7 @@ public:
 	//virtual void Tell();
 	int getX();
 	int getY();
-	void updatePosAnimal(int);
+	void updatePosAnimal(int, int);
 
 	CAnimal(int, int);
 

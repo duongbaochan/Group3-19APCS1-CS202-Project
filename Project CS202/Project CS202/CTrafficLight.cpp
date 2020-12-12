@@ -1,14 +1,18 @@
 #include "CTrafficLight.h"
 
-CTrafficLight::CTrafficLight(int x, int y) : mX(x), mY(y) {
+CTrafficLight::CTrafficLight(int x, int y) 
+{
+	mX = x;
+	mY = y;
 	color = 10;
 }
 
-void CTrafficLight::draw() {
+void CTrafficLight::draw() 
+{
 	if (mX > 0) {
 		GotoXY(mX, mY);
 		TextColor(15);
-		cout << " _____";
+		cout << "______";
 		GotoXY(mX, mY + 1);
 		cout << "|";
 		GotoXY(mX + 2, mY + 1);
@@ -26,12 +30,14 @@ void CTrafficLight::draw() {
 		GotoXY(mX + 4, mY + 2);
 		cout << "_|";
 		GotoXY(mX, mY + 3);
-		cout << "_| |_";
+		cout << " _||_";
 		TextColor(15);
 	}
 }
-void CTrafficLight::changeColor(int tmp_color, int &k) {
-	switch (tmp_color) {
+void CTrafficLight::changeColor(int tmp_color, int &k, int pre_speed)
+{
+	switch (tmp_color) 
+	{
 	case 10: //green -> red
 		color = 12;
 		k = 0;
@@ -42,11 +48,12 @@ void CTrafficLight::changeColor(int tmp_color, int &k) {
 		break;
 	case 6: //yellow -> green
 		color = 10;
-		k = 2;
+		k = pre_speed;
 		break;
 	}
 }
 
-int CTrafficLight::getColor() {
+int CTrafficLight::getColor()
+{
 	return color;
 }
