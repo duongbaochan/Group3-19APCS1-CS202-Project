@@ -59,10 +59,10 @@ CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 
 		arrB.push_back(objB);
 		arrD.push_back(objD);
 	}
-	CTrafficLight* objL = new CTrafficLight(width, k * 8 + 2);
+	CTrafficLight objL(w, k * 8 + 2);
 	arrL.push_back(objL);
-	objL = new CTrafficLight(width, (k + 1) % 4 * 8 + 2);
-	arrL.push_back(objL);
+	CTrafficLight objL1(w, (k + 1) % 4 * 8 + 2);
+	arrL.push_back(objL1);
 }
 
 void CGame::drawGame()
@@ -90,7 +90,7 @@ void CGame::drawGame()
 		arrD[i]->draw();
 	}
 	for (int i = 0; i < 2; ++i) {
-		arrL[i]->draw();
+		arrL[i].draw();
 	}
 
 //	draw();
@@ -155,12 +155,11 @@ void CGame::startGame(int level)
 	cout << line;
 	TextColor(15);
 	
-	int color = 12; //red
-	unsigned short k = rand() % 5 + 5;
-	k = 2000;
-	clock_t t = clock();
-	cout << t << endl;
-	system("pause");
+
+	unsigned short k = rand() % 5 + 5; //time period
+	time_t t = time(0);
+	tm* Check = localtime(&t);
+	int tmp = Check->tm_sec;
 	while (!stop)
 	{
 		if (mState == 0)
@@ -172,16 +171,16 @@ void CGame::startGame(int level)
 		updatePosPeople();
 		runningGame(level);
 
-		if ((clock() - t) == k) {
+		t = time(0);
+		Check = localtime(&t);
+		if ((Check->tm_sec - tmp) == k) {
 			for (int i = 0; i < 2; ++i) {
-				arrL[i]->changeColor(color, 2000);
+				arrL[i].changeColor(arrL[i].getColor(), 2000);
 			}
-			t = clock();
+			tmp = Check->tm_sec;
 		}
-
 		updatePosVehicle();
 		updatePosAnimal();
-		//Sleep(1000 * k);
 	}
 }
 void CGame::runningGame(int level)

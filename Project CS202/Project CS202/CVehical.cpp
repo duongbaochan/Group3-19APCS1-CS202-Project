@@ -8,6 +8,12 @@ int CVehicle::getY()
 {
 	return mY;
 }
+int CVehicle::getSpeed() {
+	return speed;
+}
+void CVehicle::setSpeed(int a) {
+	speed = a;
+}
 
 CVehicle::CVehicle(int x, int y)
 {
