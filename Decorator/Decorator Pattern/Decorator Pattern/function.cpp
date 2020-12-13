@@ -21,6 +21,26 @@ int BaseMilkTea::price()
     return 50000;
 }
 
+string MilkOnly::serve()
+{
+    return "Milk";
+}
+
+int MilkOnly::price()
+{
+    return 25000;
+}
+
+string TeaOnly::serve()
+{
+    return "Tea";
+}
+
+int TeaOnly::price()
+{
+    return 25000;
+}
+
 // Decorator  
 AddTopping::AddTopping(MilkTea* base_milk_tea) : milk_tea(base_milk_tea) {}
 
@@ -33,8 +53,6 @@ int AddTopping::price()
 {
     return milk_tea->price();
 }
-
-
 
 // Concrete Decorator
 AddBubble::AddBubble(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}

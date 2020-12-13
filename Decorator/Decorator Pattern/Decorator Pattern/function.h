@@ -21,6 +21,20 @@ public:
     int price();
 };
 
+class MilkOnly : public MilkTea
+{
+public:
+    string serve();
+    int price();
+};
+
+class TeaOnly : public MilkTea
+{
+public:
+    string serve();
+    int price();
+};
+
 // Decorator  
 class AddTopping : public MilkTea
 {
