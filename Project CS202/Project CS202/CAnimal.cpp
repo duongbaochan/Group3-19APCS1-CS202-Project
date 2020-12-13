@@ -14,9 +14,9 @@ CAnimal::CAnimal(int x, int y)
 	mX = x;
 	mY = y;
 }
-void CAnimal::updatePosAnimal(int width)
+void CAnimal::updatePosAnimal(int width, int speed)
 {
-	mX = mX + 1;
+	mX = mX + speed;
 	if (mX >= 0)
 		mX %= width;
 }

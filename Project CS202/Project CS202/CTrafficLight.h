@@ -10,7 +10,7 @@ private:
 public:
 	CTrafficLight(int, int);
 	void draw();
-	void changeColor(int, int);
+	void changeColor(int, int&, int);
 	int getColor();
 };
 

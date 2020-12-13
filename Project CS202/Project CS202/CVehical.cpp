@@ -8,21 +8,15 @@ int CVehicle::getY()
 {
 	return mY;
 }
-int CVehicle::getSpeed() {
-	return speed;
-}
-void CVehicle::setSpeed(int a) {
-	speed = a;
-}
 
 CVehicle::CVehicle(int x, int y)
 {
 	mX = x;
 	mY = y;
 }
-void CVehicle::updatePosVehicle(int width)
+void CVehicle::updatePosVehicle(int width, int speed)
 {
-	mX = mX + 1;
+	mX = mX + speed;
 	if (mX >= 0)
 		mX %= width;
 }

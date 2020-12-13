@@ -13,6 +13,7 @@ class CGame:public CPeople
 	vector <CDinausor*> arrD;
 	vector <CBird*> arrB;
 	vector <CTrafficLight> arrL;
+	vector <int> speed;
 	int size;
 	int score = 0;
 	bool stop;
