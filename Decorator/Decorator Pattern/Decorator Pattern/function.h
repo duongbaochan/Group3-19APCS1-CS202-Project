@@ -9,7 +9,7 @@ class MilkTea
 {
 public:
     virtual string serve() = 0;
-    virtual int price() = 0;
+    virtual unsigned long long int price() = 0;
 };
 
 
@@ -18,21 +18,21 @@ class BaseMilkTea : public MilkTea
 {
 public:
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 class MilkOnly : public MilkTea
 {
 public:
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 class TeaOnly : public MilkTea
 {
 public:
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 // Decorator  
@@ -43,7 +43,7 @@ protected:
 public:
     AddTopping(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 
@@ -53,7 +53,7 @@ class AddBubble : public AddTopping
 public:
     AddBubble(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 
@@ -62,7 +62,7 @@ class AddBlackSugar : public AddTopping
 public:
     AddBlackSugar(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 class AddEggPudding : public AddTopping
@@ -70,7 +70,7 @@ class AddEggPudding : public AddTopping
 public:
     AddEggPudding(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 class AddFruitPudding : public AddTopping
@@ -78,7 +78,7 @@ class AddFruitPudding : public AddTopping
 public:
     AddFruitPudding(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };
 
 class AddWhiteBubble : public AddTopping
@@ -86,5 +86,5 @@ class AddWhiteBubble : public AddTopping
 public:
     AddWhiteBubble(MilkTea* base_milk_tea);
     string serve();
-    int price();
+    unsigned long long int price();
 };

@@ -5,7 +5,7 @@ string MilkTea::serve()
     return 0;
 }
 
-int MilkTea::price()
+unsigned long long int MilkTea::price()
 {
     return 0;
 }
@@ -16,7 +16,7 @@ string BaseMilkTea::serve()
     return "Milk Tea";
 }
 
-int BaseMilkTea::price()
+unsigned long long int BaseMilkTea::price()
 {
     return 50000;
 }
@@ -26,7 +26,7 @@ string MilkOnly::serve()
     return "Milk";
 }
 
-int MilkOnly::price()
+unsigned long long int MilkOnly::price()
 {
     return 25000;
 }
@@ -36,7 +36,7 @@ string TeaOnly::serve()
     return "Tea";
 }
 
-int TeaOnly::price()
+unsigned long long int TeaOnly::price()
 {
     return 25000;
 }
@@ -49,7 +49,7 @@ string AddTopping::serve()
     return milk_tea->serve();
 }
 
-int AddTopping::price()
+unsigned long long int AddTopping::price()
 {
     return milk_tea->price();
 }
@@ -62,7 +62,7 @@ string AddBubble::serve()
     return milk_tea->serve() + " + Bubble";
 }
 
-int AddBubble::price()
+unsigned long long int AddBubble::price()
 {
     return milk_tea->price() + 8000;
 }
@@ -75,7 +75,7 @@ string AddBlackSugar::serve()
     return milk_tea->serve() + " + Black Sugar";
 }
 
-int AddBlackSugar::price()
+unsigned long long int AddBlackSugar::price()
 {
     return milk_tea->price() + 2000;
 }
@@ -87,7 +87,7 @@ string AddEggPudding::serve()
     return milk_tea->serve() + " + Egg Pudding";
 }
 
-int AddEggPudding::price()
+unsigned long long int AddEggPudding::price()
 {
     return milk_tea->price() + 10000;
 }
@@ -98,7 +98,7 @@ string AddFruitPudding::serve()
 {
     return milk_tea->serve() + " + Fruit Pudding";
 }
-int AddFruitPudding::price()
+unsigned long long int AddFruitPudding::price()
 {
     return milk_tea->price() + 11000;
 }
@@ -109,7 +109,7 @@ string AddWhiteBubble::serve()
 {
     return milk_tea->serve() + " + White Bubble";
 }
-int AddWhiteBubble::price()
+unsigned long long int AddWhiteBubble::price()
 {
     return milk_tea->price() + 7000;
 }
