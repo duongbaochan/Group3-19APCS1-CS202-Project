@@ -1,9 +1,5 @@
 #include "function.h"
 
-string MilkTea::serve()
-{
-    return 0;
-}
 
 unsigned long long int MilkTea::price()
 {
@@ -18,7 +14,7 @@ string BaseMilkTea::serve()
 
 unsigned long long int BaseMilkTea::price()
 {
-    return 50000;
+    return 30000;
 }
 
 string MilkOnly::serve()
@@ -28,7 +24,7 @@ string MilkOnly::serve()
 
 unsigned long long int MilkOnly::price()
 {
-    return 25000;
+    return 20000;
 }
 
 string TeaOnly::serve()
@@ -38,21 +34,12 @@ string TeaOnly::serve()
 
 unsigned long long int TeaOnly::price()
 {
-    return 25000;
+    return 20000;
 }
 
 // Decorator  
 AddTopping::AddTopping(MilkTea* base_milk_tea) : milk_tea(base_milk_tea) {}
 
-string AddTopping::serve()
-{
-    return milk_tea->serve();
-}
-
-unsigned long long int AddTopping::price()
-{
-    return milk_tea->price();
-}
 
 // Concrete Decorator
 AddBubble::AddBubble(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
@@ -64,7 +51,7 @@ string AddBubble::serve()
 
 unsigned long long int AddBubble::price()
 {
-    return milk_tea->price() + 8000;
+    return milk_tea->price() + 5000;
 }
 
 
@@ -77,7 +64,7 @@ string AddBlackSugar::serve()
 
 unsigned long long int AddBlackSugar::price()
 {
-    return milk_tea->price() + 2000;
+    return milk_tea->price() + 15000;
 }
 
 AddEggPudding::AddEggPudding(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
@@ -100,7 +87,7 @@ string AddFruitPudding::serve()
 }
 unsigned long long int AddFruitPudding::price()
 {
-    return milk_tea->price() + 11000;
+    return milk_tea->price() + 10000;
 }
 
 AddWhiteBubble::AddWhiteBubble(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
@@ -111,5 +98,5 @@ string AddWhiteBubble::serve()
 }
 unsigned long long int AddWhiteBubble::price()
 {
-    return milk_tea->price() + 7000;
+    return milk_tea->price() + 5000;
 }

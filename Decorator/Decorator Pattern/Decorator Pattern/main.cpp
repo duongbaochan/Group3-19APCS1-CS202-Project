@@ -4,38 +4,39 @@ int main()
 {
 	cout << "------------INVOICE------------" << endl;
 	cout << "Order #132" << endl;
-	cout << "Date: 14/12/2020    Time: 18:53" << endl;
+	cout << "Date: 16/12/2020    Time: 18:53" << endl;
 	cout << endl;
 
 	int total = 0;
 
-	MilkTea* base_milk_tea = new BaseMilkTea();
+	MilkTea* drink1 = new BaseMilkTea();
 	cout << "Drink #1 \n";
-	cout << base_milk_tea->serve() << endl;
-	cout << base_milk_tea->price() << endl;
-	total += base_milk_tea->price();
+	cout << drink1->serve() << endl;
+	cout << drink1->price() << endl;
+	total += drink1->price();
 	cout << endl;
 
-	MilkTea* topping_added_milk_tea = new AddBubble(base_milk_tea);
+	MilkTea* drink2 = new BaseMilkTea();
+	drink2 = new AddBubble(drink2);
+	drink2 = new AddWhiteBubble(drink2);
 	cout << "Drink #2 \n";
-	cout << topping_added_milk_tea->serve() << endl;
-	cout << topping_added_milk_tea->price() << endl;
-	total += topping_added_milk_tea->price();
+	cout << drink2->serve() << endl;
+	cout << drink2->price() << endl;
+	total += drink2->price();
 	cout << endl;
 
-	delete topping_added_milk_tea;
-	delete base_milk_tea;
-
-	MilkTea* milk = new MilkOnly();
-	topping_added_milk_tea = new AddFruitPudding(milk);
+	MilkTea* drink3 = new MilkOnly();
+	drink3 = new AddFruitPudding(drink3);
+	drink3 = new AddBubble(drink3);
 	cout << "Drink #3 \n";
-	cout << topping_added_milk_tea->serve() << endl;
-	cout << topping_added_milk_tea->price() << endl;
-	total += topping_added_milk_tea->price();
+	cout << drink3->serve() << endl;
+	cout << drink3->price() << endl;
+	total += drink3->price();
 	cout << endl;
 
-	delete topping_added_milk_tea;
-	delete milk;
+	delete[]drink1;
+	delete[]drink2;
+	delete[]drink3;
 
 	cout << "TOTAL:" << endl;
 	cout << total << endl;

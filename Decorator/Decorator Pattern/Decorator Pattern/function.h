@@ -42,8 +42,8 @@ protected:
     MilkTea* milk_tea;
 public:
     AddTopping(MilkTea* base_milk_tea);
-    string serve();
-    unsigned long long int price();
+    virtual string serve() = 0;
+    virtual unsigned long long int price()  =0;
 };
 
 
