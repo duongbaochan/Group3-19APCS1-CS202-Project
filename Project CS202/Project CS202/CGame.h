@@ -6,7 +6,7 @@
 #include "CPeople.h"
 #include "CTrafficLight.h"
 
-class CGame:public CPeople 
+class CGame
 {
 	vector <CTruck*> arrTr;
 	vector <CCar*> arrC;
@@ -18,7 +18,7 @@ class CGame:public CPeople
 	int score = 0;
 	bool stop;
 	int width;
-//	CPeople cn;
+	CPeople cn;
 public:
 	CGame();
 	CGame(int, int, int); //Chu?n b? d? li?u cho t?t c? các ??i t??ng
@@ -32,8 +32,7 @@ public:
 	void startGame(int); // Th?c hi?n b?t ??u vào trò ch?i
 	void loadGame(); // Th?c hi?n t?i l?i trò ch?i ?ã l?u
 	void saveGame(); // Th?c hi?n l?u l?i d? li?u trò ch?i
-	void pauseGame(HANDLE); // T?m d?ng Thread
-	void resumeGame(HANDLE); //Quay lai Thread
+	void pauseGame(); // T?m d?ng Thread
 	void runningGame(int);
 	void updatePosPeople(bool); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
 	void updatePosVehicle(); //Th?c hi?n cho CTRUCK & CCAR di chuy?n

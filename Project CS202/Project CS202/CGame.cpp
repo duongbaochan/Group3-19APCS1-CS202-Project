@@ -32,6 +32,7 @@ void Menu()
 		}
 	}
 }
+
 CGame::CGame(){
 	size = 0;
 	score = 0;
@@ -39,11 +40,11 @@ CGame::CGame(){
 	width = 0;
 }
 
-CGame::CGame(int x, int speed, int w): CPeople(w) // x: level (higher - harder) 1 2 3 4 
+CGame::CGame(int x, int speed, int w) // x: level (higher - harder) 1 2 3 4 
 {
 	stop = 0;
 	//srand(time(NULL));
-	size = x + 4;
+	size = x+1 ;
 	width = w;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
@@ -146,7 +147,7 @@ void CGame::startGame(int level)
 {
 	system("cls");
 	string line = "";
-	for (int i = 0; i < width; i++) {
+	for (int i = 0; i < 100; i++) {
 		line += "*";
 	}
 	GotoXY(0, 1);
@@ -174,6 +175,7 @@ void CGame::startGame(int level)
 		}
 		drawGame();
 		updatePosPeople();
+		pauseGame();
 		runningGame(level);
 
 		t = time(0);
@@ -278,12 +280,20 @@ void CGame::saveGame()
 	}
 	f.close();
 }
-void CGame::pauseGame(HANDLE)
+void CGame::pauseGame()
 {
+	bool pause_call = false;
+	if (kbhit()) {
+		if (GetAsyncKeyState(0x50) == true && pause_call == false) {
+			pause_call = true;
+			Sleep(700);
 
-}
-void CGame::resumeGame(HANDLE)
-{
+			while (!GetAsyncKeyState(0x50))
+				Sleep(1);
 
+			pause_call = false;
+
+		}
+	}
 }
 
