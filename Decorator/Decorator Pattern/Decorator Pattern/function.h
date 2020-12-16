@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class MilkTea
+class BaseMilkTea
 {
 public:
     virtual string serve() = 0;
@@ -14,21 +14,21 @@ public:
 
 
 // Concrete Component   
-class BaseMilkTea : public MilkTea
+class MilkTea : public BaseMilkTea
 {
 public:
     string serve();
     unsigned long long int price();
 };
 
-class MilkOnly : public MilkTea
+class MilkOnly : public BaseMilkTea
 {
 public:
     string serve();
     unsigned long long int price();
 };
 
-class TeaOnly : public MilkTea
+class TeaOnly : public BaseMilkTea
 {
 public:
     string serve();
@@ -36,12 +36,12 @@ public:
 };
 
 // Decorator  
-class AddTopping : public MilkTea
+class AddTopping : public BaseMilkTea
 {
 protected:
-    MilkTea* milk_tea;
+    BaseMilkTea* milk_tea;
 public:
-    AddTopping(MilkTea* base_milk_tea);
+    AddTopping(BaseMilkTea* base_milk_tea);
     virtual string serve() = 0;
     virtual unsigned long long int price()  =0;
 };
@@ -51,7 +51,7 @@ public:
 class AddBubble : public AddTopping
 {
 public:
-    AddBubble(MilkTea* base_milk_tea);
+    AddBubble(BaseMilkTea* base_milk_tea);
     string serve();
     unsigned long long int price();
 };
@@ -60,7 +60,7 @@ public:
 class AddBlackSugar : public AddTopping
 {
 public:
-    AddBlackSugar(MilkTea* base_milk_tea);
+    AddBlackSugar(BaseMilkTea* base_milk_tea);
     string serve();
     unsigned long long int price();
 };
@@ -68,7 +68,7 @@ public:
 class AddEggPudding : public AddTopping
 {
 public:
-    AddEggPudding(MilkTea* base_milk_tea);
+    AddEggPudding(BaseMilkTea* base_milk_tea);
     string serve();
     unsigned long long int price();
 };
@@ -76,7 +76,7 @@ public:
 class AddFruitPudding : public AddTopping
 {
 public:
-    AddFruitPudding(MilkTea* base_milk_tea);
+    AddFruitPudding(BaseMilkTea* base_milk_tea);
     string serve();
     unsigned long long int price();
 };
@@ -84,7 +84,7 @@ public:
 class AddWhiteBubble : public AddTopping
 {
 public:
-    AddWhiteBubble(MilkTea* base_milk_tea);
+    AddWhiteBubble(BaseMilkTea* base_milk_tea);
     string serve();
     unsigned long long int price();
 };

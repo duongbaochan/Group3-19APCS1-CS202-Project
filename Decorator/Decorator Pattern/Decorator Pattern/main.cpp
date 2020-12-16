@@ -9,14 +9,14 @@ int main()
 
 	int total = 0;
 
-	MilkTea* drink1 = new BaseMilkTea();
+	BaseMilkTea* drink1 = new MilkTea();
 	cout << "Drink #1 \n";
 	cout << drink1->serve() << endl;
 	cout << drink1->price() << endl;
 	total += drink1->price();
 	cout << endl;
 
-	MilkTea* drink2 = new BaseMilkTea();
+	BaseMilkTea* drink2 = new MilkTea();
 	drink2 = new AddBubble(drink2);
 	drink2 = new AddWhiteBubble(drink2);
 	cout << "Drink #2 \n";
@@ -25,7 +25,7 @@ int main()
 	total += drink2->price();
 	cout << endl;
 
-	MilkTea* drink3 = new MilkOnly();
+	BaseMilkTea* drink3 = new MilkOnly();
 	drink3 = new AddFruitPudding(drink3);
 	drink3 = new AddBubble(drink3);
 	cout << "Drink #3 \n";

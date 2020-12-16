@@ -16,6 +16,12 @@ CPeople::CPeople(int mX, int mY)
 	this->mY = mY;
 }
 
+void CPeople::setXY(int mX, int mY)
+{
+	this->mX = mX;
+	this->mY = mY;
+}
+
 void CPeople::Up()
 {
 	mX -= step;

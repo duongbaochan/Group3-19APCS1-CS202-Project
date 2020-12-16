@@ -1,18 +1,18 @@
 #include "function.h"
 
 
-unsigned long long int MilkTea::price()
+unsigned long long int BaseMilkTea::price()
 {
     return 0;
 }
 
 // Concrete Component   
-string BaseMilkTea::serve()
+string MilkTea::serve()
 {
     return "Milk Tea";
 }
 
-unsigned long long int BaseMilkTea::price()
+unsigned long long int MilkTea::price()
 {
     return 30000;
 }
@@ -38,11 +38,11 @@ unsigned long long int TeaOnly::price()
 }
 
 // Decorator  
-AddTopping::AddTopping(MilkTea* base_milk_tea) : milk_tea(base_milk_tea) {}
+AddTopping::AddTopping(BaseMilkTea* base_milk_tea) : milk_tea(base_milk_tea) {}
 
 
 // Concrete Decorator
-AddBubble::AddBubble(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
+AddBubble::AddBubble(BaseMilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
 
 string AddBubble::serve()
 {
@@ -55,7 +55,7 @@ unsigned long long int AddBubble::price()
 }
 
 
-AddBlackSugar::AddBlackSugar(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
+AddBlackSugar::AddBlackSugar(BaseMilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
 
 string AddBlackSugar::serve()
 {
@@ -67,7 +67,7 @@ unsigned long long int AddBlackSugar::price()
     return milk_tea->price() + 15000;
 }
 
-AddEggPudding::AddEggPudding(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
+AddEggPudding::AddEggPudding(BaseMilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
 
 string AddEggPudding::serve()
 {
@@ -79,7 +79,7 @@ unsigned long long int AddEggPudding::price()
     return milk_tea->price() + 10000;
 }
 
-AddFruitPudding::AddFruitPudding(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
+AddFruitPudding::AddFruitPudding(BaseMilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
 
 string AddFruitPudding::serve()
 {
@@ -90,7 +90,7 @@ unsigned long long int AddFruitPudding::price()
     return milk_tea->price() + 10000;
 }
 
-AddWhiteBubble::AddWhiteBubble(MilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
+AddWhiteBubble::AddWhiteBubble(BaseMilkTea* base_milk_tea) : AddTopping(base_milk_tea) {}
 
 string AddWhiteBubble::serve()
 {

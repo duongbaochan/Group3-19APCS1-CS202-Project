@@ -13,6 +13,7 @@ public:
 	CPeople(int w);
 	CPeople(int, int);
 
+	void setXY(int, int);
 	void Up();
 	void Left();
 	void Right();

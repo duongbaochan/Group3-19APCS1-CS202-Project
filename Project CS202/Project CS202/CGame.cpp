@@ -14,7 +14,7 @@ void Menu()
 	{
 		if (n == 1)
 		{
-			CGame x(1, 2, 100);
+			CGame x(1, 2, 100, 0, 50, 0);
 			x.startGame(5);
 			break;
 		}
@@ -36,39 +36,39 @@ void Menu()
 CGame::CGame(){
 	size = 0;
 	score = 0;
-	stop = 0;
 	width = 0;
 }
 
-CGame::CGame(int x, int speed, int w) // x: level (higher - harder) 1 2 3 4 
+CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	stop = 0;
 	//srand(time(NULL));
-	size = x+1 ;
-	width = w;
+	score = _score;
+	size = _size;
+	width = _width;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck *objT = new CTruck(0 - i * w / size,k * 8 + 2);
-		CCar *objC = new CCar(0 - i * w / size + 40, (k + 1) % 4 * 8 + 2);
-		CBird *objB = new CBird(0 - i * w / size + 25, (k + 2) % 4 * 8 + 2);
-		CDinausor *objD = new CDinausor(0 - i * w / size + 15, (k + 3) % 4 * 8 + 2);
+		CTruck* objT = new CTruck(0 - i * _width / size, k * 8 + 2);
+		CCar* objC = new CCar(0 - i * _width / size + 40, (k + 1) % 4 * 8 + 2);
+		CBird* objB = new CBird(0 - i * _width / size + 25, (k + 2) % 4 * 8 + 2);
+		CDinausor* objD = new CDinausor(0 - i * _width / size + 15, (k + 3) % 4 * 8 + 2);
 		
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
 		arrB.push_back(objB);
 		arrD.push_back(objD);
 	}
-	CTrafficLight objL(w, k * 8 + 2);
+	CTrafficLight objL(_width, k * 8 + 2);
 	arrL.push_back(objL);
-	CTrafficLight objL1(w, (k + 1) % 4 * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
 	arrL.push_back(objL1);
 
+2
+
 	for (int i = 0; i < 2; i++) 
-	{
-		this->speed.push_back(speed);
-	}
+		speed.push_back(_speed);
 }
 
 void CGame::drawGame()
@@ -147,9 +147,10 @@ void CGame::startGame(int level)
 {
 	system("cls");
 	string line = "";
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 100; i++)
 		line += "*";
-	}
+
+
 	GotoXY(0, 1);
 	TextColor(12);
 	cout << line;
