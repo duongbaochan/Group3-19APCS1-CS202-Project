@@ -65,9 +65,9 @@ CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPe
 	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
 	arrL.push_back(objL1);
 
-2
 
-	for (int i = 0; i < 2; i++) 
+
+	for (int i = 0; i < 2; i++)
 		speed.push_back(_speed);
 }
 
@@ -105,24 +105,23 @@ void CGame::drawGame()
 }
 void CGame::updatePosPeople(bool flag=0)
 {
-	GotoXY(mX, mY);
+	cn.GotoXY();
 	cout << "N:";
 	if (flag == 1)
 	{
-		mX = 100 / 2;
-		mY = 0;
+		cn.setXY(100 / 2, 0);
 	}
 	if (_kbhit())
 	{
 		char current = _getch();
 		if (current == 'a')
-			mX--;
+			cn.changeXY(-1,0);
 		if (current == 'd')
-			mX++;
+			cn.changeXY(1, 0);
 		if (current == 'w')
-			mY--;
+			cn.changeXY(0, -1);
 		if (current == 's')
-			mY++;
+			cn.changeXY(0, 1);
 		if (current == ' ')
 			stop = true;
 	}
@@ -169,7 +168,7 @@ void CGame::startGame(int level)
 	int tmp = Check->tm_sec;
 	while (!stop)
 	{
-		if (mState == 0)
+		if (cn.isFinish() == 0)
 		{
 			system("pause");
 			return;
@@ -195,13 +194,13 @@ void CGame::runningGame(int level)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (isImpact(arrC[i]) || isImpact(arrD[i]) || isImpact(arrB[i]) || isImpact(arrTr[i]))
+		if (cn.isImpact(arrC[i]) || cn.isImpact(arrD[i]) || cn.isImpact(arrB[i]) || cn.isImpact(arrTr[i]))
 		{
-			mState = 0;
+			cn.Finish();
 			return;
 		}
 	}
-	if (mY == level + 18)
+	if (cn.isFinishTurn(level+18))
 	{
 		score++;
 		GotoXY(0, 0);
@@ -259,7 +258,7 @@ void CGame::loadGame()
 			arrB.push_back(objB);
 			arrD.push_back(objD);
 		}
-		f >> size >> score >> stop >> width >> mX >> mY >> mState;
+		f >> size >> score >> stop >> width;// >> mX >> mY >> mState;
 	}
 	f.close();
 	this->startGame(5);
@@ -277,7 +276,7 @@ void CGame::saveGame()
 	{
 		for (int i = 0; i <= size; ++i)
 			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
-		f << size << " " << score << " " << stop << " " << width << " " << mX << " " << mY << " " << mState;
+		f << size << " " << score << " " << stop << " " << width;// << " " << cn.mX << " " << mY << " " << mState;
 	}
 	f.close();
 }
