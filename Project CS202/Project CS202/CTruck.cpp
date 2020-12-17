@@ -4,11 +4,13 @@ CTruck::CTruck(int x, int y) : CVehicle(x, y)
 {
 
 }
-void CTruck::draw()
+void CTruck::draw(int textColor, bool isDraw)
 {
+	if (!isDraw) return;
 	if (mX > 0  && mX < 85) {
 		GotoXY(mX-1, mY);
-		TextColor(8);
+		TextColor(textColor);
+		//TextColor(8);
 		cout << " ___________";
 		GotoXY(mX-1, mY + 1);
 		cout << " |         \\\\_";

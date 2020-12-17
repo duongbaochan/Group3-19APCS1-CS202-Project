@@ -4,8 +4,9 @@ CDinausor::CDinausor(int x, int y) : CAnimal(x, y)
 {
 
 }
-void CDinausor::draw()
+void CDinausor::draw(int textColor, bool isDraw)
 {
+	if (!isDraw) return;
 	if (mX > 0 && mX<100) {
 		GotoXY(mX, mY);
 		/* DUNG XOA NHA, MOT CO DU`NG THI DU`NG CHU LO VE NAY CUC LAM :(
@@ -31,7 +32,8 @@ void CDinausor::draw()
 		GotoXY(mX, mY+10);
 		cout << "    ***  ***  " << endl;
 		*/
-		TextColor(3);
+		//TextColor(3);
+		TextColor(textColor);
 		cout << "   _____ ";
 		GotoXY(mX, mY + 1);
 		cout << "  ( *  _)";
