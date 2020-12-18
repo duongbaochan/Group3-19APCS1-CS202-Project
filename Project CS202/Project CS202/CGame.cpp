@@ -11,29 +11,60 @@ void Menu()
 	cout << "0. Exit." << endl;
 	cout << "Enter our option: ";
 	int n; cin >> n;
-	while (n)
-	{
-		if (n == 1)
-		{
-			CGame x(5, 1, 100, 0, 50, 0);
-			x.startGame(5);
-			break;
+
+	while (true) {
+		try {
+			if (cin.fail())
+				throw n;
 		}
-		else if (n == 2)
-		{
-			CGame x;
-			x.loadGame();
-			break;
+
+		catch (...) {
+			cout << "Exception caught from input (Invalid input format). Exiting...\n";
 		}
-		else if (n == 0) return;
-		else
-		{
-			cout << "Please choose again...";
-			cin >> n;
+
+		try {
+			if (n == 1)
+			{
+				CGame x(5, 1, 100, 0, 50, 0);
+				x.startGame(5);
+			}
+			else if (n == 2)
+			{
+				CGame x;
+				x.loadGame();
+			}
+			else if (n == 0) return;
+			else throw n;
+		}
+		catch (int n) {
+			cout << "Exception caught from input (Input option is not available). Exiting...\n";
 		}
 	}
-}
 
+
+	//while (n)
+	//{
+	//	if (n == 1)
+	//	{
+	//		CGame x(5, 1, 100, 0, 50, 0);
+	//		x.startGame(5);
+	//		break;
+	//	}
+	//	else if (n == 2)
+	//	{
+	//		CGame x;
+	//		x.loadGame();
+	//		break;
+	//	}
+	//	else if (n == 0) return;
+	//	else
+	//	{
+	//		cout << "Please choose again...";
+	//		cin >> n;
+	//	}
+	//}
+	//}
+}
 
 CGame::CGame(){
 	size = 0;
