@@ -99,6 +99,10 @@ CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPe
 	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
 	arrL.push_back(objL1);
 
+<<<<<<< HEAD
+	cn.setXY(xPeople, yPeople);
+=======
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 
 
 	for (int i = 0; i < 2; i++)
@@ -143,16 +147,32 @@ void CGame::drawGame()
 }
 void CGame::updatePosPeople(bool flag=0)
 {
+<<<<<<< HEAD
+	GotoXY(cn.mX, cn.mY);
+	cout << "N:";
+	if (flag == 1)
+		cn.setXY(50, 0);
+=======
 	cn.GotoXY();
 	cout << "N:";
 	if (flag == 1)
 	{
 		cn.setXY(100 / 2, 0);
 	}
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	if (_kbhit())
 	{
 		char current = _getch();
 		if (current == 'a')
+<<<<<<< HEAD
+			cn.mX--;
+		if (current == 'd')
+			cn.mX++;
+		if (current == 'w')
+			cn.mY--;
+		if (current == 's')
+			cn.mY++;
+=======
 			cn.changeXY(-1,0);
 		if (current == 'd')
 			cn.changeXY(1, 0);
@@ -160,6 +180,7 @@ void CGame::updatePosPeople(bool flag=0)
 			cn.changeXY(0, -1);
 		if (current == 's')
 			cn.changeXY(0, 1);
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 		if (current == ' ')
 			stop = true;
 	}
@@ -206,7 +227,11 @@ void CGame::startGame(int level)
 	int tmp = Check->tm_sec;
 	while (!stop)
 	{
+<<<<<<< HEAD
+		if (cn.mState == 0)
+=======
 		if (cn.isFinish() == 0)
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 		{
 			Sleep(5000);
 			system("cls");
@@ -236,11 +261,19 @@ void CGame::runningGame(int level)
 	{
 		if (cn.isImpact(arrC[i]) || cn.isImpact(arrD[i]) || cn.isImpact(arrB[i]) || cn.isImpact(arrTr[i]))
 		{
+<<<<<<< HEAD
+			cn.mState = 0;
+			return;
+		}
+	}
+	if (cn.mY == level + 18)
+=======
 			cn.Finish();
 			return;
 		}
 	}
 	if (cn.isFinishTurn(level+18))
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	{
 		score++;
 		GotoXY(0, 0);
@@ -298,7 +331,11 @@ void CGame::loadGame()
 			arrB.push_back(objB);
 			arrD.push_back(objD);
 		}
+<<<<<<< HEAD
+		f >> size >> score >> stop >> width >> cn.mX >> cn.mY >> cn.mState;
+=======
 		f >> size >> score >> stop >> width;// >> mX >> mY >> mState;
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	}
 	f.close();
 	this->startGame(5);
@@ -316,7 +353,11 @@ void CGame::saveGame()
 	{
 		for (int i = 0; i <= size; ++i)
 			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
+<<<<<<< HEAD
+		f << size << " " << score << " " << stop << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState;
+=======
 		f << size << " " << score << " " << stop << " " << width;// << " " << cn.mX << " " << mY << " " << mState;
+>>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	}
 	f.close();
 }
