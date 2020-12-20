@@ -9,11 +9,18 @@ protected:
 	bool mState = 1; //Tr?ng thái s?ng ch?t
 	int step;
 public:
+	friend class CGame;
+
 	CPeople();
 	CPeople(int w);
 	CPeople(int, int);
 
 	void setXY(int, int);
+	void setX(int);
+	void setY(int);
+
+	int getX();
+	int getY();
 	void Up();
 	void Left();
 	void Right();

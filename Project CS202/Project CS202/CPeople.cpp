@@ -22,6 +22,25 @@ void CPeople::setXY(int mX, int mY)
 	this->mY = mY;
 }
 
+int CPeople::getX()
+{
+	return mX;
+}
+
+int CPeople::getY()
+{
+	return mY;
+}
+
+void CPeople::setX(int mX)
+{
+	this->mX = mX;
+}
+void CPeople::setY(int mY)
+{
+	this->mY = mY;
+}
+
 void CPeople::Up()
 {
 	mX -= step;

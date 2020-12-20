@@ -6,6 +6,8 @@
 #include "CPeople.h"
 #include "CTrafficLight.h"
 
+
+
 class CGame
 {
 	vector <CTruck*> arrTr;
