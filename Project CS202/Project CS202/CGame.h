@@ -31,7 +31,7 @@ public:
 	//CAnimal * getAnimal(); //L?y danh sách các thú
 	void resetGame(); // Th?c hi?n thi?t l?p l?i toàn b? d? li?u nh? lúc ??u
 	void exitGame(HANDLE); // Th?c hi?n thoát Thread
-	void startGame(int); // Th?c hi?n b?t ??u vào trò ch?i
+	void startGame(int&); // Th?c hi?n b?t ??u vào trò ch?i
 	void loadGame(); // Th?c hi?n t?i l?i trò ch?i ?ã l?u
 	void saveGame(); // Th?c hi?n l?u l?i d? li?u trò ch?i
 	void pauseGame(); // T?m d?ng Thread

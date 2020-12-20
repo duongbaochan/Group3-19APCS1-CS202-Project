@@ -25,8 +25,9 @@ void Menu()
 		try {
 			if (n == 1)
 			{
-				CGame x(5, 1, 100, 0, 50, 0);
-				x.startGame(5);
+				int level = 5;
+				CGame x(level, 1, 100, 0, 50, 0);
+				x.startGame(level);
 			}
 			else if (n == 2)
 			{
@@ -121,6 +122,8 @@ void CGame::drawGame()
 	//TextColor(15);
 	//updatePosVehicle();
 	//updatePosAnimal();
+	//if (arrL[1].getColor() == 12)
+		//Sleep(5);
 	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0, speed[0]);
@@ -201,7 +204,7 @@ void CGame::updatePosAnimal()
 		arrD[i]->updatePosAnimal(width, speed[1]);
 	}
 }
-void CGame::startGame(int level)
+void CGame::startGame(int &level)
 {
 	system("cls");
 	string line = "";
@@ -233,7 +236,6 @@ void CGame::startGame(int level)
 		if (cn.isFinish() == 0)
 >>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 		{
-			Sleep(5000);
 			system("cls");
 			cout << "Game over!!!" << endl;
 			return;
@@ -242,6 +244,7 @@ void CGame::startGame(int level)
 		updatePosPeople();
 		pauseGame();
 		runningGame(level);
+		Sleep(400/(score+10));
 
 		t = time(0);
 		Check = localtime(&t);
@@ -275,8 +278,8 @@ void CGame::runningGame(int level)
 	if (cn.isFinishTurn(level+18))
 >>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	{
-		score++;
-		GotoXY(0, 0);
+		score+=10;
+		GotoXY(width/2, 0);
 		cout << "Score: " << score;
 		updatePosPeople(1);
 	}
@@ -338,7 +341,7 @@ void CGame::loadGame()
 >>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	}
 	f.close();
-	this->startGame(5);
+	this->startGame(size);
 }
 void CGame::saveGame()
 {
