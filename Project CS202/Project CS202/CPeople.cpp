@@ -74,8 +74,10 @@ bool CPeople::isImpact(CVehicle* x)
 	Dy = mY - x->getY();
 
 	if (x->isDxAndDyInRange(Dx, Dy))
+	{
+		PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
 		return 1;
-
+	}
 	return 0;
 }
 bool CPeople::isImpact(CAnimal* x)
@@ -85,8 +87,10 @@ bool CPeople::isImpact(CAnimal* x)
 	Dy = mY - x->getY();
 
 	if (x->isDxAndDyInRange(Dx, Dy))
+	{
+		PlaySound(TEXT("Sounds/woosh_1.wav"), NULL, SND_SYNC);
 		return 1;
-
+	}
 	return 0;
 }
 void CPeople::draw()

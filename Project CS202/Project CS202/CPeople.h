@@ -29,6 +29,27 @@ public:
 	bool isImpact(CAnimal*);
 	bool isFinish();
 	bool isDead();
+	void Finish()
+	{
+		mState = 0;
+	}
+	bool isFinishTurn(int x)
+	{
+		if (mY >= x)
+			return 1;
+		return 0;
+	}
 	void draw();
+	void changeXY(int a, int b)
+	{
+		mX += a;
+		mY += b;
+	}
+	void GotoXY() {
+		COORD coord;
+		coord.X = mX;
+		coord.Y = mY;
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+	}
 };
 

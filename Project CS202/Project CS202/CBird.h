@@ -5,7 +5,7 @@ class CBird : public CAnimal
 {
 public:
 	CBird(int, int);
-	void draw();
+	void draw(int, bool);
 
 	// For Impact function
 	bool isDxAndDyInRange(int, int);

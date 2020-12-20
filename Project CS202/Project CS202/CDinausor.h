@@ -5,7 +5,7 @@ class CDinausor: public CAnimal
 {
 public:
 	CDinausor(int, int);
-	void draw();
+	void draw(int, bool);
 
 	// For Impact function
 	bool isDxAndDyInRange(int, int);
