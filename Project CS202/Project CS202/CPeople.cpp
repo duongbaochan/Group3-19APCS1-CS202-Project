@@ -95,5 +95,18 @@ bool CPeople::isImpact(CAnimal* x)
 }
 void CPeople::draw()
 {
-
+    GotoXY(mX, mY);
+    if (mX > 0 && mX < 85) {
+        TextColor(textColor);
+        //TextColor(5);
+        cout << "  _  ";
+        GotoXY(mX, mY + 1);
+        cout << " (_) ";
+        GotoXY(mX, mY + 2);
+        cout << " -|-";
+        GotoXY(mX, mY + 3);
+        cout << " / \\";
+        TextColor(15);
+        //cout << "C" << endl;
+    }
 }

@@ -152,12 +152,14 @@ void CGame::updatePosPeople(bool flag=0)
 {
 <<<<<<< HEAD
 	GotoXY(cn.mX, cn.mY);
-	cout << "N:";
+	//cout << "N:";
+    cn.draw();
 	if (flag == 1)
 		cn.setXY(50, 0);
 =======
 	cn.GotoXY();
-	cout << "N:";
+	//cout << "N:";
+    cn.draw();
 	if (flag == 1)
 	{
 		cn.setXY(100 / 2, 0);
