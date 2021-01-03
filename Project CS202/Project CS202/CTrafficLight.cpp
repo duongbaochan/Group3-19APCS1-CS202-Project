@@ -53,16 +53,6 @@ void CTrafficLight::changeColor(int tmp_color, int &k, int pre_speed)
 	}
 }
 
-int CTrafficLight::getX()
-{
-	return mX;
-}
-
-int CTrafficLight::getY()
-{
-	return mY;
-}
-
 int CTrafficLight::getColor()
 {
 	return color;

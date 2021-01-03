@@ -1,73 +1,37 @@
 #include "CGame.h"
 #include <Windows.h>
 
-//bool IS_RUNNING = true;
+//bool IS_RUNNINg = true;
 //
 //void exitGame(thread* t)
 //{
 //	system("cls");
-//	IS_RUNNING = false;
+//	IS_RUNNINg = false;
 //	t->join();
 //}
-
-
-
-void ThreadFunc1(CGame x)
-{
-	while (IS_RUNNING)
-	{
-		x.drawGame();
-		system("pause");
-	}
-	
-}
+//
+//void ThreadFunc1()
+//{
+//	while (IS_RUNNINg)
+//	{
+//		Menu();
+//		system("pause");
+//	}
+//}
 
 int main()
 {
-	//cout << "----------------MENU--------------" << endl;
-	//cout << "        WELCOME TO THE GAME       " << endl;
-	//cout << "1. New Game." << endl;
-	//cout << "2. Load Game." << endl;
-	//cout << "3. Settings." << endl;
-	//cout << "0. Exit." << endl;
-	//cout << "Enter our option: ";
-	//int n; cin >> n;
 
-	//while (true) {
-	//	try {
-	//		if (cin.fail())
-	//			throw n;
-	//	}
-
-	//	catch (...) {
-	//		cout << "Exception caught from input (Invalid input format). Exiting...\n";
-	//	}
-
-	//	try {
-	//		if (n == 1)
-	//		{
-	//			int level = 10;
-	//			CGame x(level, 1, 100, 0, 50, 0);
-	//			x.startGame(level);
-	//			//thread t1(ThreadFunc1);	
-	//			//t1.join();
-	//		}
-	//		else if (n == 2)
-	//		{
-	//			CGame x;
-	//			x.loadGame();
-	//		}
-	//		else if (n == 0) return 0;
-	//		else throw n;
-	//	}
-	//	catch (int n) {
-	//		cout << "Exception caught from input (Input option is not available). Exiting...\n";
+	//thread t1(ThreadFunc1);
+	//while (1)
+	//{
+	//	int temp = toupper(getch());
+	//	if (temp == 27)
+	//	{
+	//		exitGame(&t1);
+	//		return 0;
 	//	}
 	//}
-
-
-
-
 
 	Menu();
 	system("pause");
