@@ -43,7 +43,7 @@ public:
 
 	int getXPeople();
 	int getYPeople();
-	int getSroce();
+	int getScore();
 	int getLevel();
 
 	void exitGame(HANDLE t);

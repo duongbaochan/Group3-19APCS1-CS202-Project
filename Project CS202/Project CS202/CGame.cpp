@@ -32,10 +32,9 @@ void Menu(CGame& x)
 			}
 			else if (n == 2)
 			{
-				CGame tmp;
-				tmp.loadGame();
-				int level = tmp.getLevel();
-				x.setGame(level, 1, 100, tmp.getSroce(), tmp.getXPeople(), tmp.getYPeople());
+				x.loadGame();
+				int level = x.getLevel();
+				x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
 				return;
 			}
 			else if (n == 0) return;
@@ -81,7 +80,7 @@ int CGame::getYPeople()
 	return cn.getY();
 }
 
-int CGame::getSroce()
+int CGame::getScore()
 {
 	return score;
 }
