@@ -2,6 +2,8 @@
 
 #include "Function.h"
 
+extern bool IS_RUNNING;
+
 namespace {
 	void FixConsoleWindow() {
 		HWND consoleWindow = GetConsoleWindow();

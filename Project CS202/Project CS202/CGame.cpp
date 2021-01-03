@@ -1,5 +1,5 @@
 #include "CGame.h"
-
+bool IS_RUNNING = true;
 
 void Menu()
 {
@@ -33,6 +33,9 @@ void Menu()
 			{
 				CGame x;
 				x.loadGame();
+				int level = x.getLevel();
+				CGame y(level, 1, 100, 0, x.getXPeople(), x.getYPeople());
+				y.startGame(level);
 			}
 			else if (n == 0) return;
 			else throw n;
@@ -71,6 +74,25 @@ CGame::CGame(){
 	size = 0;
 	score = 0;
 	width = 0;
+	stop = 0;
+}
+
+int CGame::getScore()
+{
+	return score;
+}
+int CGame::getXPeople()
+{
+	return cn.getX();
+}
+int CGame::getYPeople()
+{
+	return cn.getY();
+}
+
+int CGame::getLevel()
+{
+	return size;
 }
 
 CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
@@ -85,10 +107,10 @@ CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPe
 	unsigned short k = rand() % 4;
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck* objT = new CTruck(0 - i * _width / size + rand()%7, k * 8 + 2);
+		CTruck* objT = new CTruck(0 - i * _width / size + rand() % 7, k * 8 + 2);
 		CCar* objC = new CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % 4 * 8 + 2);
 		CBird* objB = new CBird(0 - i * _width / size + 25 + rand() % 15, (k + 2) % 4 * 8 + 2);
-		CDinausor* objD = new CDinausor(0 - i * _width / size +  15 + rand() % 15, (k + 3) % 4 * 8 + 2);
+		CDinausor* objD = new CDinausor(0 - i * _width / size + 15 + rand() % 15, (k + 3) % 4 * 8 + 2);
 		
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
@@ -97,13 +119,13 @@ CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPe
 	}
 	CTrafficLight objL(_width, k * 8 + 2);
 	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);	
 	arrL.push_back(objL1);
 
-<<<<<<< HEAD
+
 	cn.setXY(xPeople, yPeople);
-=======
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
+
+
 
 
 	for (int i = 0; i < 2; i++)
@@ -124,6 +146,7 @@ void CGame::drawGame()
 	//updatePosAnimal();
 	//if (arrL[1].getColor() == 12)
 		//Sleep(5);
+
 	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0, speed[0]);
@@ -144,32 +167,22 @@ void CGame::drawGame()
 		arrD[i]->draw(9, 1);
 
 	}
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 2; ++i) 
 		arrL[i].draw();
-	}
 }
-void CGame::updatePosPeople(bool flag=0)
+void CGame::updatePosPeople(bool& flag)
 {
-<<<<<<< HEAD
+
 	GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
     cn.draw();
-	if (flag == 1)
-		cn.setXY(50, 0);
-=======
-	cn.GotoXY();
-	//cout << "N:";
-    cn.draw();
-	if (flag == 1)
-	{
-		cn.setXY(100 / 2, 0);
-	}
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
+
+
+
 	if (_kbhit())
 	{
 		char current = _getch();
 		if (current == 'a')
-<<<<<<< HEAD
 			cn.mX--;
 		if (current == 'd')
 			cn.mX++;
@@ -177,17 +190,12 @@ void CGame::updatePosPeople(bool flag=0)
 			cn.mY--;
 		if (current == 's')
 			cn.mY++;
-=======
-			cn.changeXY(-1,0);
-		if (current == 'd')
-			cn.changeXY(1, 0);
-		if (current == 'w')
-			cn.changeXY(0, -1);
-		if (current == 's')
-			cn.changeXY(0, 1);
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
-		if (current == ' ')
-			stop = true;
+		if (current == 'l')
+		{
+			flag = 0;
+			saveGame();
+			stop = 1;
+		}
 	}
 }
 void CGame::updatePosVehicle()
@@ -232,28 +240,26 @@ void CGame::startGame(int &level)
 	int tmp = Check->tm_sec;
 	while (!stop)
 	{
-<<<<<<< HEAD
 		if (cn.mState == 0)
-=======
+
 		if (cn.isFinish() == 0)
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 		{
 			system("cls");
 			cout << "Game over!!!" << endl;
 			return;
 		}
 		drawGame();
-		updatePosPeople();
-		pauseGame();
+		bool flag = 1;
+		updatePosPeople(flag);
+		if (!flag) return;
 		runningGame(level);
-		Sleep(400/(score+10));
+		Sleep(400 / (score + 10));
 
 		t = time(0);
 		Check = localtime(&t);
 		if ((Check->tm_sec - tmp) == k) {
-			for (int i = 0; i < 2; ++i) {
+			for (int i = 0; i < 2; ++i) 
 				arrL[i].changeColor(arrL[i].getColor(), speed[0], speed[1]);
-			}
 			tmp = Check->tm_sec;
 		}
 	//	updatePosVehicle();
@@ -266,24 +272,22 @@ void CGame::runningGame(int level)
 	{
 		if (cn.isImpact(arrC[i]) || cn.isImpact(arrD[i]) || cn.isImpact(arrB[i]) || cn.isImpact(arrTr[i]))
 		{
-<<<<<<< HEAD
 			cn.mState = 0;
 			return;
 		}
 	}
 	if (cn.mY == level + 18)
-=======
-			cn.Finish();
-			return;
-		}
-	}
-	if (cn.isFinishTurn(level+18))
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
 	{
-		score+=10;
-		GotoXY(width/2, 0);
+		cn.Finish();
+		return;
+	}
+	if (cn.isFinishTurn(level + 18))
+	{
+		score += 10;
+		GotoXY(width / 2, 0);
 		cout << "Score: " << score;
-		updatePosPeople(1);
+		bool flag = 1;
+		updatePosPeople(flag);
 	}
 }
 CGame::~CGame()
@@ -303,68 +307,78 @@ void CGame::resetGame()
 {
 	this->~CGame();
 }
+
 void CGame::exitGame(HANDLE)
 {
 	system("cls");
 	cout << "Your score: " << score << endl;
 }
+
 void CGame::loadGame()
 {
-	cout << "Enter your path: ";
-	string s;
-	getline(cin, s);
+	//cout << "Enter your path: ";
+	//string s;
+	//getline(cin, s);
 	ifstream f;
-	f.open(s);
+	f.open("Game1.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
 	{
-		for (int i = 0; i <= size; ++i)
-		{
-			int m, n;
-			f >> m >> n;
-			CTruck* objT = new CTruck(m, n);
-			f >> m >> n;
-			CCar* objC = new CCar(m, n);
-			f >> m >> n;
-			CBird* objB = new CBird(m, n);
-			f >> m >> n;
-			CDinausor* objD = new CDinausor(m, n);
+		//for (int i = 1; i <= size; ++i)
+		//{
+		//	int m, n;
+		//	f >> m >> n;
+		//	CTruck* objT = new CTruck(m, n);
+		//	f >> m >> n;
+		//	CCar* objC = new CCar(m, n);
+		//	f >> m >> n;
+		//	CBird* objB = new CBird(m, n);
+		//	f >> m >> n;
+		//	CDinausor* objD = new CDinausor(m, n);
 
-			arrTr.push_back(objT);
-			arrC.push_back(objC);
-			arrB.push_back(objB);
-			arrD.push_back(objD);
-		}
-<<<<<<< HEAD
-		f >> size >> score >> stop >> width >> cn.mX >> cn.mY >> cn.mState;
-=======
-		f >> size >> score >> stop >> width;// >> mX >> mY >> mState;
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
+		//	arrTr.push_back(objT);
+		//	arrC.push_back(objC);
+		//	arrB.push_back(objB);
+		//	arrD.push_back(objD);
+		//}
+
+		f >> size >> score >> width >> cn.mX >> cn.mY >> cn.mState;
+
+		//for (int i = 0; i < 2; ++i)
+		//	f >> speed[i];
+		//for (int i = 0; i < 2; ++i)
+		//{
+		//	int m, n;
+		//	f >> m >> n;
+		//	CTrafficLight objL(m, n);
+		//	arrL.push_back(objL);
+		//}
 	}
 	f.close();
-	this->startGame(size);
 }
 void CGame::saveGame()
 {
-	cout << "Enter your location: ";
-	string s;
-	getline(cin, s);
+	//cout << "Enter your location: ";
+	//string s;
+	//getline(cin, s);
 	ofstream f;
-	f.open(s + "\\a.txt");
+	f.open("Game1.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
 	{
-		for (int i = 0; i <= size; ++i)
-			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
-<<<<<<< HEAD
-		f << size << " " << score << " " << stop << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState;
-=======
-		f << size << " " << score << " " << stop << " " << width;// << " " << cn.mX << " " << mY << " " << mState;
->>>>>>> 75e358a80d3a19f55dee203f70213025a20ae61c
+		//for (int i = 1; i <= size; ++i)
+		//	f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY()
+		//	<< " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
+		f << size << " " << score << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState  << endl;
+		//for (int i = 0; i < 2; ++i)
+		//	f << speed[i] << endl;
+		//for (int i = 0; i < 2; ++i)
+		//	f << arrL[i].getX() << " " << arrL[i].getY() << endl;
 	}
 	f.close();
+	this->~CGame();
 }
 void CGame::pauseGame()
 {

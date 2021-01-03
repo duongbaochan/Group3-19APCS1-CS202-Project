@@ -8,6 +8,7 @@
 
 
 
+
 class CGame
 {
 	vector <CTruck*> arrTr;
@@ -19,7 +20,7 @@ class CGame
 	CPeople cn;
 	int size;
 	int score;
-	bool stop = 0;
+	bool stop;
 	int width;
 public:
 	CGame();
@@ -36,9 +37,13 @@ public:
 	void saveGame(); // Th?c hi?n l?u l?i d? li?u trò ch?i
 	void pauseGame(); // T?m d?ng Thread
 	void runningGame(int);
-	void updatePosPeople(bool); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
+	void updatePosPeople(bool&); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
 	void updatePosVehicle(); //Th?c hi?n cho CTRUCK & CCAR di chuy?n
 	void updatePosAnimal();//Th?c hi?n cho CDINAUSOR & CBIRD di chuy?n
+	int getLevel();
+	int getScore();
+	int getXPeople();
+	int getYPeople();
 };
 
 void Menu();

@@ -45,10 +45,10 @@ public:
 		mX += a;
 		mY += b;
 	}
-	void GotoXY() {
+	void GotoXY(int x, int y) {
 		COORD coord;
-		coord.X = mX;
-		coord.Y = mY;
+		coord.X = x;
+		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
 };
