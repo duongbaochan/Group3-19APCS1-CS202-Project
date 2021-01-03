@@ -32,8 +32,10 @@ void Menu(CGame& x)
 			}
 			else if (n == 2)
 			{
-				//CGame x;
-				x.loadGame();
+				CGame tmp;
+				tmp.loadGame();
+				int level = tmp.getLevel();
+				x.setGame(level, 1, 100, tmp.getSroce(), tmp.getXPeople(), tmp.getYPeople());
 				return;
 			}
 			else if (n == 0) return;
@@ -67,6 +69,26 @@ void Menu(CGame& x)
 	//	}
 	//}
 	//}
+}
+
+int CGame::getXPeople()
+{
+	return cn.getX();
+}
+
+int CGame::getYPeople()
+{
+	return cn.getY();
+}
+
+int CGame::getSroce()
+{
+	return score;
+}
+
+int CGame::getLevel()
+{
+	return size;
 }
 
 CPeople CGame::getPeople()
@@ -178,7 +200,7 @@ void CGame::updatePosPeople(char& current, bool flag=0)
 		cn.setXY(100 / 2, 0);
 	}
 
-	if (current == 'A' || current == 'D' || current == 'W' || current == 'S') {
+	if (current == 'A' || current == 'D' || current == 'W' || current == 'S'|| current == 'L') {
 		cn.erase();
 		switch (current) {
 		case 'A':
@@ -192,6 +214,10 @@ void CGame::updatePosPeople(char& current, bool flag=0)
 			break;
 		case 'S':
 			cn.mY++;
+			break;
+		case 'L':
+			stop = 1;
+			saveGame();
 			break;
 		}
 	}
@@ -281,7 +307,7 @@ void CGame::runningGame(int level, char& current)
 	}
 	if (cn.isFinishTurn(level+18))
 	{
-		score+=10;
+		score += 10;
 		GotoXY(width/2, 0);
 		cout << "Score: " << score;
 		updatePosPeople(current, 1);
@@ -321,55 +347,31 @@ void CGame::resumeGame(HANDLE t)
 }
 void CGame::loadGame()
 {
-	cout << "Enter your path: ";
-	string s;
-	getline(cin, s);
+	//cout << "Enter your path: ";
+	//string s;
+	//getline(cin, s);
 	ifstream f;
-	f.open(s);
+	f.open("Game1.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
-	{
-		for (int i = 0; i <= size; ++i)
-		{
-			int m, n;
-			f >> m >> n;
-			CTruck* objT = new CTruck(m, n);
-			f >> m >> n;
-			CCar* objC = new CCar(m, n);
-			f >> m >> n;
-			CBird* objB = new CBird(m, n);
-			f >> m >> n;
-			CDinausor* objD = new CDinausor(m, n);
-
-			arrTr.push_back(objT);
-			arrC.push_back(objC);
-			arrB.push_back(objB);
-			arrD.push_back(objD);
-		}
 		f >> size >> score >> stop >> width >> cn.mX >> cn.mY >> cn.mState;
-		f >> size >> score >> stop >> width;// >> mX >> mY >> mState;
-	}
 	f.close();
 	//this->startGame(size);
 }
 void CGame::saveGame()
 {
-	cout << "Enter your location: ";
-	string s;
-	getline(cin, s);
+	//cout << "Enter your location: ";
+	//string s;
+	//getline(cin, s);
 	ofstream f;
-	f.open(s + "\\a.txt");
+	f.open("Game1.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
-	{
-		for (int i = 0; i <= size; ++i)
-			f << arrTr[i]->getX() << " " << arrTr[i]->getY() << " " << arrC[i]->getX() << " " << arrC[i]->getY() << " " << arrB[i]->getX() << " " << arrB[i]->getY() << " " << arrD[i]->getX() << " " << arrD[i]->getY() << endl;
 		f << size << " " << score << " " << stop << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState;
-		f << size << " " << score << " " << stop << " " << width;// << " " << cn.mX << " " << mY << " " << mState;
-	}
 	f.close();
+	this->~CGame();
 }
 /*
 void CGame::pauseGame()

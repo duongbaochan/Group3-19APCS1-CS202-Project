@@ -41,6 +41,11 @@ public:
 	void updatePosVehicle(); //Th?c hi?n cho CTRUCK & CCAR di chuy?n
 	void updatePosAnimal();//Th?c hi?n cho CDINAUSOR & CBIRD di chuy?n
 
+	int getXPeople();
+	int getYPeople();
+	int getSroce();
+	int getLevel();
+
 	void exitGame(HANDLE t);
 	void pauseGame(HANDLE t);
 	void resumeGame(HANDLE t);
