@@ -116,7 +116,7 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 		speed.push_back(_speed);
 }
 
-void CGame::drawGame()
+void CGame::drawGame(string line)
 {
 /*	for (int i = 0; i < size; i++)
 	{
@@ -130,6 +130,17 @@ void CGame::drawGame()
 	//updatePosAnimal();
 	//if (arrL[1].getColor() == 12)
 		//Sleep(5);
+	
+	GotoXY(0, 1);
+	TextColor(12);
+	cout << line;
+	GotoXY(0, 9);
+	cout << line;
+	GotoXY(0, 16);
+	cout << line;
+	GotoXY(0, 24);
+	cout << line;
+	TextColor(15);
 	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0, speed[0]);
@@ -157,28 +168,36 @@ void CGame::drawGame()
 void CGame::updatePosPeople(char& current, bool flag=0)
 {
 
-	GotoXY(cn.mX, cn.mY);
+	//GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
-    cn.draw();
+    //cn.draw();
 	if (flag == 1)
 		cn.setXY(50, 0);
 
-	//cn.GotoXY(cn.getX(), cn.getY());
+	GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
     cn.draw();
 	if (flag == 1)
 	{
 		cn.setXY(100 / 2, 0);
 	}
-
-	if (current == 'A')
-		cn.mX--;
-	else if (current == 'D')
-		cn.mX++;
-	else if (current == 'W')
-		cn.mY--;
-	else if (current == 'S')
-		cn.mY++;
+	if (current == 'A' || current == 'D' || current == 'W' || current == 'S') {
+		cn.erase();
+		switch (current) {
+		case 'A':
+			cn.mX--;
+			break;
+		case 'D':
+			cn.mX++;
+			break;
+		case 'W':
+			cn.mY--;
+			break;
+		case 'S':
+			cn.mY++;
+			break;
+		}
+	}
 	/*
 		cn.changeXY(-1,0);
 	if (current == 'd')
@@ -190,7 +209,7 @@ void CGame::updatePosPeople(char& current, bool flag=0)
 	*/
 	if (current == ' ')
 		stop = true;
-
+	current = '0';
 	
 }
 void CGame::updatePosVehicle()
@@ -212,22 +231,10 @@ void CGame::updatePosAnimal()
 void CGame::startGame(int &level, char& current)
 {
 	system("cls");
+	
 	string line = "";
 	for (int i = 0; i < 100; i++)
 		line += "*";
-
-
-	GotoXY(0, 1);
-	TextColor(12);
-	cout << line;
-	GotoXY(0, 9);
-	cout << line;
-	GotoXY(0, 16);
-	cout << line;
-	GotoXY(0, 24);
-	cout << line;
-	TextColor(15);
-	
 
 	unsigned short k = rand() % 5 + 5; //time period
 	time_t t = time(0);
@@ -243,7 +250,7 @@ void CGame::startGame(int &level, char& current)
 			cout << "Game over!!!" << endl;
 			return;
 		}
-		drawGame();
+		drawGame(line);
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);

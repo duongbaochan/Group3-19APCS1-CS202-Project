@@ -14,6 +14,7 @@ void ThreadFunc1()
 
 int main()
 {
+	
 	Menu(game);
 	thread t1(ThreadFunc1);
 	//int temp;
@@ -40,7 +41,7 @@ int main()
 					game.resumeGame(t1.native_handle());
 				}
 			}
-			else
+			else // nguoi bi dung -> cho choi tiep hay khong
 			{
 				if (temp == 'Y')
 					game.startGame(level, temp);
@@ -86,9 +87,6 @@ int main()
 	Check = localtime(&t);
 	cout << Check->tm_sec << endl;
 	*/
-
-
-
 	return 0;
 }
        
