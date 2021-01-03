@@ -97,8 +97,8 @@ void CPeople::draw()
 {
     GotoXY(mX, mY);
     if (mX > 0 && mX < 85) {
-        //TextColor(textColor);
-        TextColor(5);
+        /*
+		TextColor(7);
         cout << "  _  ";
         GotoXY(mX, mY + 1);
         cout << " (_) ";
@@ -107,6 +107,25 @@ void CPeople::draw()
         GotoXY(mX, mY + 3);
         cout << " / \\";
         TextColor(15);
+		*/
         //cout << "C" << endl;
-    }
+		TextColor(243);
+		cout << (char)223 << (char)223;
+		TextColor(7);
+	}
+}
+
+void CPeople::erase()
+{
+	GotoXY(mX, mY);
+	cout << " " << " ";
+	/*
+	cout << "     ";
+	GotoXY(mX, mY + 1);
+	cout << "     ";
+	GotoXY(mX, mY + 2);
+	cout << "    ";
+	GotoXY(mX, mY + 3);
+	cout << "     ";
+	*/
 }

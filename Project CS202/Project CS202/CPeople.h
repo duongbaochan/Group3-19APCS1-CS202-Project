@@ -40,6 +40,7 @@ public:
 		return 0;
 	}
 	void draw();
+	void erase();
 	void changeXY(int a, int b)
 	{
 		mX += a;

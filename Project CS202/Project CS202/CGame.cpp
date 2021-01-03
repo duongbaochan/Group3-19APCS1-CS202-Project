@@ -1,7 +1,7 @@
 #include "CGame.h"
 
 
-void Menu()
+void Menu(CGame& x)
 {
 	cout << "----------------MENU--------------" << endl;
 	cout << "        WELCOME TO THE GAME       " << endl;
@@ -26,13 +26,15 @@ void Menu()
 			if (n == 1)
 			{
 				int level = 5;
-				CGame x(level, 1, 100, 0, 50, 0);
-				x.startGame(level);
+				x.setGame(level, 1, 100, 0, 50, 0);
+				//x.startGame(level);
+				return;
 			}
 			else if (n == 2)
 			{
-				CGame x;
+				//CGame x;
 				x.loadGame();
+				return;
 			}
 			else if (n == 0) return;
 			else throw n;
@@ -67,13 +69,18 @@ void Menu()
 	//}
 }
 
+CPeople CGame::getPeople()
+{
+	return cn;
+}
+
 CGame::CGame(){
 	size = 0;
 	score = 0;
 	width = 0;
 }
 
-CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
+void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	//x(1, 1, 100, 0, 50, 0)
 	stop = 0;
@@ -107,8 +114,18 @@ CGame::CGame(int _size, int _speed, int _width, int _score, int xPeople, int yPe
 		speed.push_back(_speed);
 }
 
-void CGame::drawGame()
+void CGame::drawGame(string line)
 {
+	GotoXY(0, 1);
+	TextColor(12);
+	cout << line;
+	GotoXY(0, 9);
+	cout << line;
+	GotoXY(0, 16);
+	cout << line;
+	GotoXY(0, 24);
+	cout << line;
+	TextColor(15);
 /*	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0,speed[0]);
@@ -145,7 +162,7 @@ void CGame::drawGame()
 		arrL[i].draw();
 	}
 }
-void CGame::updatePosPeople(bool flag=0)
+void CGame::updatePosPeople(char& current, bool flag=0)
 {
 	//GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
@@ -161,29 +178,36 @@ void CGame::updatePosPeople(bool flag=0)
 		cn.setXY(100 / 2, 0);
 	}
 
-	if (_kbhit())
-	{
-		char current = _getch();
-		if (current == 'a')
+	if (current == 'A' || current == 'D' || current == 'W' || current == 'S') {
+		cn.erase();
+		switch (current) {
+		case 'A':
 			cn.mX--;
-		if (current == 'd')
+			break;
+		case 'D':
 			cn.mX++;
-		if (current == 'w')
+			break;
+		case 'W':
 			cn.mY--;
-		if (current == 's')
+			break;
+		case 'S':
 			cn.mY++;
-
-			cn.changeXY(-1,0);
-		if (current == 'd')
-			cn.changeXY(1, 0);
-		if (current == 'w')
-			cn.changeXY(0, -1);
-		if (current == 's')
-			cn.changeXY(0, 1);
-
-		if (current == ' ')
-			stop = true;
+			break;
+		}
 	}
+	/*
+		cn.changeXY(-1,0);
+	if (current == 'd')
+		cn.changeXY(1, 0);
+	if (current == 'w')
+		cn.changeXY(0, -1);
+	if (current == 's')
+		cn.changeXY(0, 1);
+	*/
+	if (current == ' ')
+		stop = true;
+
+	current = '0';
 }
 void CGame::updatePosVehicle()
 {
@@ -201,25 +225,12 @@ void CGame::updatePosAnimal()
 		arrD[i]->updatePosAnimal(width, speed[1]);
 	}
 }
-void CGame::startGame(int &level)
+void CGame::startGame(int &level, char& current)
 {
 	system("cls");
 	string line = "";
 	for (int i = 0; i < 100; i++)
 		line += "*";
-
-
-	GotoXY(0, 1);
-	TextColor(12);
-	cout << line;
-	GotoXY(0, 9);
-	cout << line;
-	GotoXY(0, 16);
-	cout << line;
-	GotoXY(0, 24);
-	cout << line;
-	TextColor(15);
-	
 
 	unsigned short k = rand() % 5 + 5; //time period
 	time_t t = time(0);
@@ -228,17 +239,17 @@ void CGame::startGame(int &level)
 	while (!stop)
 	{
 
-		if (cn.mState == 0)
+		//if (cn.mState == 0)
 		if (cn.isFinish() == 0)
 		{
 			system("cls");
 			cout << "Game over!!!" << endl;
 			return;
 		}
-		drawGame();
-		updatePosPeople();
-		pauseGame();
-		runningGame(level);
+		drawGame(line);
+		updatePosPeople(current, 0);
+		pauseGame(NULL);
+		runningGame(level, current);
 		Sleep(400/(score+10));
 
 		t = time(0);
@@ -253,7 +264,7 @@ void CGame::startGame(int &level)
 	//	updatePosAnimal();
 	}
 }
-void CGame::runningGame(int level)
+void CGame::runningGame(int level, char& current)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -273,7 +284,7 @@ void CGame::runningGame(int level)
 		score+=10;
 		GotoXY(width/2, 0);
 		cout << "Score: " << score;
-		updatePosPeople(1);
+		updatePosPeople(current, 1);
 	}
 }
 CGame::~CGame()
@@ -293,10 +304,20 @@ void CGame::resetGame()
 {
 	this->~CGame();
 }
-void CGame::exitGame(HANDLE)
+void CGame::exitGame(HANDLE t)
 {
+	TerminateThread(t, 0);
 	system("cls");
 	cout << "Your score: " << score << endl;
+	exit(0);
+}
+void CGame::pauseGame(HANDLE t)
+{
+	SuspendThread(t);
+}
+void CGame::resumeGame(HANDLE t)
+{
+	ResumeThread(t);
 }
 void CGame::loadGame()
 {
@@ -330,7 +351,7 @@ void CGame::loadGame()
 		f >> size >> score >> stop >> width;// >> mX >> mY >> mState;
 	}
 	f.close();
-	this->startGame(size);
+	//this->startGame(size);
 }
 void CGame::saveGame()
 {
@@ -350,6 +371,7 @@ void CGame::saveGame()
 	}
 	f.close();
 }
+/*
 void CGame::pauseGame()
 {
 	bool pause_call = false;
@@ -366,4 +388,4 @@ void CGame::pauseGame()
 		}
 	}
 }
-
+*/
