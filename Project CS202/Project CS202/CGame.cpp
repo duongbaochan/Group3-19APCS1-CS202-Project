@@ -154,7 +154,7 @@ void CGame::drawGame()
 		arrL[i].draw();
 	}
 }
-void CGame::updatePosPeople(char current, bool flag=0)
+void CGame::updatePosPeople(char& current, bool flag=0)
 {
 
 	GotoXY(cn.mX, cn.mY);
@@ -209,7 +209,7 @@ void CGame::updatePosAnimal()
 		arrD[i]->updatePosAnimal(width, speed[1]);
 	}
 }
-void CGame::startGame(int &level, char current)
+void CGame::startGame(int &level, char& current)
 {
 	system("cls");
 	string line = "";
@@ -261,7 +261,7 @@ void CGame::startGame(int &level, char current)
 	//	updatePosAnimal();
 	}
 }
-void CGame::runningGame(int level, char current)
+void CGame::runningGame(int level, char& current)
 {
 	for (int i = 0; i < size; i++)
 	{
