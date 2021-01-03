@@ -45,11 +45,13 @@ public:
 		mX += a;
 		mY += b;
 	}
+	/*
 	void GotoXY() {
 		COORD coord;
 		coord.X = mX;
 		coord.Y = mY;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
+	*/
 };
 

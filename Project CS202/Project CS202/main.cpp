@@ -1,40 +1,79 @@
-#include "CGame.h"
+﻿#include "CGame.h"
 #include <Windows.h>
 
-//bool IS_RUNNINg = true;
-//
-//void exitGame(thread* t)
-//{
-//	system("cls");
-//	IS_RUNNINg = false;
-//	t->join();
-//}
-//
-//void ThreadFunc1()
-//{
-//	while (IS_RUNNINg)
-//	{
-//		Menu();
-//		system("pause");
-//	}
-//}
+bool IS_RUNNING = true;
+char MOVING;
+CGame game;
+int level = 5;
+
+void ThreadFunc1()
+{
+	game.startGame(level, MOVING);
+}
+
 
 int main()
 {
+	Menu(game);
+	thread t1(ThreadFunc1);
+	//int temp;
+	char temp;
+	while (1)
+	{
+		if (_kbhit()) {
+			temp = toupper(_getch());
+			//temp = _getch();
+			if (game.getPeople().isDead())
+			{
+				if (temp == 27)
+				{
+					game.exitGame(t1.native_handle());
+					return 0;
+				}
+				else if (temp == 'P')
+				{
+					game.pauseGame(t1.native_handle());
+				}
+				else
+				{
+					MOVING = temp;
+					game.resumeGame(t1.native_handle());
+				}
+			}
+			else
+			{
+				if (temp == 'Y')
+					game.startGame(level, temp);
+				else
+				{
+					game.exitGame(t1.native_handle());
+					return 0;
+				}
+			}
+		}
+	}
 
-	//thread t1(ThreadFunc1);
-	//while (1)
-	//{
-	//	int temp = toupper(getch());
-	//	if (temp == 27)
-	//	{
-	//		exitGame(&t1);
-	//		return 0;
-	//	}
-	//}
+	/*
+	thread t1(ThreadFunc1);
+	while (1)
+	{
+		int temp = toupper(getch());
+		if (temp == 27)
+		{
+			exitGame(&t1);
+			return 0;
+		}
+	}
+	*/
 
+	/*
+	thread key(&CGame::checkKeyBoard, CGame());
+	//thread process(Menu);
 	Menu();
+	key.join();
+	//process.join();
 	system("pause");
+	*/
 
 	/*
 	time_t t = time(0);
@@ -47,6 +86,9 @@ int main()
 	Check = localtime(&t);
 	cout << Check->tm_sec << endl;
 	*/
+
+
+
 	return 0;
 }
        

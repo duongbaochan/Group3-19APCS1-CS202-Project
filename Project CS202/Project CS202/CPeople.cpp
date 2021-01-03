@@ -3,6 +3,7 @@
 CPeople::CPeople()
 {
 	mX = mY = 0;
+
 }
 CPeople::CPeople(int w)
 {
@@ -97,8 +98,7 @@ void CPeople::draw()
 {
     GotoXY(mX, mY);
     if (mX > 0 && mX < 85) {
-        TextColor(textColor);
-        //TextColor(5);
+        TextColor(5);
         cout << "  _  ";
         GotoXY(mX, mY + 1);
         cout << " (_) ";
