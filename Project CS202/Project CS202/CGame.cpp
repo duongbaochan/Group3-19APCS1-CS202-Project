@@ -147,10 +147,7 @@ void CGame::drawGame(string line)
 	GotoXY(0, 24);
 	cout << line;
 	TextColor(15);
-	GotoXY(100, 0);
-	cout << "Score: " << score;
-	GotoXY(100, 1);
-	cout << "Level: " << (score / 10) + 1;
+
 /*	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0,speed[0]);
@@ -191,6 +188,18 @@ void CGame::updatePosPeople(char& current, bool flag)
 	//GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
     //cn.draw();
+	GotoXY(100, 0);
+	cout << "Score: " << score;
+	GotoXY(100, 1);
+	cout << "Level: " << (score / 40) + 1;
+
+
+	if (cn.mY == 7 || cn.mY == 14 || cn.mY == 22 || cn.mY == 29)
+	{
+		score += 10;
+		++cn.mY;
+	}
+
 	if (flag == 1)
 		cn.setXY(50, 0);
 
@@ -278,7 +287,7 @@ void CGame::startGame(int &level, char& current)
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(400/(score+10));
+		Sleep(400 / (score + 10));
 
 		t = time(0);
 		Check = localtime(&t);
@@ -306,15 +315,8 @@ void CGame::runningGame(int level, char& current)
 	//	cn.Finish();
 	//	return;
 	//}
-	if (cn.isFinishTurn(level+24))
-	{
-		score += 10;
-		GotoXY(100, 0);
-		cout << "Score: " << score;
-		GotoXY(100, 1);
-		cout << "Level: " << (score / 10) + 1;
+	if (cn.isFinishTurn(level + 24))
 		updatePosPeople(current, 1);
-	}
 }
 CGame::~CGame()
 {
@@ -374,7 +376,6 @@ void CGame::saveGame()
 	else
 		f << size << " " << score << " " << stop << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState;
 	f.close();
-	this->~CGame();
 }
 /*
 void CGame::pauseGame()
