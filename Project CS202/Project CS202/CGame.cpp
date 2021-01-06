@@ -115,7 +115,7 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	{
 		CTruck* objT = new CTruck(0 - i * _width / size + rand()%7, k * 8 + 2);
 		CCar* objC = new CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % 4 * 8 + 2);
-		CBird* objB = new CBird(0 - i * _width / size + 25 + rand() % 15, (k + 2) % 4 * 8 + 2);
+		CBird* objB = new CBird(0 - i * _width / size -10 + rand() % 15, (k + 2) % 4 * 8 + 2);
 		CDinausor* objD = new CDinausor(0 - i * _width / size +  15 + rand() % 15, (k + 3) % 4 * 8 + 2);
 		
 		arrTr.push_back(objT);
@@ -147,6 +147,10 @@ void CGame::drawGame(string line)
 	GotoXY(0, 24);
 	cout << line;
 	TextColor(15);
+	GotoXY(100, 0);
+	cout << "Score: " << score;
+	GotoXY(100, 1);
+	cout << "Level: " << (score / 10) + 1;
 /*	for (int i = 0; i < size; i++)
 	{
 		arrTr[i]->draw(0,speed[0]);
@@ -179,11 +183,10 @@ void CGame::drawGame(string line)
 		arrD[i]->draw(9, 1);
 
 	}
-	for (int i = 0; i < 2; ++i) {
+	for (int i = 0; i < 2; ++i)
 		arrL[i].draw();
-	}
 }
-void CGame::updatePosPeople(char& current, bool flag=0)
+void CGame::updatePosPeople(char& current, bool flag)
 {
 	//GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
@@ -194,10 +197,10 @@ void CGame::updatePosPeople(char& current, bool flag=0)
 	GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
     cn.draw();
-	if (flag == 1)
-	{
-		cn.setXY(100 / 2, 0);
-	}
+	//if (flag == 1)
+	//{
+	//	cn.setXY(100 / 2, 0);
+	//}
 
 	if (current == 'A' || current == 'D' || current == 'W' || current == 'S'|| current == 'L') {
 		cn.erase();
@@ -280,9 +283,8 @@ void CGame::startGame(int &level, char& current)
 		t = time(0);
 		Check = localtime(&t);
 		if ((Check->tm_sec - tmp) == k) {
-			for (int i = 0; i < 2; ++i) {
+			for (int i = 0; i < 2; ++i)
 				arrL[i].changeColor(arrL[i].getColor(), speed[0], speed[1]);
-			}
 			tmp = Check->tm_sec;
 		}
 	//	updatePosVehicle();
@@ -299,16 +301,18 @@ void CGame::runningGame(int level, char& current)
 			return;
 		}
 	}
-	if (cn.mY == level + 18)
-	{
-			cn.Finish();
-			return;
-	}
-	if (cn.isFinishTurn(level+18))
+	//if (cn.mY == level + 18)
+	//{
+	//	cn.Finish();
+	//	return;
+	//}
+	if (cn.isFinishTurn(level+24))
 	{
 		score += 10;
-		GotoXY(width/2, 0);
+		GotoXY(100, 0);
 		cout << "Score: " << score;
+		GotoXY(100, 1);
+		cout << "Level: " << (score / 10) + 1;
 		updatePosPeople(current, 1);
 	}
 }
