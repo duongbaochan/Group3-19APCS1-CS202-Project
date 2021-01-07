@@ -268,7 +268,7 @@ void CGame::updatePosPeople(char& current, bool flag)
 	GotoXY(100, 0);
 	cout << "Score: " << score;
 	GotoXY(100, 1);
-	cout << "Level: " << (score / 40) + 1;
+	cout << "Level: " << (score / 50) + 1;
 
 
 	/*if (cn.mY == 7 || cn.mY == 14 || cn.mY == 22 || cn.mY == 29)
@@ -427,13 +427,16 @@ vector<int> CGame::arrayPoint(ifstream& f)
 }
 void CGame::loadGame()
 {
+	system("cls");
 	cin.ignore();
 	cout << "Enter your path: ";
 	string s;  //D:\\CrossingRoad Repo\\Game1.txt
 	getline(cin, s);
 	ifstream f;
 	//f.open("Game1.txt");
-	f.open(s);
+	//f.open(s);
+	f.open("a.txt");
+	cout << f.is_open();
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
@@ -443,13 +446,18 @@ void CGame::loadGame()
 		f >> size >> score >> stop >> width >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
-		s.erase();
+		/*s.erase();
 		getline(f, s);
 
 		arrTr.inputFile(arrayPoint(f));
 		arrC.inputFile(arrayPoint(f));
 		arrB.inputFile(arrayPoint(f));
-		arrD.inputFile(arrayPoint(f));
+		arrD.inputFile(arrayPoint(f));*/
+
+		arrTr.loadFile(f,size);
+		arrC.loadFile(f,size);
+		arrB.loadFile(f,size);
+		arrD.loadFile(f,size);
 
 		CTrafficLight objL(width, arrTr.getPosTraffic());
 		arrL.push_back(objL);
@@ -457,10 +465,10 @@ void CGame::loadGame()
 		arrL.push_back(objL1);
 
 		for (int i = 0; i < 2; i++)
-			speed.push_back(1);
+			speed.push_back(2);
+		stop = 0;
 	}
 	f.close();
-	//this->startGame(size);
 }
 void CGame::saveGame()
 {
@@ -477,8 +485,8 @@ void CGame::saveGame()
 	getline(cin, filename);
 	ofstream f;
 	//f.open("Game1.txt");
-	f.open(s + "\\" + filename + ".txt");
-
+	//f.open(s + "\\" + filename + ".txt");
+	f.open("a.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else

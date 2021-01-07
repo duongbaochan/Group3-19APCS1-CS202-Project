@@ -94,3 +94,13 @@ int CObject::getPosTraffic()
 {
 	return pos[0].mY;
 }
+void CObject::loadFile(ifstream &x, int k)
+{
+	for (int i = 0; i < k; i++)
+	{
+		int mX, mY;
+		x >> mX >> mY;
+		pos.push_back(CPoint(mX, mY));
+	}
+}
+
