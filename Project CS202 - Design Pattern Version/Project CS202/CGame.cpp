@@ -90,7 +90,7 @@ void Menu(CGame& x)
 		{
 			x.loadGame();
 			int level = x.getLevel();
-			x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
+			//x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
 			return;
 		}
 		else if (n == 3)
