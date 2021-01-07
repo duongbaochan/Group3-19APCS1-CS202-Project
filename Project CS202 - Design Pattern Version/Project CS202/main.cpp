@@ -42,7 +42,8 @@ int main()
 				if (temp == 27)
 				{
 					game.exitGame(t1.native_handle());
-					return 0;
+					//return 0;
+					main();
 				}
 				else if (temp == 'P')
 				{

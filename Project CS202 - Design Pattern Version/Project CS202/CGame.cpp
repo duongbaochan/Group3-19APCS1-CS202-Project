@@ -3,7 +3,7 @@
 
 void Menu(CGame& x)
 {
-	CGame game;
+	//CGame game;
 	//Credits section
 	GotoXY(12, 1);
 	TextColor(3);
@@ -124,7 +124,7 @@ void Menu(CGame& x)
 			cout << "|---------------------------------------------------------------|\n";
 			system("pause");
 			system("CLS");
-			Menu(game);
+			Menu(x);
 		}
 		else if (n == 0) exit(0);
 		else throw n;
@@ -344,13 +344,13 @@ void CGame::startGame(int &level, char& current)
 		runningGame(level, current);
 		Sleep(3000 / (level*5));
 
-		if (level % 5 == 0)
+		/*if (level % 5 == 0)
 		{
 			this->resetGame();
 			setGame(level/5 + 3 , 2, 100, score, 50, 0);
 			startGame(level, current);
 			return;
-		}
+		}*/
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 56)
@@ -394,7 +394,10 @@ void CGame::exitGame(HANDLE t)
 	TerminateThread(t, 0);
 	system("cls");
 	cout << "Your score: " << score << endl;
-	exit(0);
+	saveGame();
+	resetGame();
+	system("cls");
+	//exit(0);
 }
 void CGame::pauseGame(HANDLE t)
 {
