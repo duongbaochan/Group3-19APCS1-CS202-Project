@@ -16,8 +16,13 @@ void ThreadFunc2()
 }
 int main()
 {
+	int width = 940, height = 560; // Set width for ingame console
+
 	thread t2(ThreadFunc2);
+
 	Menu(game);
+	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
+
 	thread t1(ThreadFunc1);
 	//int temp;
 	char temp;

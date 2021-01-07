@@ -3,13 +3,28 @@
 
 void Menu(CGame& x)
 {
-	cout << "----------------MENU--------------" << endl;
-	cout << "        WELCOME TO THE GAME       " << endl;
-	cout << "1. New Game." << endl;
-	cout << "2. Load Game." << endl;
-	cout << "3. Settings." << endl;
-	cout << "0. Exit." << endl;
+	int width = 960, height = 540; // Size of menu
+
+	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
+
+	GotoXY(10, 10);
+	TextColor(6);
+	cout << "       C R O S S Y  R O A D" << endl;
+	GotoXY(10, 11);
+	cout << "----------------MENU---------------" << endl;
+	GotoXY(10, 12);
+	cout << "|          1. New Game.           |" << endl;
+	GotoXY(10, 13);
+	cout << "|          2. Load Game.          |" << endl;
+	GotoXY(10, 14);
+	cout << "|          3. Settings.           |" << endl;
+	GotoXY(10, 15);
+	cout << "|          0. Exit.               |" << endl;
+	GotoXY(10, 16);
+	cout << endl;
+	GotoXY(10, 17);
 	cout << "Enter our option: ";
+
 	int n; cin >> n;
 
 	while (true) {
@@ -44,30 +59,14 @@ void Menu(CGame& x)
 			cout << "Exception caught from input (Input option is not available). Exiting...\n";
 		}
 	}
+}
 
+void setConsoleSize(int width, int height) {
+	HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
 
-	//while (n)
-	//{
-	//	if (n == 1)
-	//	{
-	//		CGame x(5, 1, 100, 0, 50, 0);
-	//		x.startGame(5);
-	//		break;
-	//	}
-	//	else if (n == 2)
-	//	{
-	//		CGame x;
-	//		x.loadGame();
-	//		break;
-	//	}
-	//	else if (n == 0) return;
-	//	else
-	//	{
-	//		cout << "Please choose again...";
-	//		cin >> n;
-	//	}
-	//}
-	//}
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, width, height, TRUE);
 }
 
 int CGame::getXPeople()
