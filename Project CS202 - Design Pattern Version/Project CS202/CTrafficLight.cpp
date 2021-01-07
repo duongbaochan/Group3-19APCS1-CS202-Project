@@ -44,7 +44,7 @@ void CTrafficLight::changeColor(int tmp_color, int &k, int pre_speed)
 		break;
 	case 12: //red -> yellow
 		color = 6;
-		k = 1;
+		k = pre_speed/2;
 		break;
 	case 6: //yellow -> green
 		color = 10;

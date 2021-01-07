@@ -334,15 +334,6 @@ void CGame::updatePosPeople(char& current, bool flag)
 			break;
 		}
 	}
-	/*
-		cn.changeXY(-1,0);
-	if (current == 'd')
-		cn.changeXY(1, 0);
-	if (current == 'w')
-		cn.changeXY(0, -1);
-	if (current == 's')
-		cn.changeXY(0, 1);
-	*/
 	if (current == ' ')
 		stop = true;
 
@@ -423,10 +414,10 @@ void CGame::runningGame(int &level, char& current)
 			return;
 		}
 	}
-	if (cn.isFinishTurn(level + 24))
+	if (cn.isFinishTurn(31))
 	{
 		score += 10;
-		level += 1;
+		if (score % 50 == 0) level++;
 		updatePosPeople(current, 1);
 	}
 }
