@@ -45,7 +45,6 @@ public:
 	void startGame(int&, char&); // Th?c hi?n b?t ??u vào trò ch?i
 
 	void eraseString(string& str);
-	void inputXY(int& x, int& y, string& line);
 	vector<int> arrayPoint(ifstream& f);
 	void loadGame(); 
 	void saveGame(); 

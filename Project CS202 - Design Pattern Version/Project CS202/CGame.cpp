@@ -90,7 +90,7 @@ void Menu(CGame& x)
 		else if (n == 2)
 		{
 			x.loadGame();
-			int level = x.getLevel();
+			//int level = x.getLevel();
 			//x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
 			return;
 		}
@@ -409,15 +409,6 @@ void CGame::eraseString(string& str) {
 	while (str.size() > 0 && str[i + 1] != NULL && str[i] != ',')
 		++i;
 	str.erase(str.begin() + 0, str.begin() + (i + 1));
-}
-void CGame::inputXY(int& x, int& y, string& line)
-{
-	stringstream gX(line);
-	gX >> x;
-	eraseString(line);
-	stringstream gY(line);
-	gY >> y;
-	eraseString(line);
 }
 vector<int> CGame::arrayPoint(ifstream& f)
 {
