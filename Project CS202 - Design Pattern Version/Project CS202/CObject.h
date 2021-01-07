@@ -18,7 +18,7 @@ public:
 	void setDisplay(CDisplay*);
 //	bool isInRange(CPoint) const;
 	bool isInRange(CPoint) const;
-	void display(bool isDraw, int textColor) const;
+	void display(int, bool) const;
 	void updatePos(int width, int speed);
 	void addObject(int,int);
 };

@@ -6,7 +6,7 @@ class CPeople {
 protected:
 	CPoint pos;
 	bool mState = 1; //Tr?ng thái s?ng ch?t
-	int step;
+	int step=1;
 public:
 	//friend class CGame;
 
