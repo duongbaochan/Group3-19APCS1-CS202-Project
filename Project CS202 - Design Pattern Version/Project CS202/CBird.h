@@ -6,6 +6,7 @@
 class CBird : public CObject
 {
 public:
-	CBird(int, int);
+	//CBird(int, int);
+	CBird();
 };
 

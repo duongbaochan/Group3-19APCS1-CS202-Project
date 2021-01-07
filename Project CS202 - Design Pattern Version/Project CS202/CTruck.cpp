@@ -1,6 +1,6 @@
 #include "CTruck.h"
 
-CTruck::CTruck(int x, int y) : CObject(x,y)
+CTruck::CTruck() 
 {
 	CIsInRange* isImp = new CTruckInRange;
 	setInRange(isImp);

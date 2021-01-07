@@ -1,6 +1,6 @@
 #include "CCar.h"
 
-CCar::CCar(int x, int y) : CObject(x, y)
+CCar::CCar(/*int x, int y*/)
 {
 	CIsInRange* isImp = new CCarInRange;
 	setInRange(isImp);

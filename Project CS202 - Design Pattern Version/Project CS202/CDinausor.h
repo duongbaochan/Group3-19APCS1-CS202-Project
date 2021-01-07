@@ -6,5 +6,5 @@
 class CDinausor: public CObject
 {
 public:
-	CDinausor(int, int);
+	CDinausor();
 };

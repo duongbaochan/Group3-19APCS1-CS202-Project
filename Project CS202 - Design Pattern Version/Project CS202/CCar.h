@@ -5,6 +5,6 @@
 class CCar : public CObject
 {
 public:
-	CCar(int, int);
+	CCar();
 
 };

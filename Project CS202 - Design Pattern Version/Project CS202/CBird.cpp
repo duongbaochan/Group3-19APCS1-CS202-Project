@@ -1,6 +1,6 @@
 #include "CBird.h"
 
-CBird::CBird(int x, int y) : CObject(x, y)
+CBird::CBird()
 {
 	CIsInRange* isImp = new CBirdInRange;
 	setInRange(isImp);

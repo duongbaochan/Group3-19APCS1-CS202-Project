@@ -113,17 +113,31 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	FixConsoleWindow();
 	
 	unsigned short k = rand() % typeOfObj;
+	vector <CPoint> x;
+
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck objT(0 - i * _width / size + rand()%7, k * 8 + 2);
+		/*CTruck objT(0 - i * _width / size + rand()%7, k * 8 + 2);
 		CCar objC(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
 		CBird objB(0 - i * _width / size -10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
 		CDinausor objD(0 - i * _width / size +  15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
-		
+		cout << &objT << endl;
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
 		arrB.push_back(objB);
 		arrD.push_back(objD);
+
+		arrTr.push_back(CTruck(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2));
+		arrC.push_back(CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2));
+		arrB.push_back(CBird(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2));
+		arrD.push_back(CDinausor(0 - i * _width / size + 15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2));
+		*/
+
+		arrTr.addObject(0 - i * _width / size + 150 + rand() % 7, k * 8 + 2);
+		arrC.addObject(0 - i * _width / size + 40 + 150 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
+		arrB.addObject(0 - i * _width / size - 10 + 150 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
+		arrD.addObject(0 - i * _width / size + 15 + 150 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
+
 	}
 	CTrafficLight objL(_width, k * 8 + 2);
 	arrL.push_back(objL);
@@ -154,7 +168,23 @@ void CGame::drawGame(string line)
 
 	//if (arrL[1].getColor() == 12)
 		//Sleep(5);
-	for (int i = 0; i < size; i++)
+	arrTr.display(0, speed[0]);
+	arrTr.updatePos(width, speed[0]);
+	arrTr.display(3, speed[0]);
+
+	arrC.display(0, speed[0]);
+	arrC.updatePos(width, speed[0]);
+	arrC.display(5, speed[0]);
+
+	arrB.display(0, 1);
+	arrB.updatePos(width, speed[1]);
+	arrB.display(7, 1);
+
+	arrD.display(0, 1);
+	arrD.updatePos(width, speed[1]);
+	arrD.display(9, 1);
+
+	/*for (int i = 0; i < size; i++)
 	{
 		arrTr[i].display(0, speed[0]);
 		arrTr[i].updatePos(width, speed[0]);
@@ -171,7 +201,7 @@ void CGame::drawGame(string line)
 		arrD[i].display(0, 1);
 		arrD[i].updatePos(width, speed[1]);
 		arrD[i].display(9, 1);
-	}
+	}*/
 	for (int i = 0; i < 2; ++i)
 		arrL[i].draw();
 }
@@ -269,7 +299,7 @@ void CGame::runningGame(int level, char& current)
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (cn.isImpact(arrC[i]) || cn.isImpact(arrD[i]) || cn.isImpact(arrB[i]) || cn.isImpact(arrTr[i]))
+		if (cn.isImpact(arrC) || cn.isImpact(arrD) || cn.isImpact(arrB) || cn.isImpact(arrTr))
 		{
 			cn.setmState(0);
 			return;

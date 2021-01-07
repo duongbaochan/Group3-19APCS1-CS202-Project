@@ -5,20 +5,21 @@
 class CObject
 {
 protected:
-	CPoint pos;
+	vector <CPoint> pos;
 	CIsInRange* objImpact;
 	CDisplay* objDisp;
 public:
-	CObject(int, int);
-	CObject(CPoint);
-	~CObject();
+	//CObject(int, int);
+//	CObject(CPoint);
+	//~CObject();
 	CObject();
 	//CObject(const CObject &x);
-
 	void setInRange(CIsInRange*);
 	void setDisplay(CDisplay*);
+//	bool isInRange(CPoint) const;
 	bool isInRange(CPoint) const;
 	void display(bool isDraw, int textColor) const;
 	void updatePos(int width, int speed);
+	void addObject(int,int);
 };
 

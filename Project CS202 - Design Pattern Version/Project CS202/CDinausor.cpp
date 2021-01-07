@@ -1,6 +1,6 @@
 #include "CDinausor.h"
 
-CDinausor::CDinausor(int x, int y) : CObject(x, y)
+CDinausor::CDinausor() 
 {
 	CIsInRange* isImp = new CDinoInRange;
 	setInRange(isImp);

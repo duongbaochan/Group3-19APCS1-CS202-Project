@@ -6,6 +6,6 @@
 class CTruck : public CObject
 {
 public:
-	CTruck(int, int);
+	CTruck();
 };
 
