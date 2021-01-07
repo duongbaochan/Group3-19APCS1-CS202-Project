@@ -344,13 +344,13 @@ void CGame::startGame(int &level, char& current)
 		runningGame(level, current);
 		Sleep(3000 / (level*5));
 
-		if (level % 5 == 0)
+		/*if (level % 5 == 0)
 		{
 			this->resetGame();
 			setGame(level/5 + 3 , 2, 100, score, 50, 0);
 			startGame(level, current);
 			return;
-		}
+		}*/
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 56)
