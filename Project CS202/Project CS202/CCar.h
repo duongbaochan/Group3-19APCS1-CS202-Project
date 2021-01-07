@@ -7,6 +7,5 @@ public:
 	CCar(int, int);
 	void draw(int, bool);
 
-	// For Impact function
-	bool isDxAndDyInRange(int, int);
+	vector<vector<COORD>> boundaryMap(); // For Impact
 };

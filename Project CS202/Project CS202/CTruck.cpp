@@ -22,14 +22,57 @@ void CTruck::draw(int textColor, bool isDraw)
 	}
 }
 
-// For Impact function
-bool CTruck::isDxAndDyInRange(int Dx, int Dy)
+vector<vector<COORD>> CTruck::boundaryMap() // For Impact function
 {
-	if (Dy == 1)
-		return (Dx >= 2 && Dx <= 12);
-	if (Dy == 2)
-		return (Dx >= 4 && Dx <= 14);
-	if (Dy == 3)
-		return (Dx >= 4 && Dx <= 11);
-	return 0;
+	vector<bool> bool_row;
+	vector<vector<bool>> bool_boundary;
+	string str;
+	vector<string> strs;
+	str = " ___________";
+	strs.push_back(str);
+	str = "|         \\\\_";
+	strs.push_back(str);
+	str = "|____________|";
+	strs.push_back(str);
+	str = "  ()-----()";
+	strs.push_back(str);
+
+	for (int i = 0; i < strs.size(); ++i)
+	{
+		bool_row.clear();
+		for (int j = 0; j < strs[i].length(); ++j)
+		{
+			if (strs[i][j] == ' ')
+				bool_row.push_back(0);
+			else
+				bool_row.push_back(1);
+		}
+		bool_boundary.push_back(bool_row);
+	}
+
+	vector<vector<COORD>> map;
+	vector<COORD> row;
+	COORD p;
+	for (int i = 0; i < bool_boundary.size(); ++i)
+	{
+		row.clear();
+		for (int j = 0; j < bool_boundary[i].size(); ++j)
+		{
+			if (bool_boundary[i][j] == 1)
+			{
+				p.X = mX + j;
+				p.Y = mY + i;
+				row.push_back(p);
+			}
+			else
+			{
+				p.X = -1;
+				p.Y = -1;
+				row.push_back(p);
+			}
+		}
+		map.push_back(row);
+	}
+
+	return map;
 }

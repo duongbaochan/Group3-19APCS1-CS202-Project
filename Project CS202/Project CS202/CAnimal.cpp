@@ -21,7 +21,10 @@ void CAnimal::updatePosAnimal(int width, int speed)
 		mX %= width;
 }
 
-bool CAnimal::isDxAndDyInRange(int, int)
+vector<vector<COORD>> CAnimal::boundaryMap() // For Impact function
 {
-	return 0;
+	COORD p;
+	p.X = -1;
+	p.Y = -1;
+	return { {p} };
 }

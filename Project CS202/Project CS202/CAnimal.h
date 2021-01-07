@@ -13,6 +13,5 @@ public:
 
 	CAnimal(int, int);
 
-	//For Impact function
-	virtual bool isDxAndDyInRange(int, int);
+	virtual vector<vector<COORD>> boundaryMap(); //For Impact function
 };

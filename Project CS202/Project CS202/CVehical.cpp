@@ -21,8 +21,10 @@ void CVehicle::updatePosVehicle(int width, int speed)
 		mX %= width;
 }
 
-// For Impact function
-bool CVehicle::isDxAndDyInRange(int Dx, int Dy)
+vector<vector<COORD>> CVehicle::boundaryMap() // For Impact function
 {
-	return 0;
+	COORD p;
+	p.X = -1;
+	p.Y = -1;
+	return { {p} };
 }

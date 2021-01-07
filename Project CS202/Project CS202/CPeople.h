@@ -46,6 +46,8 @@ public:
 		mX += a;
 		mY += b;
 	}
+
+	vector<vector<COORD>> boundaryMap(); // For Impact
 	/*
 	void GotoXY() {
 		COORD coord;

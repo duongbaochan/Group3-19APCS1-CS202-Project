@@ -11,6 +11,5 @@ public:
 	void updatePosVehicle(int, int);
 	CVehicle(int, int);
 
-	// For Impact function
-	virtual bool isDxAndDyInRange(int, int);
+	virtual vector<vector<COORD>> boundaryMap(); //For Impact function
 };
