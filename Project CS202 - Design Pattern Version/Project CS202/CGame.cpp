@@ -26,7 +26,7 @@ void Menu(CGame& x)
 			if (n == 1)
 			{
 				int level = 5;
-				x.setGame(level, 1, 940, 0, 50, 0);
+				x.setGame(level, 1, 100, 0, 50, 0);
 				//x.startGame(level);
 				return;
 			}
@@ -46,8 +46,6 @@ void Menu(CGame& x)
 
 
 }
-
-
 
 int CGame::getScore()
 {
