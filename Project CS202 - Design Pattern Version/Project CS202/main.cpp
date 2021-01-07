@@ -13,7 +13,11 @@ void ThreadFunc1()
 void ThreadFunc2()
 {
 	PlaySound(TEXT("Sounds/menu-soundtrack.wav"), NULL, SND_LOOP | SND_ASYNC);
-}
+} // Menu theme
+void ThreadFunc3()
+{
+	PlaySound(TEXT("Sounds/ingame.wav"), NULL, SND_LOOP | SND_ASYNC);
+} // Ingame theme
 int main()
 {
 	int width = 1100, height = 560; // Set width for ingame console
@@ -22,6 +26,8 @@ int main()
 
 	Menu(game);
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
+
+	thread t3(ThreadFunc3);
 
 	thread t1(ThreadFunc1);
 	//int temp;

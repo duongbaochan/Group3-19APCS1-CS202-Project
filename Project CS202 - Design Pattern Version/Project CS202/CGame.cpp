@@ -3,6 +3,7 @@
 
 void Menu(CGame& x)
 {
+	CGame game;
 	//Credits section
 	GotoXY(12, 1);
 	TextColor(3);
@@ -59,10 +60,10 @@ void Menu(CGame& x)
 	GotoXY(60, 14);
 	cout << "|          3. Settings.           |" << endl;
 	GotoXY(60, 15);
+	cout << "|          4. Credits.            |" << endl;
+	GotoXY(60, 16); 
 	cout << "|          0. Exit.               |" << endl;
-	GotoXY(60, 16);
-	cout << endl;
-	GotoXY(60, 17);
+	GotoXY(60, 18);
 	cout << "Enter our option: ";
 
 	int n; cin >> n;
@@ -99,8 +100,33 @@ void Menu(CGame& x)
 			cout << "Settings 1." << endl;
 			cout << "Settings 2." << endl;
 			cout << "Settings 3." << endl;
+			exit(0);
 		}
-		else if (n == 0) return;
+		else if (n == 4)
+		{
+			system("CLS");
+			GotoXY(25, 10);
+			TextColor(6);
+			cout << "|---------------------------------------------------------------|\n";
+			GotoXY(25, 11);
+			cout << "|                          CREDITS:                             |\n";
+			GotoXY(25, 12);
+			cout << "|                                                               |\n";
+			GotoXY(25, 13);
+			cout << "|                        Soundtracks:                           |\n";
+			GotoXY(25, 14);
+			cout << "|               Undertale OST: 002 - Start Menu                 |\n";
+			GotoXY(25, 15);
+			cout << "|              Undertale OST: 042 - Thundersnail                |\n";
+			GotoXY(25, 16);
+			cout << "|                                                               |\n";
+			GotoXY(25, 17);
+			cout << "|---------------------------------------------------------------|\n";
+			system("pause");
+			system("CLS");
+			Menu(game);
+		}
+		else if (n == 0) exit(0);
 		else throw n;
 	}
 
