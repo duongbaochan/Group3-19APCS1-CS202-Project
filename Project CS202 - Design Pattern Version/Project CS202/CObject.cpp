@@ -45,7 +45,7 @@ bool CObject::isInRange(CPoint x) const {
 		tmp.mY = x.mY - pos[i].mY;
 		if (this->objImpact->isDxAndDyInRange(tmp))
 		{
-			PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
+			PlaySound(TEXT("Sounds/hit.wav"), NULL, SND_SYNC);
 			return 1;
 		}
 	}

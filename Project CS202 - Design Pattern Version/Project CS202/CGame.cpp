@@ -1,18 +1,17 @@
 #include "CGame.h"
 
-
 void Menu(CGame& x)
 {
 	//CGame game;
 	//Credits section
 	GotoXY(12, 1);
 	TextColor(3);
-	cout << "============================";
+	cout << "==============================================";
 	GotoXY(12, 2);
 	cout << "Members - Who has contributed to this project:";
 	GotoXY(12, 3);
 	TextColor(3);
-	cout << "============================";
+	cout << "==============================================";
 	TextColor(15);
 
 	GotoXY(12, 5);
@@ -34,12 +33,12 @@ void Menu(CGame& x)
 	TextColor(9);
 	cout << "============================";
 	GotoXY(12, 15);
-	cout << "=       Tutorial:          =";
+	cout << "=        Tutorial:         =";
 	GotoXY(12, 16);
 	cout << "============================";
 	GotoXY(12, 18);
 	TextColor(10);
-	cout << "You are put into an endless highway \n            with full of different obstacles. \n            Your only objective is to pass the road\n            safely without touching any obstacle,\n            otherwise you lose. ";
+	cout << "You are put into an endless highway \n            with full of different obstacles. \n            Your only objective is to pass the road\n            safely without touching any obstacles,\n            otherwise you lose. ";
 	GotoXY(12, 24);
 	cout << "Break-a-leg!";
 
@@ -48,22 +47,24 @@ void Menu(CGame& x)
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
-	GotoXY(60, 9);
+	GotoXY(65, 9);
 	TextColor(6);
 	cout << "        C R O S S Y  R O A D" << endl;
-	GotoXY(60, 11);
+	GotoXY(65, 11);
 	cout << "----------------MENU---------------" << endl;
-	GotoXY(60, 12);
+	GotoXY(65, 12);
 	cout << "|          1. New Game.           |" << endl;
-	GotoXY(60, 13);
+	GotoXY(65, 13);
 	cout << "|          2. Load Game.          |" << endl;
-	GotoXY(60, 14);
+	GotoXY(65, 14);
 	cout << "|          3. Settings.           |" << endl;
-	GotoXY(60, 15);
+	GotoXY(65, 15);
 	cout << "|          4. Credits.            |" << endl;
-	GotoXY(60, 16); 
+	GotoXY(65, 16);
 	cout << "|          0. Exit.               |" << endl;
-	GotoXY(60, 18);
+	GotoXY(65, 17);
+	cout << "-----------------------------------" << endl;
+	GotoXY(65, 19);
 	cout << "Enter our option: ";
 
 	int n; cin >> n;
@@ -136,6 +137,11 @@ void Menu(CGame& x)
 		exit(0);
 	}
 }
+
+void ThreadGameOver()
+{
+	PlaySound(TEXT("Sounds/game-over.wav"), NULL, SND_LOOP | SND_ASYNC);
+} // Menu theme
 
 void setConsoleSize(int width, int height) {
 	HWND console = GetConsoleWindow();
@@ -265,10 +271,20 @@ void CGame::drawGame(string line)
 }
 void CGame::updatePosPeople(char& current, bool flag)
 {
-	GotoXY(100, 0);
+	GotoXY(105, 2);
+	TextColor(2);
+	cout << "|=====================|";
+	GotoXY(107, 3);
+	TextColor(9);
+	cout << "C R O S S Y R O A D";
+	GotoXY(112, 5);
+	TextColor(6);
 	cout << "Score: " << score;
-	GotoXY(100, 1);
+	GotoXY(112, 6);
 	cout << "Level: " << (score / 50) + 1;
+	TextColor(2);
+	GotoXY(105, 7);
+	cout << "|=====================|";
 
 
 	/*if (cn.mY == 7 || cn.mY == 14 || cn.mY == 22 || cn.mY == 29)
@@ -335,8 +351,29 @@ void CGame::startGame(int &level, char& current)
 		if (cn.isFinish() == 0)
 		{
 			system("cls");
-			cout << "Game over!!!" << endl;
-			return;
+			thread over(ThreadGameOver);
+			GotoXY(57, 11);
+			cout << "---------------" << endl;
+			GotoXY(57, 12);
+			cout << "|  GAME OVER  |" << endl;
+			GotoXY(57, 13);
+			cout << "---------------" << endl;
+			Sleep(2000);
+			GotoXY(48, 15);
+			cout << "Don't give up just yet..." << endl;
+			GotoXY(48, 16);
+			Sleep(2000);
+			cout << "You'll make it better next time! Keep up!" << endl;
+			GotoXY(58, 18);
+			Sleep(2000);
+			TextColor(6);
+			cout << "Your score: " << score << endl;
+			GotoXY(49, 19);
+			TextColor(7);
+			system("pause");
+			system("CLS");
+
+			exit(0);
 		}
 		drawGame(line);
 		updatePosPeople(current, 0);
