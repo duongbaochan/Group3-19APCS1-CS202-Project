@@ -52,7 +52,7 @@ bool CPeople::isFinish()
 
 bool CPeople::isDead()
 {
-	return mState;
+	return !mState;
 }
 bool CPeople::isImpact(const CObject &x) const
 {
