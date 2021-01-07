@@ -131,15 +131,15 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 		arrD.push_back(CDinausor(0 - i * _width / size + 15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2));
 		*/
 
-		arrTr.addObject(0 - i * _width / size + 150 + rand() % 7, k * 8 + 2);
-		arrC.addObject(0 - i * _width / size + 40 + 150 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
-		arrB.addObject(0 - i * _width / size - 10 + 150 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
-		arrD.addObject(0 - i * _width / size + 15 + 150 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
+		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2);
+		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
+		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
+		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
 
 	}
 	CTrafficLight objL(_width, k * 8 + 2);
 	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
 	arrL.push_back(objL1);
 
 	cn.setXY(xPeople, yPeople);

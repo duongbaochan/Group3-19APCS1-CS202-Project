@@ -6,6 +6,7 @@ void CCarDisplay::display(CPoint x, bool isDraw, int textColor)
 	if (x.mX > 0 && x.mX < 85) {
 		TextColor(textColor);
 		//TextColor(5);
+		GotoXY(x.mX, x.mY);
 		cout << "   _____";
 		GotoXY(x.mX, x.mY + 1);
 		cout << " _/     \\__";
