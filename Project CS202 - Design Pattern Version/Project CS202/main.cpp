@@ -20,7 +20,18 @@ void ThreadFunc3()
 } // Ingame theme
 int main()
 {
+<<<<<<< Updated upstream
 	int width = 1100, height = 618.75; // Set width for ingame console
+=======
+	int width = 1100, height = 600; // Set width for ingame console
+	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
+	preMain();
+	return 0;
+}
+/*int main()
+{
+	int width = 1100, height = 560; // Set width for ingame console
+>>>>>>> Stashed changes
 
 	thread t2(ThreadFunc2);
 
