@@ -46,7 +46,7 @@ public:
 	void loadGame(); 
 	void saveGame(); 
 	//void pauseGame(); 
-	void runningGame(int, char&);
+	void runningGame(int&, char&);
 	void updatePosPeople(char&, bool); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
 	
 	
