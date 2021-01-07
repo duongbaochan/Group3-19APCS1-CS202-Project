@@ -2,6 +2,7 @@
 
 void CCarDisplay::display(CPoint x, bool isDraw, int textColor)
 {
+	if (!isDraw) return;
 	if (x.mX > 0 && x.mX < 85) {
 		TextColor(textColor);
 		//TextColor(5);
