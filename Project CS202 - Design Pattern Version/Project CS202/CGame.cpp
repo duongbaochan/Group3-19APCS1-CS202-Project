@@ -404,6 +404,36 @@ void CGame::resumeGame(HANDLE t)
 {
 	ResumeThread(t);
 }
+void CGame::eraseString(string& str) {
+	int i = 0;
+	while (str.size() > 0 && str[i + 1] != NULL && str[i] != ',')
+		++i;
+	str.erase(str.begin() + 0, str.begin() + (i + 1));
+}
+void CGame::inputXY(int& x, int& y, string& line)
+{
+	stringstream gX(line);
+	gX >> x;
+	eraseString(line);
+	stringstream gY(line);
+	gY >> y;
+	eraseString(line);
+}
+vector<int> CGame::arrayPoint(ifstream& f)
+{
+	vector<int> tmp;
+	int x = 0;
+	string line;
+	getline(f, line);
+	while (!line.empty())
+	{
+		stringstream gX(line);
+		gX >> x;
+		tmp.push_back(x);
+		eraseString(line);
+	}
+	return tmp;
+}
 void CGame::loadGame()
 {
 	cin.ignore();
@@ -422,6 +452,21 @@ void CGame::loadGame()
 		f >> size >> score >> stop >> width >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
+		s.erase();
+		getline(f, s);
+
+		arrTr.inputFile(arrayPoint(f));
+		arrC.inputFile(arrayPoint(f));
+		arrB.inputFile(arrayPoint(f));
+		arrD.inputFile(arrayPoint(f));
+
+		CTrafficLight objL(width, arrTr.getPosTraffic());
+		arrL.push_back(objL);
+		CTrafficLight objL1(width, arrC.getPosTraffic());
+		arrL.push_back(objL1);
+
+		for (int i = 0; i < 2; i++)
+			speed.push_back(1);
 	}
 	f.close();
 	//this->startGame(size);

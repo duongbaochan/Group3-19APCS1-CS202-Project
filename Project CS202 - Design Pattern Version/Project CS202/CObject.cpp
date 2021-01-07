@@ -77,3 +77,20 @@ void CObject::outputFile(ofstream& x)
 	for (int i = 0; i < pos.size(); i++)
 		x << pos[i].mX << "," << pos[i].mY << ",";
 }
+void CObject::inputFile(vector<int> tmp)
+{
+	int cur = 0;
+	while (!tmp.empty())
+	{
+		int x = tmp.back();
+		tmp.pop_back();
+		int y = tmp.back();
+		tmp.pop_back();
+		addObject(x, y);
+		cur++;
+	}
+}
+int CObject::getPosTraffic()
+{
+	return pos[0].mY;
+}

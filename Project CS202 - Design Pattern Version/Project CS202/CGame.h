@@ -43,8 +43,13 @@ public:
 	void resetGame(); // Th?c hi?n thi?t l?p l?i toàn b? d? li?u nh? lúc ??u
 	//void exitGame(HANDLE); 
 	void startGame(int&, char&); // Th?c hi?n b?t ??u vào trò ch?i
+
+	void eraseString(string& str);
+	void inputXY(int& x, int& y, string& line);
+	vector<int> arrayPoint(ifstream& f);
 	void loadGame(); 
 	void saveGame(); 
+
 	//void pauseGame(); 
 	void runningGame(int&, char&);
 	void updatePosPeople(char&, bool); //Th?c hi?n ?i?u khi?n di chuy?n c?a CPEOPLE
