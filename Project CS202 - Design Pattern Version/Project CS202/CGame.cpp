@@ -3,7 +3,7 @@
 
 void Menu(CGame& x)
 {
-	CGame game;
+	//CGame game;
 	//Credits section
 	GotoXY(12, 1);
 	TextColor(3);
@@ -124,7 +124,7 @@ void Menu(CGame& x)
 			cout << "|---------------------------------------------------------------|\n";
 			system("pause");
 			system("CLS");
-			Menu(game);
+			Menu(x);
 		}
 		else if (n == 0) exit(0);
 		else throw n;

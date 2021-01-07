@@ -54,7 +54,7 @@ bool CObject::isInRange(CPoint x) const {
 void CObject::display(int textColor, bool isDraw) const {
 	if (this->objDisp)
 	{
-		for (int i=0;i<pos.size();i++)
+		for (int i = 0; i < pos.size(); i++)
 			this->objDisp->display(pos[i], isDraw, textColor);
 	}
 }
