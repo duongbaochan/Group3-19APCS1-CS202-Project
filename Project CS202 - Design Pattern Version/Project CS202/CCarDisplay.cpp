@@ -1,18 +1,17 @@
-#include ".h"
+#include "CCarDisplay.h"
 
-void CCarDisplay::display(CPoint)
+void CCarDisplay::display(CPoint x, bool isDraw, int textColor)
 {
-	if (mX > 0 && mX < 85) {
+	if (x.mX > 0 && x.mX < 85) {
 		TextColor(textColor);
 		//TextColor(5);
 		cout << "   _____";
-		GotoXY(mX, mY + 1);
+		GotoXY(x.mX, x.mY + 1);
 		cout << " _/     \\__";
-		GotoXY(mX - 1, mY + 2);
+		GotoXY(x.mX - 1, x.mY + 2);
 		cout << " |__________|";
-		GotoXY(mX, mY + 3);
+		GotoXY(x.mX, x.mY + 3);
 		cout << "  ()----()";
 		TextColor(15);
-		//cout << "C" << endl;
 	}
 }

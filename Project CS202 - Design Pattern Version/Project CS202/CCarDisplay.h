@@ -4,5 +4,5 @@
 class CCarDisplay : public CDisplay
 {
 public:
-	void display();
+	void display(CPoint, bool, int);
 };

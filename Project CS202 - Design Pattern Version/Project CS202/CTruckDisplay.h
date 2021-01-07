@@ -4,6 +4,6 @@
 class CTruckDisplay: public CDisplay
 {
 public:
-	void display();
+	void display(CPoint, bool, int);
 };
 
