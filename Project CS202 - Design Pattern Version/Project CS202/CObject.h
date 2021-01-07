@@ -28,5 +28,6 @@ public:
 	int getPosTraffic();
 	void loadFile(ifstream &x, int k);
 
+	void updatePosandDisp(int width, int speed, int textColor, bool isDraw);
 };
 

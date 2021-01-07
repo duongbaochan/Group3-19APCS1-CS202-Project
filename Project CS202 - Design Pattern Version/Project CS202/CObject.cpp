@@ -75,6 +75,21 @@ void CObject::updatePos(int width, int speed)
 	}
 
 }
+void CObject::updatePosandDisp(int width, int speed, int textColor, bool isDraw)
+{
+	if (this->objDisp)
+	{
+		for (int i = 0; i < pos.size(); i++)
+		{
+			this->objDisp->display(pos[i], isDraw, 0);
+			pos[i].mX = pos[i].mX + speed;
+			if (pos[i].mX >= 0)
+				pos[i].mX %= width;
+			this->objDisp->display(pos[i], isDraw, textColor);
+		}
+	}
+}
+
 void CObject::addObject(int x, int y)
 {
 	pos.push_back(CPoint(x,y));

@@ -266,7 +266,7 @@ void CGame::drawGame(string line)
 	cn.draw();
 	TextColor(15);
 
-	arrTr.display(0, speed[0]);
+	/*arrTr.display(0, speed[0]);
 	arrTr.updatePos(width, speed[0]);
 	arrTr.display(3, speed[0]);
 
@@ -280,7 +280,13 @@ void CGame::drawGame(string line)
 
 	arrD.display(0, 1);
 	arrD.updatePos(width, speed[1]);
-	arrD.display(9, 1);
+	arrD.display(9, 1);*/
+	arrTr.updatePosandDisp(width, speed[0], 3, speed[0]);
+	arrC.updatePosandDisp(width, speed[0], 5, speed[0]);
+	arrB.updatePosandDisp(width, speed[1], 7, 1);
+	arrD.updatePosandDisp(width, speed[1], 9, 1);
+
+
 	for (int i = 0; i < 2; ++i)
 		arrL[i].draw();
 }
@@ -386,7 +392,7 @@ void CGame::startGame(int &level, char& current)
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(3000 / (level*5));
+		Sleep(2000 / (level*5));
 
 		/*if (level % 5 == 0)
 		{
