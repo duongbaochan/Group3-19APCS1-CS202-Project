@@ -82,8 +82,8 @@ void Menu(CGame& x)
 	try {
 		if (n == 1)
 		{
-			int level = 5;
-			x.setGame(level, 1, 100, 0, 50, 0);
+			int level = 3;
+			x.setGame(level, 2, 100, 0, 50, 0);
 			//x.startGame(level);
 			return;
 		}
@@ -213,22 +213,6 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 
 	for (int i = 1; i <= size; i++)
 	{
-		/*CTruck objT(0 - i * _width / size + rand()%7, k * 8 + 2);
-		CCar objC(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
-		CBird objB(0 - i * _width / size -10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
-		CDinausor objD(0 - i * _width / size +  15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
-		cout << &objT << endl;
-		arrTr.push_back(objT);
-		arrC.push_back(objC);
-		arrB.push_back(objB);
-		arrD.push_back(objD);
-
-		arrTr.push_back(CTruck(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2));
-		arrC.push_back(CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2));
-		arrB.push_back(CBird(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2));
-		arrD.push_back(CDinausor(0 - i * _width / size + 15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2));
-		*/
-
 		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2);
 		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
 		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
@@ -237,7 +221,7 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	}
 	CTrafficLight objL(_width, k * 8 + 2);
 	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2);
 	arrL.push_back(objL1);
 
 	cn.setXY(xPeople, yPeople);
@@ -380,8 +364,12 @@ void CGame::startGame(int &level, char& current)
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(400 / (score + 10));
+		Sleep(3000 / (level*5));
 
+		if (level == 5)
+		{
+			this->resetGame();
+		}
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 56)
@@ -393,7 +381,7 @@ void CGame::startGame(int &level, char& current)
 		}
 	}
 }
-void CGame::runningGame(int level, char& current)
+void CGame::runningGame(int &level, char& current)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -406,6 +394,7 @@ void CGame::runningGame(int level, char& current)
 	if (cn.isFinishTurn(level + 24))
 	{
 		score += 10;
+		level += 1;
 		updatePosPeople(current, 1);
 	}
 }
