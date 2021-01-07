@@ -27,14 +27,15 @@ void Menu(CGame& x)
 
 	int n; cin >> n;
 
-	while (true) {
 		try {
 			if (cin.fail())
 				throw n;
 		}
 
-		catch (...) {
+		catch (int n) {
+			GotoXY(10, 19);
 			cout << "Exception caught from input (Invalid input format). Exiting...\n";
+			exit(0);
 		}
 
 		try {
@@ -52,13 +53,22 @@ void Menu(CGame& x)
 				x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
 				return;
 			}
+			else if (n == 3)
+			{
+				system("CLS");
+				cout << "Settings 1." << endl;
+				cout << "Settings 2." << endl;
+				cout << "Settings 3." << endl;
+			}
 			else if (n == 0) return;
 			else throw n;
 		}
+
 		catch (int n) {
+			GotoXY(10, 19);
 			cout << "Exception caught from input (Input option is not available). Exiting...\n";
+			exit(0);
 		}
-	}
 }
 
 void setConsoleSize(int width, int height) {

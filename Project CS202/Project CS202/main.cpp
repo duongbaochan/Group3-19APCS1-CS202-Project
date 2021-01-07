@@ -1,4 +1,4 @@
-#include "CGame.h"
+﻿#include "CGame.h"
 #include <Windows.h>
 
 bool IS_RUNNING = true;
@@ -15,7 +15,7 @@ void ThreadFunc2()
 	PlaySound(TEXT("Sounds/1.wav"), NULL, SND_LOOP | SND_ASYNC);
 }
 int main()
-{
+{	
 	int width = 940, height = 560; // Set width for ingame console
 
 	thread t2(ThreadFunc2);
