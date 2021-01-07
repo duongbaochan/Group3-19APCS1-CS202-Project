@@ -443,13 +443,18 @@ void CGame::loadGame()
 		f >> size >> score >> stop >> width >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
-		s.erase();
+		/*s.erase();
 		getline(f, s);
 
 		arrTr.inputFile(arrayPoint(f));
 		arrC.inputFile(arrayPoint(f));
 		arrB.inputFile(arrayPoint(f));
-		arrD.inputFile(arrayPoint(f));
+		arrD.inputFile(arrayPoint(f));*/
+
+		arrTr.loadFile(f);
+		arrC.loadFile(f);
+		arrB.loadFile(f);
+		arrD.loadFile(f);
 
 		CTrafficLight objL(width, arrTr.getPosTraffic());
 		arrL.push_back(objL);
@@ -457,10 +462,10 @@ void CGame::loadGame()
 		arrL.push_back(objL1);
 
 		for (int i = 0; i < 2; i++)
-			speed.push_back(1);
+			speed.push_back(2);
+
 	}
 	f.close();
-	//this->startGame(size);
 }
 void CGame::saveGame()
 {

@@ -24,6 +24,7 @@ public:
 	void outputFile(ofstream& x);
 	void inputFile(vector<int> tmp);
 	int getPosTraffic();
+	void loadFile(ifstream &x);
 
 };
 
