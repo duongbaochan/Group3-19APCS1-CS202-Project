@@ -84,3 +84,8 @@ void CObject::addObject(int x, int y)
 {
 	pos.push_back(CPoint(x,y));
 }
+void CObject::outputFile(ofstream& x)
+{
+	for (int i = 0; i < pos.size(); i++)
+		x << pos[i].mX << "," << pos[i].mY << ",";
+}

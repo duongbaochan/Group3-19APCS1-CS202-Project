@@ -453,6 +453,15 @@ void CGame::saveGame()
 	{
 		f << size << " " << score << " " << stop << " " << width << " ";
 		cn.outputFile(f);
+		f << endl;
+		arrTr.outputFile(f);
+		f << endl;
+		arrC.outputFile(f);
+		f << endl;
+		arrB.outputFile(f);
+		f << endl;
+		arrD.outputFile(f);
+		f << endl;
 	} 
 	f.close();
 

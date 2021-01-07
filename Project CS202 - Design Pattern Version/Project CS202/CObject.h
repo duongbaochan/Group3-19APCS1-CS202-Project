@@ -21,5 +21,6 @@ public:
 	void display(int, bool) const;
 	void updatePos(int width, int speed);
 	void addObject(int,int);
+	void outputFile(ofstream& x);
 };
 

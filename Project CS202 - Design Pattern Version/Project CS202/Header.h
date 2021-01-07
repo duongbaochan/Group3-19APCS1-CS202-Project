@@ -12,6 +12,7 @@
 #include <fstream>
 #include <string>
 #include <thread>
+#include <sstream>
 
 using namespace std;
 
