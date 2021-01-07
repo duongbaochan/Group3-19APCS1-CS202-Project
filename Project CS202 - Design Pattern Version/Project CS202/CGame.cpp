@@ -394,7 +394,10 @@ void CGame::exitGame(HANDLE t)
 	TerminateThread(t, 0);
 	system("cls");
 	cout << "Your score: " << score << endl;
-	exit(0);
+	saveGame();
+	resetGame();
+	system("cls");
+	//exit(0);
 }
 void CGame::pauseGame(HANDLE t)
 {
