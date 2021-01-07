@@ -43,7 +43,7 @@ void Menu(CGame& x)
 	cout << "Break-a-leg!";
 
 	//Menu section
-	int width = 960, height = 540; // Size of menu
+	int width = 960, height = 600; // Size of menu
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
@@ -160,21 +160,22 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	width = _width;
 	FixConsoleWindow();
 	unsigned short k = rand() % 4;
+	int m = 4;
 	for (int i = 1; i <= size; i++)
 	{
-		CTruck* objT = new CTruck(0 - i * _width / size + rand()%7, k * 8 + 2);
-		CCar* objC = new CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % 4 * 8 + 2);
-		CBird* objB = new CBird(0 - i * _width / size -10 + rand() % 15, (k + 2) % 4 * 8 + 2);
-		CDinausor* objD = new CDinausor(0 - i * _width / size +  15 + rand() % 15, (k + 3) % 4 * 8 + 2);
+		CTruck* objT = new CTruck(0 - i * _width / size + rand()%7, k * 8 + 2 + m);
+		CCar* objC = new CCar(0 - i * _width / size + 40 + rand() % 7, (k + 1) % 4 * 8 + 2 + m);
+		CBird* objB = new CBird(0 - i * _width / size -10 + rand() % 15, (k + 2) % 4 * 8 + 2 + m);
+		CDinausor* objD = new CDinausor(0 - i * _width / size +  15 + rand() % 15, (k + 3) % 4 * 8 + 2 + m);
 		
 		arrTr.push_back(objT);
 		arrC.push_back(objC);
 		arrB.push_back(objB);
 		arrD.push_back(objD);
 	}
-	CTrafficLight objL(_width, k * 8 + 2);
+	CTrafficLight objL(_width, k * 8 + 2 + m);
 	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % 4 * 8 + 2 + m);
 	arrL.push_back(objL1);
 
 	cn.setXY(xPeople, yPeople);
@@ -186,15 +187,23 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 
 void CGame::drawGame(string line)
 {
-	GotoXY(0, 1);
+	int m = 4;
+	GotoXY(0, 1 + m);
 	TextColor(12);
 	cout << line;
-	GotoXY(0, 9);
+	cn.draw();
+	GotoXY(0, 9 + m);
+	TextColor(12);
 	cout << line;
-	GotoXY(0, 16);
+	cn.draw();
+	GotoXY(0, 16 + m);
+	TextColor(12);
 	cout << line;
-	GotoXY(0, 24);
+	cn.draw();
+	GotoXY(0, 24 + m);
+	TextColor(12);
 	cout << line;
+	cn.draw();
 	TextColor(15);
 
 /*	for (int i = 0; i < size; i++)
@@ -231,6 +240,8 @@ void CGame::drawGame(string line)
 	}
 	for (int i = 0; i < 2; ++i)
 		arrL[i].draw();
+
+	cn.draw();
 }
 void CGame::updatePosPeople(char& current, bool flag)
 {

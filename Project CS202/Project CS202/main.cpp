@@ -16,7 +16,7 @@ void ThreadFunc2()
 }
 int main()
 {	
-	int width = 940, height = 560; // Set width for ingame console
+	int width = 940, height = 600; // Set width for ingame console
 
 	thread t2(ThreadFunc2);
 
