@@ -10,14 +10,7 @@
 
 class CGame
 {
-	/*vector <CTruck> arrTr;
-	vector <CCar> arrC;
-	vector <CDinausor> arrD;
-	vector <CBird> arrB;
-	vector <CPoint> arrTr1;
-	vector <CPoint> arrC1;
-	vector <CPoint> arrD1;
-	vector <CPoint> arrB1;*/
+
 	CTruck arrTr;
 	CCar arrC;
 	CDinausor arrD;

@@ -43,11 +43,11 @@ void Menu(CGame& x)
 	cout << "Break-a-leg!";
 
 	//Menu section
-	int width = 960, height = 540; // Size of menu
+	int width = 1100, height = 540; // Size of menu
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
-	int m = 8;
+	int m = 2;
 
 	GotoXY(65 + m, 9);
 	TextColor(6);
