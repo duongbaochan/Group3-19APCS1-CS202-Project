@@ -338,7 +338,7 @@ void CGame::startGame(int &level, char& current)
 	for (int i = 0; i < 100; i++)
 		line += "*";
 
-	unsigned short k = rand() % 5 + 5; //time period
+	unsigned short k = rand() % 5 + 3; //time period
 	time_t t = time(0);
 	tm* Check = localtime(&t);
 	int tmp = Check->tm_sec;
@@ -358,6 +358,8 @@ void CGame::startGame(int &level, char& current)
 
 		t = time(0);
 		Check = localtime(&t);
+		if (tmp > 56)
+			tmp = 0;
 		if ((Check->tm_sec - tmp) == k) {
 			for (int i = 0; i < 2; ++i)
 				arrL[i].changeColor(arrL[i].getColor(), speed[0], speed[1]);
