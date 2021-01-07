@@ -53,7 +53,7 @@ vector<vector<COORD>> CDinausor::boundaryMap() // For Impact function
 	vector<vector<bool>> bool_boundary;
 	string str;
 	vector<string> strs;
-	str = "    _____ ";
+	str = "          ";
 	strs.push_back(str);
 	str = "   ( *  _)";
 	strs.push_back(str);
@@ -63,6 +63,16 @@ vector<vector<COORD>> CDinausor::boundaryMap() // For Impact function
 	strs.push_back(str);
 	str = "    |_ |_";
 	strs.push_back(str);
+
+	/*cout << "   _____ ";
+	GotoXY(mX, mY + 1);
+	cout << "  ( *  _)";
+	GotoXY(mX, mY + 2);
+	cout << "  |    |/";
+	GotoXY(mX, mY + 3);
+	cout << " \\|____|";
+	GotoXY(mX, mY + 4);
+	cout << "   |_ |_";*/
 
 	for (int i = 0; i < strs.size(); ++i)
 	{

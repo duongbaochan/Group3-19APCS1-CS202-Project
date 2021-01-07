@@ -28,11 +28,11 @@ vector<vector<COORD>> CBird::boundaryMap() // For Impact function
 	vector<vector<bool>> bool_boundary;
 	string str;
 	vector<string> strs;
-	str = "  _/\\__";
+	str = "   /\\  ";		// "  _/\\__";
 	strs.push_back(str);
-	str = " /     \\__";
+	str = " /     \\  ";	// " /     \\__"
 	strs.push_back(str);
-	str = " \\_____(__)";
+	str = " \\     (  )";	// " \\_____(__)"
 	strs.push_back(str);
 	str = "   \\/      ";
 	strs.push_back(str);

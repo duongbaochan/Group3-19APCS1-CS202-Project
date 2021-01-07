@@ -151,7 +151,7 @@ bool CPeople::isImpact(CAnimal* x)
 void CPeople::draw()
 {
     GotoXY(mX, mY);
-    if (mX > 0 && mX < 85) {
+    if (mX >= 0 && mX < 85) {
         
 		TextColor(7);
         cout << "  _  ";
@@ -172,17 +172,17 @@ void CPeople::draw()
 
 void CPeople::erase()
 {
+	/*GotoXY(mX, mY);
+	cout << " " << " ";*/
+	
 	GotoXY(mX, mY);
-	cout << " " << " ";
-	/*
 	cout << "     ";
 	GotoXY(mX, mY + 1);
 	cout << "     ";
 	GotoXY(mX, mY + 2);
-	cout << "    ";
+	cout << "     ";
 	GotoXY(mX, mY + 3);
 	cout << "     ";
-	*/
 }
 
 vector<vector<COORD>> CPeople::boundaryMap() // For Impact
@@ -191,7 +191,7 @@ vector<vector<COORD>> CPeople::boundaryMap() // For Impact
 	vector<vector<bool>> bool_boundary;
 	string str;
 	vector<string> strs;
-	str = "  _  ";
+	str = "     ";
 	strs.push_back(str);
 	str = " (_) ";
 	strs.push_back(str);
@@ -199,6 +199,14 @@ vector<vector<COORD>> CPeople::boundaryMap() // For Impact
 	strs.push_back(str);
 	str = " / \\";
 	strs.push_back(str);
+
+	/*cout << "  _  ";
+	GotoXY(mX, mY + 1);
+	cout << " (_) ";
+	GotoXY(mX, mY + 2);
+	cout << " -|-";
+	GotoXY(mX, mY + 3);
+	cout << " / \\";*/
 
 	for (int i = 0; i < strs.size(); ++i)
 	{

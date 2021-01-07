@@ -263,6 +263,8 @@ void CGame::updatePosPeople(char& current, bool flag)
 	if (flag == 1)
 		cn.setXY(50, 0);
 
+	cn.erase();
+
 	GotoXY(cn.mX, cn.mY);
 	//cout << "N:";
     cn.draw();
