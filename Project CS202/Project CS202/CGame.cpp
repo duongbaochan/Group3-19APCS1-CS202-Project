@@ -3,26 +3,66 @@
 
 void Menu(CGame& x)
 {
+	//Credits section
+	GotoXY(12, 1);
+	TextColor(3);
+	cout << "============================";
+	GotoXY(12, 2);
+	cout << "Members - Who has contributed to this project:";
+	GotoXY(12, 3);
+	TextColor(3);
+	cout << "============================";
+	TextColor(15);
+
+	GotoXY(12, 5);
+	cout << "Nguyen Minh Thu - 18125146";
+	GotoXY(12, 6);
+	cout << "Mai Thi Cam Van - 19125130";
+	GotoXY(12, 7);
+	cout << "Duong Bao Chan - 19125080";
+	GotoXY(12, 8);
+	cout << "Pham Dang Quang Vinh - 19125132";
+	GotoXY(12, 9);
+	cout << "Dinh Duy Phuoc - 19125115";
+	TextColor(4);
+	GotoXY(12, 11);
+	cout << "Group 3 - 19CTT1 - CS202 Final Project";
+
+	//Tutorial
+	GotoXY(12, 14);
+	TextColor(9);
+	cout << "============================";
+	GotoXY(12, 15);
+	cout << "=       Tutorial:          =";
+	GotoXY(12, 16);
+	cout << "============================";
+	GotoXY(12, 18);
+	TextColor(10);
+	cout << "You are put into an endless highway \n            with full of different obstacles. \n            Your only objective is to pass the road\n            safely without touching any obstacle,\n            otherwise you lose. ";
+	GotoXY(12, 24);
+	cout << "Break-a-leg!";
+
+	//Menu section
 	int width = 960, height = 540; // Size of menu
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
-	GotoXY(10, 10);
+	GotoXY(60, 9);
 	TextColor(6);
-	cout << "       C R O S S Y  R O A D" << endl;
-	GotoXY(10, 11);
+	cout << "        C R O S S Y  R O A D" << endl;
+	GotoXY(60, 11);
 	cout << "----------------MENU---------------" << endl;
-	GotoXY(10, 12);
+	GotoXY(60, 12);
 	cout << "|          1. New Game.           |" << endl;
-	GotoXY(10, 13);
+	GotoXY(60, 13);
 	cout << "|          2. Load Game.          |" << endl;
-	GotoXY(10, 14);
+	GotoXY(60, 14);
 	cout << "|          3. Settings.           |" << endl;
-	GotoXY(10, 15);
+	GotoXY(60, 15);
 	cout << "|          0. Exit.               |" << endl;
-	GotoXY(10, 16);
+	GotoXY(60, 16);
 	cout << endl;
-	GotoXY(10, 17);
+	GotoXY(60, 17);
 	cout << "Enter our option: ";
 
 	int n; cin >> n;
@@ -33,7 +73,7 @@ void Menu(CGame& x)
 		}
 
 		catch (int n) {
-			GotoXY(10, 19);
+			GotoXY(60, 19);
 			cout << "Exception caught from input (Invalid input format). Exiting...\n";
 			exit(0);
 		}
@@ -65,7 +105,7 @@ void Menu(CGame& x)
 		}
 
 		catch (int n) {
-			GotoXY(10, 19);
+			GotoXY(60, 19);
 			cout << "Exception caught from input (Input option is not available). Exiting...\n";
 			exit(0);
 		}

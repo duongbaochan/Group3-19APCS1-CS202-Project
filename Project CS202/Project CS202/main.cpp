@@ -12,7 +12,7 @@ void ThreadFunc1()
 }
 void ThreadFunc2()
 {
-	PlaySound(TEXT("Sounds/1.wav"), NULL, SND_LOOP | SND_ASYNC);
+	PlaySound(TEXT("Sounds/menu-soundtrack.wav"), NULL, SND_LOOP | SND_ASYNC);
 }
 int main()
 {	
