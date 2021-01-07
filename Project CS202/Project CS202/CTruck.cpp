@@ -28,14 +28,22 @@ vector<vector<COORD>> CTruck::boundaryMap() // For Impact function
 	vector<vector<bool>> bool_boundary;
 	string str;
 	vector<string> strs;
-	str = " ___________";
+	str = "            ";
 	strs.push_back(str);
-	str = "|         \\\\_";
+	str = "|         \\\\ ";
 	strs.push_back(str);
-	str = "|____________|";
+	str = "|  _______   |";
 	strs.push_back(str);
 	str = "  ()-----()";
 	strs.push_back(str);
+
+	/*cout << " ___________";
+	GotoXY(mX - 1, mY + 1);
+	cout << " |         \\\\_";
+	GotoXY(mX - 1, mY + 2);
+	cout << " |____________|";
+	GotoXY(mX, mY + 3);
+	cout << "  ()-----()";*/
 
 	for (int i = 0; i < strs.size(); ++i)
 	{
