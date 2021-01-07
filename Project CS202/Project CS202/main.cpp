@@ -10,9 +10,13 @@ void ThreadFunc1()
 {
 	game.startGame(level, MOVING);
 }
-
+void ThreadFunc2()
+{
+	PlaySound(TEXT("Sounds/1.wav"), NULL, SND_LOOP | SND_ASYNC);
+}
 int main()
 {
+	thread t2(ThreadFunc2);
 	Menu(game);
 	thread t1(ThreadFunc1);
 	//int temp;
