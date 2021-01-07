@@ -36,16 +36,7 @@ void CObject::setInRange(CIsInRange* x)
 void CObject::setDisplay(CDisplay* x){
 	objDisp = x;
 }
-/*bool CObject::isInRange(CPoint x) const{
-	x.mX -= (*pos).mX;
-	x.mY -= (*pos).mY;
-	if (this->objImpact)
-	{
-		PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
-		return this->objImpact->isDxAndDyInRange(x);
-	}
-	return 0;
-}*/
+
 bool CObject::isInRange(CPoint x) const {
 	for (int i = 0; i < pos.size(); i++)
 	{
@@ -76,10 +67,7 @@ void CObject::updatePos(int width, int speed)
 			pos[i].mX %= width;
 	}
 
-/*	(*pos).mX = (*pos).mX + speed;
-	if ((*pos).mX >= 0)
-		(*pos).mX %= width;
-*/}
+}
 void CObject::addObject(int x, int y)
 {
 	pos.push_back(CPoint(x,y));

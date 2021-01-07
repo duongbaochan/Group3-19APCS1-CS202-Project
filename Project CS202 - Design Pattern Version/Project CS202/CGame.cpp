@@ -245,9 +245,6 @@ void CGame::drawGame(string line)
 	cout << line;
 	TextColor(15);
 
-
-	//if (arrL[1].getColor() == 12)
-		//Sleep(5);
 	arrTr.display(0, speed[0]);
 	arrTr.updatePos(width, speed[0]);
 	arrTr.display(3, speed[0]);
@@ -263,25 +260,6 @@ void CGame::drawGame(string line)
 	arrD.display(0, 1);
 	arrD.updatePos(width, speed[1]);
 	arrD.display(9, 1);
-
-	/*for (int i = 0; i < size; i++)
-	{
-		arrTr[i].display(0, speed[0]);
-		arrTr[i].updatePos(width, speed[0]);
-		arrTr[i].display(3, speed[0]);
-
-		arrC[i].display(0, speed[0]);
-		arrC[i].updatePos(width, speed[0]);
-		arrC[i].display(5, speed[0]);
-
-		arrB[i].display(0, 1);
-		arrB[i].updatePos(width, speed[1]);
-		arrB[i].display(7, 1);
-
-		arrD[i].display(0, 1);
-		arrD[i].updatePos(width, speed[1]);
-		arrD[i].display(9, 1);
-	}*/
 	for (int i = 0; i < 2; ++i)
 		arrL[i].draw();
 }
@@ -366,9 +344,12 @@ void CGame::startGame(int &level, char& current)
 		runningGame(level, current);
 		Sleep(3000 / (level*5));
 
-		if (level == 5)
+		if (level % 5 == 0)
 		{
 			this->resetGame();
+			setGame(level/5 + 3 , 2, 100, score, 50, 0);
+			startGame(level, current);
+			return;
 		}
 		t = time(0);
 		Check = localtime(&t);
