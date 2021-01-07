@@ -352,11 +352,12 @@ void CGame::resumeGame(HANDLE t)
 }
 void CGame::loadGame()
 {
-	//cout << "Enter your path: ";
-	//string s;
-	//getline(cin, s);
+	cin.ignore();
+	cout << "Enter your path: ";
+	string s;  //D:\\CrossingRoad Repo\\Game1.txt
+	getline(cin, s);
 	ifstream f;
-	f.open("Game1.txt");
+	f.open(s);
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
@@ -366,16 +367,23 @@ void CGame::loadGame()
 }
 void CGame::saveGame()
 {
-	//cout << "Enter your location: ";
-	//string s;
-	//getline(cin, s);
+	cin.ignore();
+	cout << "Enter your location: ";
+	string s;                        //    D:\\CrossingRoad Repo
+	getline(cin, s);
+	GotoXY(cn.mX + 2, cn.mY + 1);
+	cout << "Enter the name of this current save: ";
+	string filename;
+	getline(cin, filename);
 	ofstream f;
-	f.open("Game1.txt");
+	f.open(s + "\\" + filename + ".txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
 		f << size << " " << score << " " << stop << " " << width << " " << cn.mX << " " << cn.mY << " " << cn.mState;
 	f.close();
+	GotoXY(cn.mX + 2, cn.mY + 2);
+	cout << "Your game is saved ! Press ESC to quit.";
 }
 /*
 void CGame::pauseGame()
