@@ -3,48 +3,120 @@
 
 void Menu(CGame& x)
 {
-	cout << "----------------MENU--------------" << endl;
-	cout << "        WELCOME TO THE GAME       " << endl;
-	cout << "1. New Game." << endl;
-	cout << "2. Load Game." << endl;
-	cout << "3. Settings." << endl;
-	cout << "0. Exit." << endl;
+	//Credits section
+	GotoXY(12, 1);
+	TextColor(3);
+	cout << "============================";
+	GotoXY(12, 2);
+	cout << "Members - Who has contributed to this project:";
+	GotoXY(12, 3);
+	TextColor(3);
+	cout << "============================";
+	TextColor(15);
+
+	GotoXY(12, 5);
+	cout << "Nguyen Minh Thu - 18125146";
+	GotoXY(12, 6);
+	cout << "Mai Thi Cam Van - 19125130";
+	GotoXY(12, 7);
+	cout << "Duong Bao Chan - 19125080";
+	GotoXY(12, 8);
+	cout << "Pham Dang Quang Vinh - 19125132";
+	GotoXY(12, 9);
+	cout << "Dinh Duy Phuoc - 19125115";
+	TextColor(4);
+	GotoXY(12, 11);
+	cout << "Group 3 - 19CTT1 - CS202 Final Project";
+
+	//Tutorial
+	GotoXY(12, 14);
+	TextColor(9);
+	cout << "============================";
+	GotoXY(12, 15);
+	cout << "=       Tutorial:          =";
+	GotoXY(12, 16);
+	cout << "============================";
+	GotoXY(12, 18);
+	TextColor(10);
+	cout << "You are put into an endless highway \n            with full of different obstacles. \n            Your only objective is to pass the road\n            safely without touching any obstacle,\n            otherwise you lose. ";
+	GotoXY(12, 24);
+	cout << "Break-a-leg!";
+
+	//Menu section
+	int width = 960, height = 540; // Size of menu
+
+	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
+
+	GotoXY(60, 9);
+	TextColor(6);
+	cout << "        C R O S S Y  R O A D" << endl;
+	GotoXY(60, 11);
+	cout << "----------------MENU---------------" << endl;
+	GotoXY(60, 12);
+	cout << "|          1. New Game.           |" << endl;
+	GotoXY(60, 13);
+	cout << "|          2. Load Game.          |" << endl;
+	GotoXY(60, 14);
+	cout << "|          3. Settings.           |" << endl;
+	GotoXY(60, 15);
+	cout << "|          0. Exit.               |" << endl;
+	GotoXY(60, 16);
+	cout << endl;
+	GotoXY(60, 17);
 	cout << "Enter our option: ";
+
 	int n; cin >> n;
 
-	while (true) {
-		try {
-			if (cin.fail())
-				throw n;
-		}
-
-		catch (...) {
-			cout << "Exception caught from input (Invalid input format). Exiting...\n";
-		}
-
-		try {
-			if (n == 1)
-			{
-				int level = 5;
-				x.setGame(level, 1, 100, 0, 50, 0);
-				//x.startGame(level);
-				return;
-			}
-			else if (n == 2)
-			{
-				x.loadGame();
-				//x.setGame();
-				return;
-			}
-			else if (n == 0) return;
-			else throw n;
-		}
-		catch (int n) {
-			cout << "Exception caught from input (Input option is not available). Exiting...\n";
-		}
+	try {
+		if (cin.fail())
+			throw n;
 	}
 
+	catch (int n) {
+		GotoXY(60, 19);
+		cout << "Exception caught from input (Invalid input format). Exiting...\n";
+		exit(0);
+	}
 
+	try {
+		if (n == 1)
+		{
+			int level = 5;
+			x.setGame(level, 1, 100, 0, 50, 0);
+			//x.startGame(level);
+			return;
+		}
+		else if (n == 2)
+		{
+			x.loadGame();
+			int level = x.getLevel();
+			x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
+			return;
+		}
+		else if (n == 3)
+		{
+			system("CLS");
+			cout << "Settings 1." << endl;
+			cout << "Settings 2." << endl;
+			cout << "Settings 3." << endl;
+		}
+		else if (n == 0) return;
+		else throw n;
+	}
+
+	catch (int n) {
+		GotoXY(60, 19);
+		cout << "Exception caught from input (Input option is not available). Exiting...\n";
+		exit(0);
+	}
+}
+
+void setConsoleSize(int width, int height) {
+	HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
+
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, width, height, TRUE);
 }
 
 int CGame::getScore()

@@ -59,4 +59,5 @@ public:
 };
 
 void Menu(CGame&);
+void setConsoleSize(int width, int height);
 
