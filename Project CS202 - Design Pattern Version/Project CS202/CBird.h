@@ -1,13 +1,11 @@
 #pragma once
-#include "CAnimal.h"
+#include "CObject.h"
+#include "CBirdDisplay.h"
+#include "CBirdInRange.h"
 
-class CBird : public CAnimal
+class CBird : public CObject
 {
 public:
 	CBird(int, int);
-	void draw(int, bool);
-
-	// For Impact function
-	bool isDxAndDyInRange(int, int);
 };
 

@@ -2,60 +2,45 @@
 
 CPeople::CPeople()
 {
-	mX = mY = 0;
+	pos.mX = pos.mY = 0;
 }
 CPeople::CPeople(int w)
 {
-	mX = 50;
-	mY = 0;
+	pos.mX = w/2;
+	pos.mY = 0;
 }
 
 CPeople::CPeople(int mX, int mY)
 {
-	this->mX = mX;
-	this->mY = mY;
+	pos.mX = mX;
+	pos.mY = mY;
 }
 
 void CPeople::setXY(int mX, int mY)
 {
-	this->mX = mX;
-	this->mY = mY;
+	pos.mX = mX;
+	pos.mY = mY;
 }
 
-int CPeople::getX()
-{
-	return mX;
-}
 
-int CPeople::getY()
-{
-	return mY;
-}
 
-void CPeople::setX(int mX)
-{
-	this->mX = mX;
-}
-void CPeople::setY(int mY)
-{
-	this->mY = mY;
-}
+
 
 void CPeople::Up()
 {
-	mX -= step;
+	pos.mY -= step;
 }
 void CPeople::Left()
 {
-	mY -= step;
+	pos.mX -= step;
 }
 void CPeople::Right()
 {
-	mY += step;
+	pos.mX += step;
 }
 void CPeople::Down()
 {
-	mX += step;
+	pos.mY += step;
 }
 
 bool CPeople::isFinish()
@@ -67,36 +52,19 @@ bool CPeople::isDead()
 {
 	return mState;
 }
-bool CPeople::isImpact(CVehicle* x)
+bool CPeople::isImpact(const CObject &x) const
 {
-	int Dx = -1, Dy = -1;
-	Dx = mX - x->getX();
-	Dy = mY - x->getY();
-
-	if (x->isDxAndDyInRange(Dx, Dy))
+	if (x.isInRange(pos))
 	{
-		PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
 		return 1;
 	}
 	return 0;
 }
-bool CPeople::isImpact(CAnimal* x)
-{
-	int Dx = -1, Dy = -1;
-	Dx = mX - x->getX();
-	Dy = mY - x->getY();
 
-	if (x->isDxAndDyInRange(Dx, Dy))
-	{
-		PlaySound(TEXT("Sounds/woosh_1.wav"), NULL, SND_SYNC);
-		return 1;
-	}
-	return 0;
-}
 void CPeople::draw()
 {
-    GotoXY(mX, mY);
-    if (mX > 0 && mX < 85) {
+    GotoXY(pos.mX, pos.mY);
+    if (pos.mX > 0 && pos.mX < 85) {
         /*
 		TextColor(7);
         cout << "  _  ";
@@ -114,10 +82,14 @@ void CPeople::draw()
 		TextColor(7);
 	}
 }
+void CPeople::setmState(int x)
+{
+	mState = x;
+}
 
 void CPeople::erase()
 {
-	GotoXY(mX, mY);
+	GotoXY(pos.mX, pos.mY);
 	cout << " " << " ";
 	/*
 	cout << "     ";

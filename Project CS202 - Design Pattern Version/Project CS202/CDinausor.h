@@ -1,12 +1,10 @@
 #pragma once
-#include "CAnimal.h"
+#include "CObject.h"
+#include "CDinoDisplay.h"
+#include "CDinoInRange.h"
 
-class CDinausor: public CAnimal
+class CDinausor: public CObject
 {
 public:
 	CDinausor(int, int);
-	void draw(int, bool);
-
-	// For Impact function
-	bool isDxAndDyInRange(int, int);
 };

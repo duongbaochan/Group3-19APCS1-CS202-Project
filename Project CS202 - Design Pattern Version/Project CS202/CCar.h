@@ -1,12 +1,10 @@
 #pragma once
-#include "CVehical.h"
-
-class CCar : public CVehicle
+#include "CObject.h"
+#include "CCarDisplay.h"
+#include "CCarInRange.h"
+class CCar : public CObject
 {
 public:
 	CCar(int, int);
-	void draw(int, bool);
 
-	// For Impact function
-	bool isDxAndDyInRange(int, int);
 };

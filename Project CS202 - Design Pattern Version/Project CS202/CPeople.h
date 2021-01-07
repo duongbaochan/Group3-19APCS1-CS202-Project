@@ -1,32 +1,27 @@
 #pragma once
 #include "Header.h"
-#include "CVehical.h"
-#include "CAnimal.h"
+#include "CObject.h"
 
 class CPeople {
 protected:
-	int mX, mY;
+	CPoint pos;
 	bool mState = 1; //Tr?ng thái s?ng ch?t
 	int step;
 public:
-	friend class CGame;
+	//friend class CGame;
 
 	CPeople();
 	CPeople(int w);
 	CPeople(int, int);
 
 	void setXY(int, int);
-	void setX(int);
-	void setY(int);
+	void setmState(int);
 
-	int getX();
-	int getY();
 	void Up();
 	void Left();
 	void Right();
 	void Down();
-	bool isImpact(CVehicle*);
-	bool isImpact(CAnimal*);
+	bool isImpact(const CObject &x) const;
 	bool isFinish();
 	bool isDead();
 	void Finish()
@@ -35,24 +30,23 @@ public:
 	}
 	bool isFinishTurn(int x)
 	{
-		if (mY >= x)
+		if (pos.mY >= x)
 			return 1;
 		return 0;
 	}
 	void draw();
 	void erase();
-	void changeXY(int a, int b)
+	void outputFile(ofstream& x)
 	{
-		mX += a;
-		mY += b;
+		x << pos.mX << " " << pos.mY << " " << mState;
 	}
-	/*
-	void GotoXY() {
+	void gotoXYPeople()
+	{
 		COORD coord;
-		coord.X = mX;
-		coord.Y = mY;
+		coord.X = pos.mX;
+		coord.Y = pos.mY;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
 	}
-	*/
 };
 

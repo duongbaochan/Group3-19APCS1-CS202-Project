@@ -13,21 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\InRange">
+      <UniqueIdentifier>{9c503539-a41d-44e3-91ab-d23e4a04f2ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Display">
+      <UniqueIdentifier>{8c3489f4-bf02-4f48-a5c9-5cbf2a844081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{d305012a-0300-47e4-8602-d5543c6a5f6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Function.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CPeople.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CVehical.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CAnimal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CGame.h">
@@ -49,9 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CDisplay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CMove.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CObject.h">
@@ -89,31 +86,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Function.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CPeople.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CVehical.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CAnimal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTruck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CBird.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CCar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CDinausor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -122,44 +95,47 @@
     <ClCompile Include="CTrafficLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CMove.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CBirdInRange.cpp">
+      <Filter>Source Files\InRange</Filter>
     </ClCompile>
     <ClCompile Include="CBirdDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CDinoDisplay.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Display</Filter>
     </ClCompile>
     <ClCompile Include="CCarDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CTruckDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CPoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CIsInRange.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CDinoInRange.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Display</Filter>
     </ClCompile>
     <ClCompile Include="CCarInRange.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\InRange</Filter>
     </ClCompile>
-    <ClCompile Include="CBirdInRange.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CDinoDisplay.cpp">
+      <Filter>Source Files\Display</Filter>
+    </ClCompile>
+    <ClCompile Include="CDinoInRange.cpp">
+      <Filter>Source Files\InRange</Filter>
+    </ClCompile>
+    <ClCompile Include="CTruckDisplay.cpp">
+      <Filter>Source Files\Display</Filter>
     </ClCompile>
     <ClCompile Include="CTruckInRange.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\InRange</Filter>
+    </ClCompile>
+    <ClCompile Include="CBird.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CCar.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CDinausor.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTruck.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeople.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

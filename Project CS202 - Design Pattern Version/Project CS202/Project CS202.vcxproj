@@ -140,7 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CAnimal.h" />
     <ClInclude Include="CBird.h" />
     <ClInclude Include="CBirdDisplay.h" />
     <ClInclude Include="CBirdInRange.h" />
@@ -153,7 +152,6 @@
     <ClInclude Include="CDisplay.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CIsInRange.h" />
-    <ClInclude Include="CMove.h" />
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CPeople.h" />
     <ClInclude Include="CPoint.h" />
@@ -161,12 +159,9 @@
     <ClInclude Include="CTruck.h" />
     <ClInclude Include="CTruckDisplay.h" />
     <ClInclude Include="CTruckInRange.h" />
-    <ClInclude Include="CVehical.h" />
-    <ClInclude Include="Function.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CAnimal.cpp" />
     <ClCompile Include="CBird.cpp" />
     <ClCompile Include="CBirdDisplay.cpp" />
     <ClCompile Include="CBirdInRange.cpp" />
@@ -176,19 +171,13 @@
     <ClCompile Include="CDinausor.cpp" />
     <ClCompile Include="CDinoDisplay.cpp" />
     <ClCompile Include="CDinoInRange.cpp" />
-    <ClCompile Include="CDisplay.cpp" />
     <ClCompile Include="CGame.cpp" />
-    <ClCompile Include="CIsInRange.cpp" />
-    <ClCompile Include="CMove.cpp" />
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CPeople.cpp" />
-    <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CTrafficLight.cpp" />
     <ClCompile Include="CTruck.cpp" />
     <ClCompile Include="CTruckDisplay.cpp" />
     <ClCompile Include="CTruckInRange.cpp" />
-    <ClCompile Include="CVehical.cpp" />
-    <ClCompile Include="Function.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

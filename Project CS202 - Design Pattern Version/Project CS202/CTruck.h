@@ -1,13 +1,11 @@
 #pragma once
-#include "CVehical.h"
+#include "CObject.h"
+#include "CTruckDisplay.h"
+#include "CTruckInRange.h"
 
-class CTruck : public CVehicle
+class CTruck : public CObject
 {
 public:
 	CTruck(int, int);
-	void draw(int, bool);
-
-	// For Impact function
-	bool isDxAndDyInRange(int, int);
 };
 

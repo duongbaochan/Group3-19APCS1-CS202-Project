@@ -1,20 +1,11 @@
 #include "CDinausor.h"
 
-CDinausor::CDinausor(int x, int y) : CAnimal(x, y)
+CDinausor::CDinausor(int x, int y) : CObject(x, y)
 {
+	CIsInRange* isImp = new CDinoInRange;
+	setInRange(isImp);
 
-}
 
-// For Impact function
-bool CDinausor::isDxAndDyInRange(int Dx, int Dy)
-{
-	if (Dy == 1)
-		return (Dx >= 3 && Dx <= 9);
-	if (Dy == 2)
-		return (Dx >= 3 && Dx <= 9);
-	if (Dy == 3)
-		return (Dx >= 2 && Dx <= 8);
-	if (Dy == 4)
-		return (Dx >= 4 && Dx <= 8);
-	return 0;
+	CDisplay* disp = new CDinoDisplay;
+	setDisplay(disp);
 }
