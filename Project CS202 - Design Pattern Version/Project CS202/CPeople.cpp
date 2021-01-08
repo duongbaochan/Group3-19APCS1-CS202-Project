@@ -37,7 +37,7 @@ vector<vector<CPoint>> CPeople::boundary() // For Impact
 	vector<vector<bool>> bool_boundary;
 	string str;
 	vector<string> strs;
-	str = "     ";
+	str = "  _  ";
 	strs.push_back(str);
 	str = " (_) ";
 	strs.push_back(str);

@@ -16,7 +16,7 @@ vector<vector<CPoint>> CBird::boundary(int pos_i) // For Impact
 	strs.push_back(str);
 	str = " /  1  \\  ";	// " /     \\__"
 	strs.push_back(str);
-	str = " \\_____(__)";	// " \\_____(__)"
+	str = " \\  1  (  )";	// " \\_____(__)"
 	strs.push_back(str);
 	str = "   \\/      ";
 	strs.push_back(str);
