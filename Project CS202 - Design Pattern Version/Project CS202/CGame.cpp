@@ -288,7 +288,7 @@ void CGame::updatePosPeople(char& current, bool flag)
 	GotoXY(104 + m, 31);
 	cout << "Pause game: P";
 	GotoXY(105 + m, 32);
-	cout << "Escape: ESC";
+	cout << "Resume: R";
 	GotoXY(105 + m, 33);
 	cout << "Move: AWSD";
 
@@ -303,7 +303,6 @@ void CGame::updatePosPeople(char& current, bool flag)
 		cn.setXY(width / 2, 0);
 
 
-	
 	if (current == 'A' || current == 'D' || current == 'W' || current == 'S') {
 		cn.erase();
 		switch (current) {
@@ -318,10 +317,6 @@ void CGame::updatePosPeople(char& current, bool flag)
 			break;
 		case 'S':
 			cn.Down();
-			break;
-		case 'L':
-			stop = 1;
-			saveGame();
 			break;
 		}
 	}

@@ -40,7 +40,7 @@ void preMain()
 			//temp = _getch();
 			if (!game.getPeople().isDead())
 			{
-				if (temp == 'L' || temp == 32)
+				if (temp == 'L')
 				{
 					game.exitGame(t1.native_handle(),1);
 					//game.saveGame();
@@ -53,10 +53,13 @@ void preMain()
 				{
 					game.pauseGame(t1.native_handle());
 				}
+				else if (temp == 'R')
+				{
+					game.resumeGame(t1.native_handle());
+				}
 				else
 				{
 					MOVING = temp;
-					game.resumeGame(t1.native_handle());
 				}
 			}
 			else // nguoi bi dung -> cho choi tiep hay khong
