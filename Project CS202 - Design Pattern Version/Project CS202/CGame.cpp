@@ -289,20 +289,43 @@ void CGame::updatePosPeople(char& current, bool flag)
 {
 	int m = 7;
 	int n = 4;
-	GotoXY(105 + m, 2 + n);
+	GotoXY(99 + m, 3);
 	TextColor(2);
 	cout << "|=====================|";
-	GotoXY(107 + m, 3 + n);
+	GotoXY(101 + m, 4);
 	TextColor(9);
 	cout << "C R O S S Y R O A D";
-	GotoXY(112 + m, 5 + n);
+	GotoXY(106 + m, 5);
 	TextColor(6);
 	cout << "Score: " << score;
-	GotoXY(112 + m, 6 + n);
+	GotoXY(106 + m, 6);
 	cout << "Level: " << (score / 50) + 1;
 	TextColor(2);
-	GotoXY(105 + m, 7 + n);
+	GotoXY(99 + m, 7);
 	cout << "|=====================|";
+
+	//Game tutorial
+	GotoXY(99 + m, 27);
+	TextColor(9);
+	cout << "-----------------------";
+	GotoXY(99 + m, 28);
+	cout << "|   ";
+	TextColor(2);
+	cout << "T U T O R I A L";
+	TextColor(9);
+	cout << "   | ";
+	GotoXY(99 + m, 29);
+	TextColor(9);
+	cout << "-----------------------";
+	GotoXY(105 + m, 30);
+	TextColor(6);
+	cout << "Save game: L";
+	GotoXY(104 + m, 31);
+	cout << "Pause game: P";
+	GotoXY(105 + m, 32);
+	cout << "Escape: ESC";
+	GotoXY(105 + m, 33);
+	cout << "Move: AWSD";
 
 
 	/*if (cn.mY == 7 || cn.mY == 14 || cn.mY == 22 || cn.mY == 29)
@@ -312,10 +335,10 @@ void CGame::updatePosPeople(char& current, bool flag)
 	}*/
 
 	if (flag == 1)
-		cn.setXY(width/2, 0);
+		cn.setXY(width / 2, 0);
 
 
-	if (current == 'A' || current == 'D' || current == 'W' || current == 'S'|| current == 'L') {
+	if (current == 'A' || current == 'D' || current == 'W' || current == 'S' || current == 'L') {
 		cn.erase();
 		switch (current) {
 		case 'A':
@@ -330,16 +353,11 @@ void CGame::updatePosPeople(char& current, bool flag)
 		case 'S':
 			cn.Down();
 			break;
-		/*case 'L':
-			/*stop = 1;
-			saveGame();
-			break;
-		case ' ':
+		case 'L':
 			stop = 1;
 			saveGame();
-			break;*/
+			break;
 		}
-		
 	}
 	cn.draw();
 	if (current == ' ')
