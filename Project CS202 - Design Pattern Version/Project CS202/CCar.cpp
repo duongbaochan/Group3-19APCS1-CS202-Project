@@ -16,7 +16,7 @@ vector<vector<CPoint>> CCar::boundary(int pos_i) // For Impact
 	strs.push_back(str);
 	str = "  /11111\\  ";
 	strs.push_back(str);
-	str = "|__________|";
+	str = " __________ ";
 	strs.push_back(str);
 	str = "  ()----()";
 	strs.push_back(str);
