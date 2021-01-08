@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Object">
       <UniqueIdentifier>{d305012a-0300-47e4-8602-d5543c6a5f6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CBoundary">
+      <UniqueIdentifier>{51a8d821-5ee6-4e8a-85bc-b539b0c492aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPeople.h">
@@ -66,6 +69,21 @@
     <ClInclude Include="CPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CBoundary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDinoBound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCarBound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTruckBound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBirdBound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGame.cpp">
@@ -106,6 +124,18 @@
     </ClCompile>
     <ClCompile Include="CPeople.cpp">
       <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CBirdBound.cpp">
+      <Filter>Source Files\CBoundary</Filter>
+    </ClCompile>
+    <ClCompile Include="CCarBound.cpp">
+      <Filter>Source Files\CBoundary</Filter>
+    </ClCompile>
+    <ClCompile Include="CDinoBound.cpp">
+      <Filter>Source Files\CBoundary</Filter>
+    </ClCompile>
+    <ClCompile Include="CTruckBound.cpp">
+      <Filter>Source Files\CBoundary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

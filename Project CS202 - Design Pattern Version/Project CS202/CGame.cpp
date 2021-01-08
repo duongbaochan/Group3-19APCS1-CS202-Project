@@ -174,6 +174,23 @@ CGame::CGame(){
 	score = 0;
 	width = 0;
 }
+void CGame::setGame(int size)
+{
+	this->size = size;
+	arrTr.display(0, 1);
+	arrC.display(0, 1);
+	arrB.display(0, 1);
+	arrD.display(0, 1);
+	for (int i = 0; i < size; i++)
+	{
+		arrTr.addObject(0 - i * width / size + rand() % 7, i);
+		arrC.addObject(0 - i * width / size + 40 + rand() % 7, i);
+		arrB.addObject(0 - i * width / size - 10 + rand() % 15, i);
+		arrD.addObject(0 - i * width / size + 15 + rand() % 15, i);
+	}
+	
+
+}
 void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	resetGame();
@@ -264,7 +281,7 @@ void CGame::updatePosPeople(char& current, bool flag)
 	TextColor(6);
 	cout << "Score: " << score;
 	GotoXY(106 + m, 6);
-	cout << "Level: " << (score / 50) + 1;
+	cout << "Level: " << (score / scoreScale) + 1;
 	TextColor(2);
 	GotoXY(99 + m, 7);
 	cout << "|=====================|";
@@ -409,7 +426,7 @@ void CGame::runningGame(int &level, char& current)
 	if (cn.isFinishTurn(33))
 	{
 		score += 10;
-		if (score % 30 == 0) level++;
+		if (score % scoreScale == 0 && score > 0) level++;
 		cn.erase();
 		updatePosPeople(current, 1);
 	}

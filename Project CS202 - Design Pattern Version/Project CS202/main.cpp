@@ -5,7 +5,7 @@ bool IS_RUNNING = true;
 char MOVING;
 CGame game;
 int level = 3;
-
+//unsigned int CObject::typesOfObj = 0;
 void ThreadFunc1()
 {
 	game.startGame(level, MOVING);
@@ -126,9 +126,10 @@ void CGame::startGame(int& level, char& current)
 			preMain();
 			exit(0);
 		}
-		if ((level % 5 == 0))
+		
+		if ((score % scoreScale == 0) && size != score/scoreScale+3)
 		{
-			setGame(level / 5 + 3, 2, 100, score, 50, 0);
+			setGame(score / scoreScale + 3);
 		}
 		drawGame(line, speedTr);
 		updatePosPeople(current, 0);
