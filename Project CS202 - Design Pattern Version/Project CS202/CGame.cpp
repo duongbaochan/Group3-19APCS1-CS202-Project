@@ -174,39 +174,6 @@ CGame::CGame(){
 	score = 0;
 	width = 0;
 }
-/*void CGame::setGame()
-{
-	stop = 0;
-	//srand(time(NULL));
-	
-	FixConsoleWindow();
-
-	unsigned short k = rand() % typeOfObj;
-	for (int i = 1; i <= size; i++)
-	{
-		CTruck objT(0 - i * _width / size + rand() % 7, k * 8 + 2);
-		CCar objC(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
-		CBird objB(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
-		CDinausor objD(0 - i * _width / size + 15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
-
-		arrTr.push_back(objT);
-		arrC.push_back(objC);
-		arrB.push_back(objB);
-		arrD.push_back(objD);
-	}
-	CTrafficLight objL(_width, k * 8 + 2);
-	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2);
-	arrL.push_back(objL1);
-
-	cn.setXY(xPeople, yPeople);
-
-
-	for (int i = 0; i < 2; i++)
-		speed.push_back(_speed);
-	x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
-}*/
-
 void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	resetGame();
@@ -230,10 +197,8 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2 + m, _speed);
 
 	}
-	CTrafficLight objL(_width, k * 8 + 2 + m);
-	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2 + m);
-	arrL.push_back(objL1);
+	arrL.push_back(CTrafficLight(_width, k * 8 + 2 + m));
+	arrL.push_back(CTrafficLight(_width, (k + 1) % typeOfObj * 8 + 2 + m));
 
 	cn.setXY(xPeople, yPeople);
 }
@@ -338,7 +303,8 @@ void CGame::updatePosPeople(char& current, bool flag)
 		cn.setXY(width / 2, 0);
 
 
-	if (current == 'A' || current == 'D' || current == 'W' || current == 'S' || current == 'L') {
+	
+	if (current == 'A' || current == 'D' || current == 'W' || current == 'S') {
 		cn.erase();
 		switch (current) {
 		case 'A':
@@ -449,10 +415,8 @@ void CGame::runningGame(int &level, char& current)
 	{
 		score += 10;
 		if (score % 30 == 0) level++;
-		{
-			cn.erase();
-			updatePosPeople(current, 1);
-		}
+		cn.erase();
+		updatePosPeople(current, 1);
 	}
 }
 CGame::~CGame()
@@ -467,11 +431,12 @@ void CGame::resetGame()
 {
 	this->~CGame();
 }
-void CGame::exitGame(HANDLE t)
+void CGame::exitGame(HANDLE t, bool isSave)
 {
 	TerminateThread(t, 0);
 	system("cls");
-	cout << "Your score: " << score << endl;
+	if (isSave)
+		saveGame();
 	resetGame();
 	system("cls");
 	//exit(0);
@@ -489,21 +454,6 @@ void CGame::eraseString(string& str) {
 	while (str.size() > 0 && str[i + 1] != NULL && str[i] != ',')
 		++i;
 	str.erase(str.begin() + 0, str.begin() + (i + 1));
-}
-vector<int> CGame::arrayPoint(ifstream& f)
-{
-	vector<int> tmp;
-	int x = 0;
-	string line;
-	getline(f, line);
-	while (!line.empty())
-	{
-		stringstream gX(line);
-		gX >> x;
-		tmp.push_back(x);
-		eraseString(line);
-	}
-	return tmp;
 }
 void CGame::loadGame()
 {
@@ -546,25 +496,23 @@ void CGame::loadGame()
 }
 void CGame::saveGame()
 {
-	cin.ignore();
 	TextColor(15);
+	system("cls");
 	cout << "Format input [your location].txt" << endl; 
 	cout << "Enter your location: ";
 	string s;                        //    D:\\CrossingRoad Repo
 	getline(cin, s);
-	cout << "Enter the name of this current save: ";
-	string filename;
-	getline(cin, filename);
 	if (s.size() == 0) getline(cin, s);
-	cout << "Your path: " << s << endl;
+	cout << "\nYour path: " << s << ".txt" << endl;
 	ofstream f;
-	f.open(s+".txt");
+	f.open(s + ".txt");
+	cout << f.is_open();
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
 	{
 		f << size << " " << score << " " << stop << " " << width << " ";
-		f << arrB.getSpeed() << " " << arrTr.getSpeed() << " " << arrL[0].getColor() << " ";
+		f << arrB.getSpeed() << " " << arrTr.getSpeed() << " "<< arrL[0].getColor() << " ";
 		cn.outputFile(f);
 		f << endl;
 		arrTr.outputFile(f);
