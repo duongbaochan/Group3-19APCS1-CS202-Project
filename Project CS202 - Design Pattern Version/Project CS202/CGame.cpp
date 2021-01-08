@@ -47,24 +47,26 @@ void Menu(CGame& x)
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
-	GotoXY(65, 9);
+	int m = 8;
+
+	GotoXY(65 + m, 9);
 	TextColor(6);
 	cout << "        C R O S S Y  R O A D" << endl;
-	GotoXY(65, 11);
+	GotoXY(65 + m, 11);
 	cout << "----------------MENU---------------" << endl;
-	GotoXY(65, 12);
+	GotoXY(65 + m, 12);
 	cout << "|          1. New Game.           |" << endl;
-	GotoXY(65, 13);
+	GotoXY(65 + m, 13);
 	cout << "|          2. Load Game.          |" << endl;
-	GotoXY(65, 14);
+	GotoXY(65 + m, 14);
 	cout << "|          3. Settings.           |" << endl;
-	GotoXY(65, 15);
+	GotoXY(65 + m, 15);
 	cout << "|          4. Credits.            |" << endl;
-	GotoXY(65, 16);
+	GotoXY(65 + m, 16);
 	cout << "|          0. Exit.               |" << endl;
-	GotoXY(65, 17);
+	GotoXY(65 + m, 17);
 	cout << "-----------------------------------" << endl;
-	GotoXY(65, 19);
+	GotoXY(65 + m, 19);
 	cout << "Enter our option: ";
 
 	int n; cin >> n;
