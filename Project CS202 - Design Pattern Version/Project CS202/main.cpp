@@ -20,7 +20,7 @@ void ThreadFunc3()
 } // Ingame theme
 int main()
 {
-	int width = 1100, height = 560; // Set width for ingame console
+	int width = 1100, height = 618.75; // Set width for ingame console
 
 	thread t2(ThreadFunc2);
 

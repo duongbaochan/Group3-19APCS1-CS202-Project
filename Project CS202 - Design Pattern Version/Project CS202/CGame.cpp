@@ -217,17 +217,19 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	unsigned short k = rand() % typeOfObj;
 	vector <CPoint> x;
 
+	int m = 4;
+
 	for (int i = 1; i <= size; i++)
 	{
-		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2);
-		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
-		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
-		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
+		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2 + m);
+		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2 + m);
+		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2 + m);
+		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2 + m);
 
 	}
-	CTrafficLight objL(_width, k * 8 + 2);
+	CTrafficLight objL(_width, k * 8 + 2 + m);
 	arrL.push_back(objL);
-	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2);
+	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2 + m);
 	arrL.push_back(objL1);
 
 	cn.setXY(xPeople, yPeople);
@@ -239,16 +241,25 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 
 void CGame::drawGame(string line)
 {
+
 	// draw line
-	GotoXY(0, 1);
+	int m = 4;
+	GotoXY(0, 1 + m);
 	TextColor(12);
 	cout << line;
-	GotoXY(0, 9);
+	cn.draw();
+	GotoXY(0, 9 + m);
+	TextColor(12);
 	cout << line;
-	GotoXY(0, 16);
+	cn.draw();
+	GotoXY(0, 16 + m);
+	TextColor(12);
 	cout << line;
-	GotoXY(0, 24);
+	cn.draw();
+	GotoXY(0, 24 + m);
+	TextColor(12);
 	cout << line;
+	cn.draw();
 	TextColor(15);
 
 	arrTr.display(0, speed[0]);
@@ -271,19 +282,21 @@ void CGame::drawGame(string line)
 }
 void CGame::updatePosPeople(char& current, bool flag)
 {
-	GotoXY(105, 2);
+	int m = 7;
+	int n = 4;
+	GotoXY(105 + m, 2 + n);
 	TextColor(2);
 	cout << "|=====================|";
-	GotoXY(107, 3);
+	GotoXY(107 + m, 3 + n);
 	TextColor(9);
 	cout << "C R O S S Y R O A D";
-	GotoXY(112, 5);
+	GotoXY(112 + m, 5 + n);
 	TextColor(6);
 	cout << "Score: " << score;
-	GotoXY(112, 6);
+	GotoXY(112 + m, 6 + n);
 	cout << "Level: " << (score / 50) + 1;
 	TextColor(2);
-	GotoXY(105, 7);
+	GotoXY(105 + m, 7 + n);
 	cout << "|=====================|";
 
 

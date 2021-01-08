@@ -1,23 +1,25 @@
 #pragma once
-#include "CIsInRange.h"
 #include "CDisplay.h"
 
 class CObject
 {
 protected:
 	vector <CPoint> pos;
-	CIsInRange* objImpact;
 	CDisplay* objDisp;
+	bool objImpact;
 public:
 	//CObject(int, int);
 //	CObject(CPoint);
 	//~CObject();
 	CObject();
 	//CObject(const CObject &x);
-	void setInRange(CIsInRange*);
+	int getX(int i);
+	int getY(int i);
+	int size();
+	virtual vector<vector<CPoint>> boundary(int);
 	void setDisplay(CDisplay*);
 //	bool isInRange(CPoint) const;
-	bool isInRange(CPoint) const;
+	void impact();
 	void display(int, bool) const;
 	void updatePos(int width, int speed);
 	void addObject(int,int);

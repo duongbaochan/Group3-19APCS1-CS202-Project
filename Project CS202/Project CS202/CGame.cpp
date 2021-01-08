@@ -349,7 +349,8 @@ void CGame::startGame(int &level, char& current)
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(400 / (score + 10));
+		//if (!_kbhit())
+			Sleep(400 / (score + 10));
 
 		t = time(0);
 		Check = localtime(&t);

@@ -29,27 +29,34 @@ CObject::CObject()
 	objImpact = NULL;
 	objDisp = NULL;
 }
-void CObject::setInRange(CIsInRange* x)
+int CObject::getX(int i)
 {
-	objImpact = x;
+	return pos[i].mX;
 }
+int CObject::getY(int i)
+{
+	return pos[i].mY;
+}
+int CObject::size()
+{
+	return pos.size();
+}
+vector<vector<CPoint>> CObject::boundary(int pos_i)
+{
+	CPoint p;
+	p.mX = -1;
+	p.mY = -1;
+	return { {p} };
+}
+
 void CObject::setDisplay(CDisplay* x){
 	objDisp = x;
 }
 
-bool CObject::isInRange(CPoint x) const {
-	for (int i = 0; i < pos.size(); i++)
-	{
-		CPoint tmp;
-		tmp.mX = x.mX - pos[i].mX;
-		tmp.mY = x.mY - pos[i].mY;
-		if (this->objImpact->isDxAndDyInRange(tmp))
-		{
-			PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
-			return 1;
-		}
-	}
-	return 0;
+void CObject::impact() 
+{
+	objImpact = 1;
+	PlaySound(TEXT("Sounds/woosh_2.wav"), NULL, SND_SYNC);
 }
 void CObject::display(int textColor, bool isDraw) const {
 	if (this->objDisp)

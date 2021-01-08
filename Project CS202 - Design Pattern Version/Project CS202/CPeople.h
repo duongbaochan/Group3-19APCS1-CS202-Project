@@ -16,12 +16,15 @@ public:
 
 	void setXY(int, int);
 	void setmState(int);
+	int getX();
+	int getY();
+	vector<vector<CPoint>> boundary(); // For Impact
 
 	void Up();
 	void Left();
 	void Right();
 	void Down();
-	bool isImpact(const CObject &x) const;
+	bool isImpact(CObject &x);
 	bool isFinish();
 	bool isDead();
 	void Finish()
