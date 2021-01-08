@@ -34,7 +34,7 @@ public:
 	
 	CGame();
 	void setGame(int, int, int, int, int, int);
-	void setGame();
+	//void setGame();
 	void drawGame(string); 
 	~CGame(); 
 	CPeople getPeople();
