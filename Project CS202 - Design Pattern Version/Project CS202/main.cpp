@@ -132,7 +132,7 @@ void CGame::startGame(int& level, char& current)
 		}*/
 		t = time(0);
 		Check = localtime(&t);
-		if (tmp > 56)
+		if (tmp > 50)
 			tmp = 0;
 		if ((Check->tm_sec - tmp) == k) {
 			for (int i = 0; i < 2; ++i)

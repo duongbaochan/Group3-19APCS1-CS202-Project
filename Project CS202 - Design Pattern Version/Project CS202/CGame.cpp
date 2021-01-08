@@ -505,7 +505,8 @@ void CGame::loadGame()
 	{
 		CPoint pos;
 		bool tmpState;
-		f >> size >> score >> stop >> width >> pos.mX >> pos.mY >> tmpState;
+		int tmpColor;
+		f >> size >> score >> stop >> width >> tmpColor >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
 
@@ -514,9 +515,9 @@ void CGame::loadGame()
 		arrB.loadFile(f,size);
 		arrD.loadFile(f,size);
 
-		CTrafficLight objL(width, arrTr.getPosTraffic());
+		CTrafficLight objL(width, arrTr.getPosTraffic(), tmpColor);
 		arrL.push_back(objL);
-		CTrafficLight objL1(width, arrC.getPosTraffic());
+		CTrafficLight objL1(width, arrC.getPosTraffic(), tmpColor);
 		arrL.push_back(objL1);
 
 		for (int i = 0; i < 2; i++)
@@ -544,7 +545,7 @@ void CGame::saveGame()
 		cout << "Can not open file." << endl;
 	else
 	{
-		f << size << " " << score << " " << stop << " " << width << " ";
+		f << size << " " << score << " " << stop << " " << width << " " << arrL[0].getColor() << " ";
 		cn.outputFile(f);
 		f << endl;
 		arrTr.outputFile(f);

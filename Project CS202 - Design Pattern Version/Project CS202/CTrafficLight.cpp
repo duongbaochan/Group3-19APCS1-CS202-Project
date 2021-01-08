@@ -1,35 +1,38 @@
 #include "CTrafficLight.h"
 
-CTrafficLight::CTrafficLight(int x, int y) 
+CTrafficLight::CTrafficLight(int x, int y) : idx(x, y)
 {
-	mX = x;
-	mY = y;
 	color = 10;
+}
+
+CTrafficLight::CTrafficLight(int x, int y, int z) : idx(x, y)
+{
+	color = z;
 }
 
 void CTrafficLight::draw() 
 {
-	if (mX > 0) {
-		GotoXY(mX, mY);
+	if (idx.mX > 0) {
+		GotoXY(idx.mX, idx.mY);
 		TextColor(15);
 		cout << "______";
-		GotoXY(mX, mY + 1);
+		GotoXY(idx.mX, idx.mY + 1);
 		cout << "|";
-		GotoXY(mX + 2, mY + 1);
+		GotoXY(idx.mX + 2, idx.mY + 1);
 		TextColor(color);
 		cout << "**";
 		TextColor(15);
-		GotoXY(mX + 5, mY + 1);
+		GotoXY(idx.mX + 5, idx.mY + 1);
 		cout << "|";
-		GotoXY(mX, mY + 2);
+		GotoXY(idx.mX, idx.mY + 2);
 		cout << "|_";
-		GotoXY(mX + 2, mY + 2);
+		GotoXY(idx.mX + 2, idx.mY + 2);
 		TextColor(color);
 		cout << "**";
 		TextColor(15);
-		GotoXY(mX + 4, mY + 2);
+		GotoXY(idx.mX + 4, idx.mY + 2);
 		cout << "_|";
-		GotoXY(mX, mY + 3);
+		GotoXY(idx.mX, idx.mY + 3);
 		cout << " _||_";
 		TextColor(15);
 	}
