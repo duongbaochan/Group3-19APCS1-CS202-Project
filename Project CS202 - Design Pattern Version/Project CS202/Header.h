@@ -37,7 +37,7 @@ using namespace std;
 #define ColorCode_Yellow		14
 #define ColorCode_White			15
 #define typeOfObj				4
-#define scoreScale				10
+#define scoreScale				20
 
 #define default_ColorCode		7
 

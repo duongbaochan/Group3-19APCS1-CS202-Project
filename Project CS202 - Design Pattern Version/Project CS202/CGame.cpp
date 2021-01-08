@@ -176,7 +176,6 @@ CGame::CGame(){
 }
 void CGame::setGame(int size)
 {
-	this->size = size;
 	arrTr.display(0, 1);
 	arrC.display(0, 1);
 	arrB.display(0, 1);
@@ -188,8 +187,6 @@ void CGame::setGame(int size)
 		arrB.addObject(0 - i * width / size - 10 + rand() % 15, i);
 		arrD.addObject(0 - i * width / size + 15 + rand() % 15, i);
 	}
-	
-
 }
 void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {

@@ -94,7 +94,13 @@ void CObject::updatePosandDisp(int width, int _speed, int textColor, bool isDraw
 		}
 	}
 }
-
+void CObject::addObject(int x, int i)
+{
+	if (i < pos.size())
+		pos[i].mX = x;
+	else
+		pos.push_back(CPoint(x, pos[0].mY));
+}
 void CObject::addObject(int x, int y, int _speed)
 {
 	pos.push_back(CPoint(x,y));

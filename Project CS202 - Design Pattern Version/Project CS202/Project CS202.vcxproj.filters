@@ -69,21 +69,6 @@
     <ClInclude Include="CPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CBoundary.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CDinoBound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CCarBound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CTruckBound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CBirdBound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGame.cpp">
@@ -124,18 +109,6 @@
     </ClCompile>
     <ClCompile Include="CPeople.cpp">
       <Filter>Source Files\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CBirdBound.cpp">
-      <Filter>Source Files\CBoundary</Filter>
-    </ClCompile>
-    <ClCompile Include="CCarBound.cpp">
-      <Filter>Source Files\CBoundary</Filter>
-    </ClCompile>
-    <ClCompile Include="CDinoBound.cpp">
-      <Filter>Source Files\CBoundary</Filter>
-    </ClCompile>
-    <ClCompile Include="CTruckBound.cpp">
-      <Filter>Source Files\CBoundary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -129,13 +129,14 @@ void CGame::startGame(int& level, char& current)
 		
 		if ((score % scoreScale == 0) && size != score/scoreScale+3)
 		{
+			size = score / scoreScale + 3;
 			setGame(score / scoreScale + 3);
 		}
 		drawGame(line, speedTr);
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(2000 / (level * 5));
+		Sleep(4000 / (level * 1000));
 
 		t = time(0);
 		Check = localtime(&t);
