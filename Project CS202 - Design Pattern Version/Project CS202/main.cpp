@@ -40,10 +40,10 @@ void preMain()
 			//temp = _getch();
 			if (!game.getPeople().isDead())
 			{
-				if (temp == 27 || temp == 'L' || temp == 32)
+				if (temp == 'L' || temp == 32)
 				{
-					game.exitGame(t1.native_handle());
-					game.saveGame();
+					game.exitGame(t1.native_handle(),1);
+					//game.saveGame();
 					preMain();
 					return;
 					//return 0;
@@ -119,16 +119,13 @@ void CGame::startGame(int& level, char& current)
 			system("pause");
 			system("CLS");
 
-			exitGame(NULL);
+			exitGame(NULL,0);
 			preMain();
 			exit(0);
 		}
 		if ((level % 5 == 0))
 		{
-			//this->resetGame();
 			setGame(level / 5 + 3, 2, 100, score, 50, 0);
-			//startGame(level, current);
-			//return;
 		}
 		drawGame(line, speedTr);
 		updatePosPeople(current, 0);

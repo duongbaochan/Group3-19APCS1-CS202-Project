@@ -37,7 +37,6 @@ public:
 	void startGame(int&, char&); // Th?c hi?n b?t ??u vào trò ch?i
 
 	void eraseString(string& str);
-	vector<int> arrayPoint(ifstream& f);
 	void loadGame(); 
 	void saveGame(); 
 
@@ -49,7 +48,7 @@ public:
 	int getScore();
 	int getLevel();
 
-	void exitGame(HANDLE t);
+	void exitGame(HANDLE t, bool isSave);
 	void pauseGame(HANDLE t);
 	void resumeGame(HANDLE t);
 };
