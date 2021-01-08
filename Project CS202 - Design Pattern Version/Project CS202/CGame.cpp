@@ -429,7 +429,10 @@ void CGame::runningGame(int &level, char& current)
 	{
 		score += 10;
 		if (score % 50 == 0) level++;
-		updatePosPeople(current, 1);
+		{
+			cn.erase();
+			updatePosPeople(current, 1);
+		}
 	}
 }
 CGame::~CGame()
