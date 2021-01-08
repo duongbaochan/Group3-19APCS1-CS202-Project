@@ -85,11 +85,14 @@ void Menu(CGame& x)
 		{
 			int level = 3;
 			x.setGame(level, 2, 100, 0, 50, 0);
+			//x.startGame(level);
 			return;
 		}
 		else if (n == 2)
 		{
 			x.loadGame();
+			//int level = x.getLevel();
+			//x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
 			return;
 		}
 		else if (n == 3)
@@ -98,9 +101,7 @@ void Menu(CGame& x)
 			cout << "Settings 1." << endl;
 			cout << "Settings 2." << endl;
 			cout << "Settings 3." << endl;
-			system("pause");
-			system("CLS");
-			Menu(x);
+			exit(0);
 		}
 		else if (n == 4)
 		{
@@ -170,12 +171,42 @@ CGame::CGame(){
 	score = 0;
 	width = 0;
 }
+/*void CGame::setGame()
+{
+	stop = 0;
+	//srand(time(NULL));
+	
+	FixConsoleWindow();
 
+	unsigned short k = rand() % typeOfObj;
+	for (int i = 1; i <= size; i++)
+	{
+		CTruck objT(0 - i * _width / size + rand() % 7, k * 8 + 2);
+		CCar objC(0 - i * _width / size + 40 + rand() % 7, (k + 1) % typeOfObj * 8 + 2);
+		CBird objB(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2);
+		CDinausor objD(0 - i * _width / size + 15 + rand() % 15, (k + 3) % typeOfObj * 8 + 2);
+
+		arrTr.push_back(objT);
+		arrC.push_back(objC);
+		arrB.push_back(objB);
+		arrD.push_back(objD);
+	}
+	CTrafficLight objL(_width, k * 8 + 2);
+	arrL.push_back(objL);
+	CTrafficLight objL1(_width, (k + 1) % typeOfObj * 8 + 2);
+	arrL.push_back(objL1);
+
+	cn.setXY(xPeople, yPeople);
+
+
+	for (int i = 0; i < 2; i++)
+		speed.push_back(_speed);
+	x.setGame(level, 1, 100, x.getScore(), x.getXPeople(), x.getYPeople());
+}*/
 
 void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, int yPeople) // x: level (higher - harder) 1 2 3 4 
 {
 	//x(1, 1, 100, 0, 50, 0)
-	resetGame();
 	stop = 0;
 	//srand(time(NULL));
 	score = _score;
@@ -184,6 +215,7 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	FixConsoleWindow();
 	
 	unsigned short k = rand() % typeOfObj;
+	vector <CPoint> x;
 
 	int m = 4;
 
@@ -352,10 +384,8 @@ void CGame::startGame(int &level, char& current)
 			TextColor(7);
 			system("pause");
 			system("CLS");
-			//getchar();
-			return;
-			//exitGame(NULL);
-			//exit(0);
+
+			exit(0);
 		}
 		drawGame(line);
 		updatePosPeople(current, 0);
@@ -400,9 +430,6 @@ void CGame::runningGame(int &level, char& current)
 }
 CGame::~CGame()
 {
-	cn.setmState(1);
-	speed.clear();
-	arrL.clear();
 	score = 0;
 	stop = 0;
 	size = 0;
@@ -452,21 +479,18 @@ vector<int> CGame::arrayPoint(ifstream& f)
 }
 void CGame::loadGame()
 {
-	resetGame();
 	system("cls");
 	cin.ignore();
-	cout << "Format input [your location].txt" << endl;
 	cout << "Enter your path: ";
 	string s;  //D:\\CrossingRoad Repo\\Game1.txt
 	getline(cin, s);
-	cout << "Your path: " << s << endl;
 	ifstream f;
-	f.open(s + ".txt");
+	//f.open("Game1.txt");
+	//f.open(s);
+	f.open("a.txt");
 	cout << f.is_open();
 	if (!f.is_open())
-	{
 		cout << "Can not open file." << endl;
-	}
 	else
 	{
 		CPoint pos;
@@ -474,7 +498,14 @@ void CGame::loadGame()
 		f >> size >> score >> stop >> width >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
-		
+		/*s.erase();
+		getline(f, s);
+
+		arrTr.inputFile(arrayPoint(f));
+		arrC.inputFile(arrayPoint(f));
+		arrB.inputFile(arrayPoint(f));
+		arrD.inputFile(arrayPoint(f));*/
+
 		arrTr.loadFile(f,size);
 		arrC.loadFile(f,size);
 		arrB.loadFile(f,size);
@@ -494,15 +525,20 @@ void CGame::loadGame()
 void CGame::saveGame()
 {
 	cin.ignore();
-	TextColor(15);
-	cout << "Format input [your location].txt" << endl;
 	cout << "Enter your location: ";
 	string s;                        //    D:\\CrossingRoad Repo
 	getline(cin, s);
-	if (s.size() == 0) getline(cin, s);
-	cout << "Your path: " << s << endl;
+	cn.Up();
+	cn.gotoXYPeople();
+	cn.Down();
+	//GotoXY(cn.mX + 2, cn.mY + 1);
+	cout << "Enter the name of this current save: ";
+	string filename;
+	getline(cin, filename);
 	ofstream f;
-	f.open(s + ".txt");
+	//f.open("Game1.txt");
+	//f.open(s + "\\" + filename + ".txt");
+	f.open("a.txt");
 	if (!f.is_open())
 		cout << "Can not open file." << endl;
 	else
@@ -518,10 +554,16 @@ void CGame::saveGame()
 		f << endl;
 		arrD.outputFile(f);
 		f << endl;
-		cout << "\nYour game is saved ! Press ESC to quit.";
 	} 
 	f.close();
-	system("pause");
+
+	cn.Up();
+	cn.Up();
+	cn.gotoXYPeople();
+	cn.Down();
+	cn.Down();
+	//GotoXY(cn.mX + 2, cn.mY + 2);
+	cout << "Your game is saved ! Press ESC to quit.";
 }
 /*
 void CGame::pauseGame()

@@ -82,7 +82,7 @@ void CObject::addObject(int x, int y)
 void CObject::outputFile(ofstream& x)
 {
 	for (int i = 0; i < pos.size(); i++)
-		x << pos[i].mX << " " << pos[i].mY << " ";
+		x << pos[i].mX << "," << pos[i].mY << ",";
 }
 void CObject::inputFile(vector<int> tmp)
 {
