@@ -14,9 +14,9 @@ vector<vector<CPoint>> CDinausor::boundary(int pos_i) // For Impact
 	vector<string> strs;
 	str = "          ";
 	strs.push_back(str);
-	str = "   ( *  _)";
+	str = "   (1*11_)";
 	strs.push_back(str);
-	str = "   |    |/";
+	str = "   |1111|/";
 	strs.push_back(str);
 	str = "  /|____|";
 	strs.push_back(str);
