@@ -24,6 +24,11 @@ CObject::CObject()
 	objImpact = NULL;
 	objDisp = NULL;
 }*/
+void CObject::updateSpeed()
+{
+	speed+=2;
+}
+
 CObject::CObject()
 {
 	objImpact = NULL;

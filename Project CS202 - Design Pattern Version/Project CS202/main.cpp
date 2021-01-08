@@ -131,13 +131,17 @@ void CGame::startGame(int& level, char& current)
 		{
 			size = score / scoreScale + 3;
 			setGame(score / scoreScale + 3);
+			arrTr.updateSpeed();
+			arrC.updateSpeed();
+			arrD.updateSpeed();
+			arrB.updateSpeed();
+
 		}
 		drawGame(line, speedTr);
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
-		Sleep(4000 / (level * 1000));
-
+		
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 50)
