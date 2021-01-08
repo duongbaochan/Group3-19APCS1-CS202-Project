@@ -18,7 +18,6 @@ void ThreadFunc3()
 {
 	PlaySound(TEXT("Sounds/ingame.wav"), NULL, SND_LOOP | SND_ASYNC);
 } // Ingame theme
-
 void preMain()
 {
 	thread t2(ThreadFunc2);
@@ -70,6 +69,79 @@ void preMain()
 	}
 
 }
+
+void ThreadGameOver()
+{
+	PlaySound(TEXT("Sounds/game-over.wav"), NULL, SND_LOOP | SND_ASYNC);
+} // Menu theme
+
+void CGame::startGame(int& level, char& current)
+{
+	system("cls");
+	string line = "";
+	for (int i = 0; i < 100; i++)
+		line += "*";
+
+	unsigned short k = rand() % 5 + 3; //time period
+	time_t t = time(0);
+	tm* Check = localtime(&t);
+	int tmp = Check->tm_sec;
+	while (!stop)
+	{
+		if (cn.isFinish() == 0)
+		{
+			system("cls");
+			thread over(ThreadGameOver);
+			GotoXY(57, 11);
+			cout << "---------------" << endl;
+			GotoXY(57, 12);
+			cout << "|  GAME OVER  |" << endl;
+			GotoXY(57, 13);
+			cout << "---------------" << endl;
+			Sleep(2000);
+			GotoXY(48, 15);
+			cout << "Don't give up just yet..." << endl;
+			GotoXY(48, 16);
+			Sleep(2000);
+			cout << "You'll make it better next time! Keep up!" << endl;
+			GotoXY(58, 18);
+			Sleep(2000);
+			TextColor(6);
+			cout << "Your score: " << score << endl;
+			GotoXY(49, 19);
+			TextColor(7);
+			system("pause");
+			system("CLS");
+
+			exitGame(NULL);
+			preMain();
+			exit(0);
+		}
+		drawGame(line);
+		updatePosPeople(current, 0);
+		pauseGame(NULL);
+		runningGame(level, current);
+		Sleep(2000 / (level * 5));
+
+		/*if (level % 5 == 0)
+		{
+			this->resetGame();
+			setGame(level/5 + 3 , 2, 100, score, 50, 0);
+			startGame(level, current);
+			return;
+		}*/
+		t = time(0);
+		Check = localtime(&t);
+		if (tmp > 56)
+			tmp = 0;
+		if ((Check->tm_sec - tmp) == k) {
+			for (int i = 0; i < 2; ++i)
+				arrL[i].changeColor(arrL[i].getColor(), speed[0], speed[1]);
+			tmp = Check->tm_sec;
+		}
+	}
+}
+
 int main()
 {
 	int width = 1100, height = 650; // Set width for ingame console
