@@ -4,7 +4,7 @@
 bool IS_RUNNING = true;
 char MOVING;
 CGame game;
-int level = 5;
+int level = 3;
 
 void ThreadFunc1()
 {
@@ -118,19 +118,19 @@ void CGame::startGame(int& level, char& current)
 			preMain();
 			exit(0);
 		}
+		if ((level % 5 == 0))
+		{
+			//this->resetGame();
+			setGame(level / 5 + 3, 2, 100, score, 50, 0);
+			//startGame(level, current);
+			//return;
+		}
 		drawGame(line, speedTr);
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
 		Sleep(2000 / (level * 5));
 
-		/*if (level % 5 == 0)
-		{
-			this->resetGame();
-			setGame(level/5 + 3 , 2, 100, score, 50, 0);
-			startGame(level, current);
-			return;
-		}*/
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 50)
