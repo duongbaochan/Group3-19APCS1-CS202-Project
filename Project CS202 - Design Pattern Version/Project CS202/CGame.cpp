@@ -296,7 +296,6 @@ void CGame::updatePosPeople(char& current, bool flag)
 	if (flag == 1)
 		cn.setXY(width/2, 0);
 
-	cn.gotoXYPeople();
     cn.draw();
 
 	if (current == 'A' || current == 'D' || current == 'W' || current == 'S'|| current == 'L') {

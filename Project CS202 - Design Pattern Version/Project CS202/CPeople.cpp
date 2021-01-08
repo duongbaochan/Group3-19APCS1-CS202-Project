@@ -32,11 +32,13 @@ void CPeople::Up()
 }
 void CPeople::Left()
 {
-	pos.mX -= step;
+	if (pos.mX>=4)
+		pos.mX -= step;
 }
 void CPeople::Right()
 {
-	pos.mX += step;
+	if (pos.mX <= 97)
+		pos.mX += step;
 }
 void CPeople::Down()
 {
@@ -63,8 +65,8 @@ bool CPeople::isImpact(const CObject &x) const
 
 void CPeople::draw()
 {
-    GotoXY(pos.mX, pos.mY);
-    if (pos.mX > 0 && pos.mX < 85) {
+    if (pos.mX > 0 && pos.mX <= 98) {
+		GotoXY(pos.mX, pos.mY);
         /*
 		TextColor(7);
         cout << "  _  ";
