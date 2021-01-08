@@ -145,10 +145,6 @@ void Menu(CGame& x)
 	}
 }
 
-void ThreadGameOver()
-{
-	PlaySound(TEXT("Sounds/game-over.wav"), NULL, SND_LOOP | SND_ASYNC);
-} // Menu theme
 
 void setConsoleSize(int width, int height) {
 	HWND console = GetConsoleWindow();
@@ -351,7 +347,7 @@ void CGame::updatePosPeople(char& current, bool flag)
 	current = '0';
 }
 
-void CGame::startGame(int &level, char& current)
+/*void CGame::startGame(int &level, char& current)
 {
 	system("cls");
 	string line = "";
@@ -389,6 +385,11 @@ void CGame::startGame(int &level, char& current)
 			system("pause");
 			system("CLS");
 
+			exitGame(NULL);
+			Menu(*this);
+			//setGame(3, 2, 100, 0, 50, 0);
+			//level = 0;
+			//startGame(level, current);
 			return;
 		}
 		drawGame(line);
@@ -403,7 +404,7 @@ void CGame::startGame(int &level, char& current)
 			setGame(level/5 + 3 , 2, 100, score, 50, 0);
 			startGame(level, current);
 			return;
-		}*/
+		}
 		t = time(0);
 		Check = localtime(&t);
 		if (tmp > 56)
@@ -414,7 +415,7 @@ void CGame::startGame(int &level, char& current)
 			tmp = Check->tm_sec;
 		}
 	}
-}
+}*/
 void CGame::runningGame(int &level, char& current)
 {
 	for (int i = 0; i < size; i++)
