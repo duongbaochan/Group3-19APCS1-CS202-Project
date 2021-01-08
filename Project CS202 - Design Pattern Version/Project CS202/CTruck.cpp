@@ -14,9 +14,9 @@ vector<vector<CPoint>> CTruck::boundary(int pos_i) // For Impact
 	vector<string> strs;
 	str = "            ";
 	strs.push_back(str);
-	str = "|111111111\\\\ ";
+	str = " 111111111\\\\ ";
 	strs.push_back(str);
-	str = "|____________|";
+	str = " ____________ ";
 	strs.push_back(str);
 	str = "  ()-----()";
 	strs.push_back(str);
