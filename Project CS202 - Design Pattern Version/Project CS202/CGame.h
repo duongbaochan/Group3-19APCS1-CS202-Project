@@ -17,7 +17,6 @@ class CGame
 	CBird arrB;
 	
 	vector <CTrafficLight> arrL;
-	vector <int> speed;
 	CPeople cn;
 	int size;
 	int score;
@@ -27,8 +26,8 @@ public:
 	
 	CGame();
 	void setGame(int, int, int, int, int, int);
-	void setGame();
-	void drawGame(string); 
+	//void setGame();
+	void drawGame(string, int); 
 	~CGame(); 
 	CPeople getPeople();
 	//CVehicle * getVehicle();//L?y danh sách các xe

@@ -224,10 +224,10 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 
 	for (int i = 1; i <= size; i++)
 	{
-		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2 + m);
-		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2 + m);
-		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2 + m);
-		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2 + m);
+		arrTr.addObject(0 - i * _width / size  + rand() % 7, k * 8 + 2 + m, _speed);
+		arrC.addObject(0 - i * _width / size + 40  + rand() % 7, (k + 1) % typeOfObj * 8 + 2 + m, _speed);
+		arrB.addObject(0 - i * _width / size - 10 + rand() % 15, (k + 2) % typeOfObj * 8 + 2 + m, _speed);
+		arrD.addObject(0 - i * _width / size + 15  + rand() % 15, (k + 3) % typeOfObj * 8 + 2 + m, _speed);
 
 	}
 	CTrafficLight objL(_width, k * 8 + 2 + m);
@@ -236,13 +236,9 @@ void CGame::setGame(int _size, int _speed, int _width, int _score, int xPeople, 
 	arrL.push_back(objL1);
 
 	cn.setXY(xPeople, yPeople);
-
-
-	for (int i = 0; i < 2; i++)
-		speed.push_back(_speed);
 }
 
-void CGame::drawGame(string line)
+void CGame::drawGame(string line, int speedTr)
 {
 
 	// draw line
@@ -280,10 +276,10 @@ void CGame::drawGame(string line)
 	arrD.display(0, 1);
 	arrD.updatePos(width, speed[1]);
 	arrD.display(9, 1);*/
-	arrTr.updatePosandDisp(width, speed[0], 3, speed[0]);
-	arrC.updatePosandDisp(width, speed[0], 5, speed[0]);
-	arrB.updatePosandDisp(width, speed[1], 7, 1);
-	arrD.updatePosandDisp(width, speed[1], 9, 1);
+	arrTr.updatePosandDisp(width, speedTr, 3, 1);
+	arrC.updatePosandDisp(width, speedTr, 5, 1);
+	arrB.updatePosandDisp(width, arrB.getSpeed(), 7, 1);
+	arrD.updatePosandDisp(width, arrD.getSpeed(), 9, 1);
 
 
 	for (int i = 0; i < 2; ++i)
@@ -439,7 +435,6 @@ void CGame::runningGame(int &level, char& current)
 CGame::~CGame()
 {
 	cn.setmState(1);
-	speed.clear();
 	arrL.clear();
 	score = 0;
 	stop = 0;
@@ -508,23 +503,21 @@ void CGame::loadGame()
 	{
 		CPoint pos;
 		bool tmpState;
-		int tmpColor;
-		f >> size >> score >> stop >> width >> tmpColor >> pos.mX >> pos.mY >> tmpState;
+		int tmpColor, _speedTr, _speedB;
+		f >> size >> score >> stop >> width >> _speedB >> _speedTr >> tmpColor >> pos.mX >> pos.mY >> tmpState;
 		cn.setmState(tmpState);
 		cn.setXY(pos.mX, pos.mY);
 
-		arrTr.loadFile(f,size);
-		arrC.loadFile(f,size);
-		arrB.loadFile(f,size);
-		arrD.loadFile(f,size);
+		arrTr.loadFile(f,size, _speedTr);
+		arrC.loadFile(f,size, _speedTr);
+		arrB.loadFile(f,size, _speedB);
+		arrD.loadFile(f,size, _speedB);
 
 		CTrafficLight objL(width, arrTr.getPosTraffic(), tmpColor);
 		arrL.push_back(objL);
 		CTrafficLight objL1(width, arrC.getPosTraffic(), tmpColor);
 		arrL.push_back(objL1);
 
-		for (int i = 0; i < 2; i++)
-			speed.push_back(2);
 		stop = 0;
 	}
 	f.close();
@@ -548,7 +541,8 @@ void CGame::saveGame()
 		cout << "Can not open file." << endl;
 	else
 	{
-		f << size << " " << score << " " << stop << " " << width << " " << arrL[0].getColor() << " ";
+		f << size << " " << score << " " << stop << " " << width << " ";
+		f << arrB.getSpeed() << " " << arrTr.getSpeed() << " " << arrL[0].getColor() << " ";
 		cn.outputFile(f);
 		f << endl;
 		arrTr.outputFile(f);
