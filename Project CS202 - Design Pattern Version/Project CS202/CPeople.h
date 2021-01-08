@@ -1,11 +1,11 @@
-#pragma once
+﻿#pragma once
 #include "Header.h"
 #include "CObject.h"
 
 class CPeople {
 protected:
 	CPoint pos;
-	bool mState = 1; //Tr?ng th�i s?ng ch?t
+	bool mState = 1; // Trạng thái sống chết
 	int step=1;
 public:
 	//friend class CGame;
@@ -25,7 +25,7 @@ public:
 	void Right();
 	void Down();
 	bool isImpact(CObject &x);
-	bool isFinish();
+	//bool isFinish();
 	bool isDead();
 	void Finish()
 	{

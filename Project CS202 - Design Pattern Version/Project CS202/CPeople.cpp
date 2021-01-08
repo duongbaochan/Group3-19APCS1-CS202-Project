@@ -114,10 +114,10 @@ void CPeople::Down()
 	pos.mY += step;
 }
 
-bool CPeople::isFinish()
+/*bool CPeople::isFinish()
 {
 	return mState;
-}
+}*/
 
 bool CPeople::isDead()
 {

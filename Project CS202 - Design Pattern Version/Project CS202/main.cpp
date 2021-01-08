@@ -18,6 +18,10 @@ void ThreadFunc3()
 {
 	PlaySound(TEXT("Sounds/ingame.wav"), NULL, SND_LOOP | SND_ASYNC);
 } // Ingame theme
+void ThreadGameOver()
+{
+	PlaySound(TEXT("Sounds/game-over.wav"), NULL, SND_LOOP | SND_ASYNC);
+} // Menu theme
 void preMain()
 {
 	thread t2(ThreadFunc2);
@@ -36,13 +40,14 @@ void preMain()
 			//temp = _getch();
 			if (!game.getPeople().isDead())
 			{
-				if (temp == 27)
+				if (temp == 27 || temp == 'L' || temp == 32)
 				{
 					game.exitGame(t1.native_handle());
+					game.saveGame();
 					preMain();
 					return;
 					//return 0;
-				//	main();
+					//main();
 				}
 				else if (temp == 'P')
 				{
@@ -56,25 +61,25 @@ void preMain()
 			}
 			else // nguoi bi dung -> cho choi tiep hay khong
 			{
-				if (temp == 'Y')
+				/*if (temp == 'Y')
 					game.startGame(level, temp);
 				else
 				{
-					game.exitGame(t1.native_handle());
+					//game.exitGame(t1.native_handle());
 					preMain();
 					return;
-				}
+				}*/
 			}
 		}
 	}
 
 }
 
-void ThreadGameOver()
+/*void ThreadGameOver()
 {
 	PlaySound(TEXT("Sounds/game-over.wav"), NULL, SND_LOOP | SND_ASYNC);
 } // Menu theme
-
+*/
 void CGame::startGame(int& level, char& current)
 {
 	system("cls");
@@ -89,7 +94,7 @@ void CGame::startGame(int& level, char& current)
 	int speedTr = arrTr.getSpeed();
 	while (!stop)
 	{
-		if (cn.isFinish() == 0)
+		if (cn.isDead())
 		{
 			system("cls");
 			thread over(ThreadGameOver);
@@ -99,14 +104,14 @@ void CGame::startGame(int& level, char& current)
 			cout << "|  GAME OVER  |" << endl;
 			GotoXY(57, 13);
 			cout << "---------------" << endl;
-			Sleep(2000);
+			Sleep(1500);
 			GotoXY(48, 15);
 			cout << "Don't give up just yet..." << endl;
 			GotoXY(48, 16);
-			Sleep(2000);
+			Sleep(1500);
 			cout << "You'll make it better next time! Keep up!" << endl;
 			GotoXY(58, 18);
-			Sleep(2000);
+			Sleep(1500);
 			TextColor(6);
 			cout << "Your score: " << score << endl;
 			GotoXY(49, 19);

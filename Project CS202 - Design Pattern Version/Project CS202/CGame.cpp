@@ -330,11 +330,16 @@ void CGame::updatePosPeople(char& current, bool flag)
 		case 'S':
 			cn.Down();
 			break;
-		case 'L':
-			stop = 1;
+		/*case 'L':
+			/*stop = 1;
 			saveGame();
 			break;
+		case ' ':
+			stop = 1;
+			saveGame();
+			break;*/
 		}
+		
 	}
 	cn.draw();
 	if (current == ' ')
@@ -425,7 +430,7 @@ void CGame::runningGame(int &level, char& current)
 	if (cn.isFinishTurn(33))
 	{
 		score += 10;
-		if (score % 50 == 0) level++;
+		if (score % 30 == 0) level++;
 		{
 			cn.erase();
 			updatePosPeople(current, 1);
@@ -449,7 +454,6 @@ void CGame::exitGame(HANDLE t)
 	TerminateThread(t, 0);
 	system("cls");
 	cout << "Your score: " << score << endl;
-	saveGame();
 	resetGame();
 	system("cls");
 	//exit(0);
