@@ -37,6 +37,10 @@ int CObject::getY(int i)
 {
 	return pos[i].mY;
 }
+int CObject::getSpeed()
+{
+	return speed;
+}
 int CObject::size()
 {
 	return pos.size();
@@ -75,10 +79,11 @@ void CObject::updatePos(int width, int speed)
 	}
 
 }
-void CObject::updatePosandDisp(int width, int speed, int textColor, bool isDraw)
+void CObject::updatePosandDisp(int width, int _speed, int textColor, bool isDraw)
 {
 	if (this->objDisp)
 	{
+		speed = _speed;
 		for (int i = 0; i < pos.size(); i++)
 		{
 			this->objDisp->display(pos[i], isDraw, 0);
@@ -90,16 +95,17 @@ void CObject::updatePosandDisp(int width, int speed, int textColor, bool isDraw)
 	}
 }
 
-void CObject::addObject(int x, int y)
+void CObject::addObject(int x, int y, int _speed)
 {
 	pos.push_back(CPoint(x,y));
+	speed = _speed;
 }
 void CObject::outputFile(ofstream& x)
 {
 	for (int i = 0; i < pos.size(); i++)
 		x << pos[i].mX << " " << pos[i].mY << " ";
 }
-void CObject::inputFile(vector<int> tmp)
+/*void CObject::inputFile(vector<int> tmp)
 {
 	int cur = 0;
 	while (!tmp.empty())
@@ -111,16 +117,17 @@ void CObject::inputFile(vector<int> tmp)
 		addObject(x, y);
 		cur++;
 	}
-}
+}*/
 int CObject::getPosTraffic()
 {
 	return pos[0].mY;
 }
-void CObject::loadFile(ifstream &x, int k)
+void CObject::loadFile(ifstream &x, int k, int _speed)
 {
+	speed = _speed;
+	int mX, mY;
 	for (int i = 0; i < k; i++)
 	{
-		int mX, mY;
 		x >> mX >> mY;
 		pos.push_back(CPoint(mX, mY));
 	}

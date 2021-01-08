@@ -86,6 +86,7 @@ void CGame::startGame(int& level, char& current)
 	time_t t = time(0);
 	tm* Check = localtime(&t);
 	int tmp = Check->tm_sec;
+	int speedTr = arrTr.getSpeed();
 	while (!stop)
 	{
 		if (cn.isFinish() == 0)
@@ -117,7 +118,7 @@ void CGame::startGame(int& level, char& current)
 			preMain();
 			exit(0);
 		}
-		drawGame(line);
+		drawGame(line, speedTr);
 		updatePosPeople(current, 0);
 		pauseGame(NULL);
 		runningGame(level, current);
@@ -136,7 +137,7 @@ void CGame::startGame(int& level, char& current)
 			tmp = 0;
 		if ((Check->tm_sec - tmp) == k) {
 			for (int i = 0; i < 2; ++i)
-				arrL[i].changeColor(arrL[i].getColor(), speed[0], speed[1]);
+				arrL[i].changeColor(arrL[i].getColor(), speedTr, arrB.getSpeed());
 			tmp = Check->tm_sec;
 		}
 	}
