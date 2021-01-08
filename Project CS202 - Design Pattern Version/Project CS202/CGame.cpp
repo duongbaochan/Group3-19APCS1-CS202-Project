@@ -43,7 +43,7 @@ void Menu(CGame& x)
 	cout << "Break-a-leg!";
 
 	//Menu section
-	int width = 1100, height = 540; // Size of menu
+	int width = 1100, height = 650; // Size of menu
 
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 
@@ -131,7 +131,10 @@ void Menu(CGame& x)
 			system("CLS");
 			Menu(x);
 		}
-		else if (n == 0) exit(0);
+		else if (n == 0) {
+			cout << endl << endl << endl;
+			exit(0);
+		}
 		else throw n;
 	}
 
@@ -422,7 +425,7 @@ void CGame::runningGame(int &level, char& current)
 			return;
 		}
 	}
-	if (cn.isFinishTurn(31))
+	if (cn.isFinishTurn(33))
 	{
 		score += 10;
 		if (score % 50 == 0) level++;

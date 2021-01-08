@@ -72,7 +72,7 @@ void preMain()
 }
 int main()
 {
-	int width = 1100, height = 600; // Set width for ingame console
+	int width = 1100, height = 650; // Set width for ingame console
 	setConsoleSize(width, height); // Set console size function, implemented in CGame.h
 	preMain();
 	return 0;
