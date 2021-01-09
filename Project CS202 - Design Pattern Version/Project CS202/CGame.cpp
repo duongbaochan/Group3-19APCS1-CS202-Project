@@ -537,21 +537,4 @@ void CGame::saveGame()
 	} 
 	f.close();
 }
-/*
-void CGame::pauseGame()
-{
-	bool pause_call = false;
-	if (kbhit()) {
-		if (GetAsyncKeyState(0x50) == true && pause_call == false) {
-			pause_call = true;
-			Sleep(700);
 
-			while (!GetAsyncKeyState(0x50))
-				Sleep(1);
-
-			pause_call = false;
-
-		}
-	}
-}
-*/
