@@ -86,7 +86,7 @@ void Menu(CGame& x)
 		if (n == 1)
 		{
 			int level = 3;
-			x.setGame(level, 2, 100, 0, 50, 0);
+			x.setGame(level, 1, 100, 0, 50, 0);
 			//x.startGame(level);
 			return;
 		}
@@ -335,8 +335,6 @@ void CGame::updatePosPeople(char& current, bool flag)
 		}
 	}
 	cn.draw();
-	if (current == ' ')
-		stop = true;
 
 	current = '0';
 }

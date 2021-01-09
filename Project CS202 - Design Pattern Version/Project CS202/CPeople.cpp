@@ -168,7 +168,7 @@ bool CPeople::isImpact(CObject &x)
 
 void CPeople::draw()
 {
-    if (pos.mX > 0 && pos.mX <= 98) {
+    if (pos.mX > 0 && pos.mX <= 98 && pos.mY >= 0) {
 		GotoXY(pos.mX, pos.mY);
         
 		TextColor(7);
