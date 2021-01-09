@@ -469,12 +469,12 @@ void CGame::loadGame()
 	resetGame();
 	system("cls");
 	cin.ignore();
-	cout << "Format input [your location].txt" << endl;
-	cout << "Enter your path: ";
-	string s;  //D:\\CrossingRoad Repo\\Game1.txt
+	//cout << "Format input [your location].txt" << endl;
+	cout << "Enter your save name: ";
+	string s;  
 	getline(cin, s);
 	if (s.size() == 0) getline(cin, s);
-	cout << "Your path: " << s << endl;
+	cout << "Your path: C:\\Users\\dbcha\\OneDrive\\Documents\\github\\Group3-19APCS1-CS202-Project\\Project CS202 - Design Pattern Version\\Project CS202\\" << s << ".txt" << endl;
 	ifstream f;
 	f.open(s + ".txt");
 	cout << f.is_open();
@@ -507,12 +507,12 @@ void CGame::saveGame()
 {
 	TextColor(15);
 	system("cls");
-	cout << "Format input [your location].txt" << endl; 
-	cout << "Enter your location: ";
-	string s;                        //    D:\\CrossingRoad Repo
+	//cout << "Format input [your location].txt" << endl; 
+	cout << "Enter your save name: ";
+	string s;                   
 	getline(cin, s);
 	if (s.size() == 0) getline(cin, s);
-	cout << "\nYour path: " << s << ".txt" << endl;
+	cout << "Your path: C:\\Users\\dbcha\\OneDrive\\Documents\\github\\Group3-19APCS1-CS202-Project\\Project CS202 - Design Pattern Version\\Project CS202\\" << s << ".txt" << endl;
 	ofstream f;
 	f.open(s + ".txt");
 	cout << f.is_open();
